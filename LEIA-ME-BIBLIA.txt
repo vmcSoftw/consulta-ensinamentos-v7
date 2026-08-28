@@ -1,0 +1,50 @@
+CONSULTA DE ENSINAMENTOS V7 — PESQUISA BÍBLICA ARC
+
+Esta atualização acrescenta uma área própria "Bíblia" sem alterar os tópicos de ensinamentos já salvos no Neon.
+
+BASE BÍBLICA PREPARADA
+- Almeida Revista e Corrigida (ARC), edição-base 1995
+- 66 livros
+- 1.189 capítulos
+- 31.105 versículos
+- Cada versículo guarda livro, capítulo, versículo, texto e página de origem do PDF.
+
+DEPOIS DE EXTRAIR A ATUALIZAÇÃO NA PASTA DO PROJETO:
+1. Preserve o arquivo .env.local e a pasta .vercel.
+2. No terminal, execute:
+
+   npm run preparar:biblia
+
+   Esse comando cria as novas tabelas no mesmo Neon e importa a Bíblia.
+   Ele não apaga as tabelas de ensinamentos.
+
+3. Depois execute:
+
+   npm run dev
+
+4. Abra http://localhost:3000 e use a nova aba "Bíblia".
+
+TESTES SUGERIDOS
+- João 3:16
+- Salmos 23
+- 1 Coríntios 13
+- santificação
+- graça
+- sem santificação ninguém verá
+
+RECURSOS
+- Busca por referência direta (João 3:16, João 3.16, 1Co 13:4-7)
+- Busca por livro e capítulo
+- Busca por palavra ou frase
+- Navegação Livro > Capítulo
+- Copiar referência
+- Imprimir resultados
+- Abrir a página correspondente no PDF bíblico
+- Buscar tópicos de ensinamentos que citam um versículo
+
+PUBLICAÇÃO
+Depois de testar localmente, publique normalmente com:
+
+   npx vercel --prod
+
+Não é necessária uma nova variável de ambiente. A Bíblia usa o mesmo DATABASE_URL já configurado.

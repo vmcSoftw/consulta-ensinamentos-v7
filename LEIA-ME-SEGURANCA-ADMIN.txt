@@ -1,0 +1,17 @@
+CONSULTA DE ENSINAMENTOS V7 - SEGURANÇA ADMINISTRATIVA
+
+Esta atualização separa a senha de login da chave de sessão e acrescenta:
+- sessões aleatórias armazenadas no Neon e revogáveis;
+- expiração real de 4 horas;
+- limite de 5 tentativas incorretas em 15 minutos;
+- bloqueio temporário de 30 minutos ao atingir o limite;
+- opção "Encerrar todas" para revogar todas as sessões administrativas;
+- cookies HttpOnly, SameSite=Strict e Secure em produção.
+
+ANTES DE USAR:
+1) Gere uma chave: npm run gerar:admin-secret
+2) No .env.local, acrescente ADMIN_SESSION_SECRET="CHAVE_GERADA"
+3) Execute: npm run preparar:seguranca
+4) Execute: npm run dev
+
+Na Vercel, cadastre a mesma ADMIN_SESSION_SECRET em Production como variável Sensitive antes do próximo deploy.

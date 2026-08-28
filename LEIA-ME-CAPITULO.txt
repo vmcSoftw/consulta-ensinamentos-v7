@@ -1,0 +1,14 @@
+CONSULTA DE ENSINAMENTOS V7 — CAPÍTULO BÍBLICO EM CARD ÚNICO
+
+Alteração:
+- Ao abrir um capítulo inteiro (ex.: João 3, Salmos 23, 1 Coríntios 13),
+  todos os versículos aparecem dentro de um único card de leitura contínua.
+- Os números dos versículos permanecem destacados no texto.
+- Inclui Copiar capítulo, Imprimir capítulo e Abrir na Bíblia em PDF.
+- Buscas por palavra/frase e versículos isolados continuam usando cards individuais.
+
+Instalação:
+1. Pare o servidor com Ctrl+C.
+2. Extraia este ZIP na pasta atual do projeto.
+3. Substitua os arquivos no destino.
+4. Execute: npm run dev

@@ -1,0 +1,291 @@
+{
+  "version": "V7 Consolidada",
+  "date": "2026-08-28",
+  "files": [
+    {
+      "file": ".env.example",
+      "sha256": "eb4aa1dfd63365f57556cb148a3619e55a2a007b7554b442a9c59d3d8078796b",
+      "bytes": 297
+    },
+    {
+      "file": ".gitignore",
+      "sha256": "669be18d48227700d5f5bf85a7c0abd99c33d10c1838c1a5a7fbcce7bcfeb42c",
+      "bytes": 58
+    },
+    {
+      "file": "INICIAR-AQUI.txt",
+      "sha256": "9718f0d70a70fa6fb3ad8b42e33969004384093d647a725ac1e13f27418bfa47",
+      "bytes": 858
+    },
+    {
+      "file": "LEIA-ME-BIBLIA.txt",
+      "sha256": "5a0cd2ece932cfb4b95d88e0329a8719bb3ac08166f7246de15b33cb9627ca6e",
+      "bytes": 1410
+    },
+    {
+      "file": "LEIA-ME-DICIONARIO.txt",
+      "sha256": "0816a1a99cb411b5671b90561bd0db35860af0e4ce47264279ac3b2f4b940a57",
+      "bytes": 971
+    },
+    {
+      "file": "LEIA-ME-V7-CONSOLIDADA.txt",
+      "sha256": "b28f5f68a35c6a2cd2c8e950e6a9413bb501b23301a1eba58e2fd657a430da7a",
+      "bytes": 821
+    },
+    {
+      "file": "README.md",
+      "sha256": "b048e4f44ccc37504c1a39e1d39fdd6cc1aec7543eb984d5d6da0c904f5fdb7c",
+      "bytes": 3865
+    },
+    {
+      "file": "VERSAO.txt",
+      "sha256": "af8287b78a8a07bc824366aca090527878b37e11aa1cc42898bf5da75ce2a045",
+      "bytes": 165
+    },
+    {
+      "file": "app/admin/page.tsx",
+      "sha256": "ba7a1b5989837c28cff90df7e0da7aa31b8456ae356164b55552b603156a90b9",
+      "bytes": 17628
+    },
+    {
+      "file": "app/api/admin/session/route.ts",
+      "sha256": "153eff056a912385bf34f18d6891ae3219a755ece13d192393f4c8d484f48190",
+      "bytes": 1403
+    },
+    {
+      "file": "app/api/admin/topics/route.ts",
+      "sha256": "529a645348256e641a1bf7f04d205395aaa1ce75a5e4344b17df36ece509b4db",
+      "bytes": 5897
+    },
+    {
+      "file": "app/api/ask/route.ts",
+      "sha256": "aaabc273c95ec067a7877edd7994d7151e3c3bca492c9d2b52429c8f67941adc",
+      "bytes": 12206
+    },
+    {
+      "file": "app/api/bible/books/route.ts",
+      "sha256": "f28da46f7bb0c9d6c7f38543ed579bcc529c88f901b7520f369aaca9cbd86807",
+      "bytes": 545
+    },
+    {
+      "file": "app/api/bible/dictionary/route.ts",
+      "sha256": "00eea3ab63fc286a5737739a6559a5ac7dba1a9cb95c4e452fe4ba7445dfa501",
+      "bytes": 584
+    },
+    {
+      "file": "app/api/bible/related/route.ts",
+      "sha256": "252a45365e17a036237b3c6af606b0bd3c06220fa959896eafa920316d0a4aba",
+      "bytes": 728
+    },
+    {
+      "file": "app/api/bible/search/route.ts",
+      "sha256": "f076a902b934582377d5bfa82d9e44597e0e4f9980ab46875bac1aa5e56f395d",
+      "bytes": 666
+    },
+    {
+      "file": "app/api/export/pdf/route.ts",
+      "sha256": "626e7be90cdc996dab059a7aa2c9e824db3794b495a53f2d498c91d991d28cd8",
+      "bytes": 3176
+    },
+    {
+      "file": "app/api/filters/route.ts",
+      "sha256": "82fe041e29082f590b8904849463be0eddb3af2b6b0a9b961e593e7ed65cb356",
+      "bytes": 1726
+    },
+    {
+      "file": "app/api/search/route.ts",
+      "sha256": "4a1e5528fcfb6410a60604a82cbe3d299201f0698a9287f43a8143620dcb2b2f",
+      "bytes": 1040
+    },
+    {
+      "file": "app/api/sources/route.ts",
+      "sha256": "4b8c6e5eb7eaa3d23c2873f21b346d42c2602a6179d6531e3c195dc2d6a46073",
+      "bytes": 566
+    },
+    {
+      "file": "app/api/topic/[id]/route.ts",
+      "sha256": "97dab8a56d35379d394a38e0ad1d42b739cc5452730d4d9e434ee20052bf8c90",
+      "bytes": 903
+    },
+    {
+      "file": "app/globals.css",
+      "sha256": "448fbb988eeb3d8ad58b0f985ffc1fe38d7cd812e3c26a6d488b341221bb9082",
+      "bytes": 48268
+    },
+    {
+      "file": "app/layout.tsx",
+      "sha256": "294e175c870a31cfa6cfdaf8b44ef39bf9a87340f4e2f54b18c9d0b4e0072109",
+      "bytes": 435
+    },
+    {
+      "file": "app/page.tsx",
+      "sha256": "0f33a15094b7e83ce6f3492f758e80897d315e4084040ffd4405864156d1b017",
+      "bytes": 43999
+    },
+    {
+      "file": "app/print/PrintControls.tsx",
+      "sha256": "69f43c38cc10c7d1f06a4ec91cd617a5155e90ad3178116e28e02b8d31509344",
+      "bytes": 288
+    },
+    {
+      "file": "app/print/page.tsx",
+      "sha256": "e320adf486199a89f5b080c44d9cc042bc7f67bdd07d6577ca1e57516ce83491",
+      "bytes": 2785
+    },
+    {
+      "file": "data/bible-books.json",
+      "sha256": "33756fbf4b142d545af5b8046bc3cd406ffe9dfc39f198af595dd85ddcfe38af",
+      "bytes": 7734
+    },
+    {
+      "file": "data/bible-summary.json",
+      "sha256": "cdb7820a77ff1fe53493035ff55fa139dd6efea249c96a06e44f2be2522b83a1",
+      "bytes": 199
+    },
+    {
+      "file": "data/bible-verses.jsonl",
+      "sha256": "69eecd8c6d830ab4b572089500d44d7b232864e3199209d1718bf88e3a11a9c8",
+      "bytes": 6814151
+    },
+    {
+      "file": "data/dictionary-entries.jsonl",
+      "sha256": "a1c04b3aecc70ad5995822081bdd82634f94603e14d0d4183fb4d8b76eab7ab8",
+      "bytes": 1393301
+    },
+    {
+      "file": "data/sources.json",
+      "sha256": "1d048ea2333f7799b81e5c3efb867fd61b96b891ee03f9c9e05d5853f7463910",
+      "bytes": 27920
+    },
+    {
+      "file": "data/topics.jsonl",
+      "sha256": "8e119b8b448ef1562183d78e3be4ab1ed24072499222e0e40a722d55e3ea775c",
+      "bytes": 5084103
+    },
+    {
+      "file": "lib/admin.ts",
+      "sha256": "511d132a66e2512441ae318a7ae2e4382fbbb7b25b3175b0248bea5e6837230e",
+      "bytes": 1292
+    },
+    {
+      "file": "lib/bible.ts",
+      "sha256": "c93d15f86fbcb8c8fc809c83b3677ea492ca2e99efc5a73eeaa6ecfb0850fb5b",
+      "bytes": 11155
+    },
+    {
+      "file": "lib/db.ts",
+      "sha256": "51e4672440e082a18c7ad002df3b28df462890dd2caf7264b4e11dd5193a3607",
+      "bytes": 507
+    },
+    {
+      "file": "lib/dictionary.ts",
+      "sha256": "ee053828d6ad2420a96d94f74ba8c29ef112dba16cee4dcfcded94443fd31941",
+      "bytes": 4242
+    },
+    {
+      "file": "lib/env.mjs",
+      "sha256": "1eb84dd326233c891dfb33b558a5c210618330bf8463b455ee2b79c8a342b4b8",
+      "bytes": 1310
+    },
+    {
+      "file": "lib/search.ts",
+      "sha256": "64b5e50b4bf02d35b5322668b3b2de229e677bc20abac5c662be1f616ef58fde",
+      "bytes": 8094
+    },
+    {
+      "file": "lib/simple-pdf.ts",
+      "sha256": "959cbdb547abf6b5c94db6828198f47076f7a4a9e7ccb2d0d32fb0cc7f25e028",
+      "bytes": 15734
+    },
+    {
+      "file": "next-env.d.ts",
+      "sha256": "89be6d6426b0065c500bef67188206acc7d7b506127f185a77ac4d98eb2f57bc",
+      "bytes": 126
+    },
+    {
+      "file": "next.config.mjs",
+      "sha256": "7378473489712cc5aec4dfd4f6623faf2dcf5d90f33c0594fdad698afb8c66b2",
+      "bytes": 91
+    },
+    {
+      "file": "package.json",
+      "sha256": "629a9394f0172b57abf023c03e2fa3e3770ebfa17655ab0a560432d8159aad43",
+      "bytes": 1075
+    },
+    {
+      "file": "public/biblia-arc.pdf",
+      "sha256": "17dd56ea7ae83a2e86ffe9c153c61ef9975e04ce13d8e998df52b79b219f04ad",
+      "bytes": 38191409
+    },
+    {
+      "file": "public/dicionario-biblico.pdf",
+      "sha256": "a9f918055b6af9d0e243b84c8c2a8375c0487e086bd233430fd7360362f6d782",
+      "bytes": 2155767
+    },
+    {
+      "file": "public/documento.pdf",
+      "sha256": "a39a24d102ec60fd44af4543a7774adcddc448e7a949f3d798ada7e4293552c5",
+      "bytes": 13663299
+    },
+    {
+      "file": "scripts/check-neon.mjs",
+      "sha256": "82e2a2f12e18f8c3d4048265ff5cc874dfd6ead4333269978ab74fac19656d33",
+      "bytes": 1268
+    },
+    {
+      "file": "scripts/diagnostico.mjs",
+      "sha256": "3f9f7f27e34884f8b9afc07207557f4588674153dd121993746aa26dd8d7756f",
+      "bytes": 1014
+    },
+    {
+      "file": "scripts/import-bible.mjs",
+      "sha256": "6528afdac15610701556518a6c25f0fea14af5b923a326c07bd670992be5e695",
+      "bytes": 4297
+    },
+    {
+      "file": "scripts/import-dictionary.mjs",
+      "sha256": "c66d8d37217a5d637550ea08f13ce68a5e4b279cd0d370ce5784a0134da2ea70",
+      "bytes": 3414
+    },
+    {
+      "file": "scripts/import-neon.mjs",
+      "sha256": "492799c2f4ba5f2fd6c84333debd7666c0d235ca6d45bb4a88678b31ae05c86c",
+      "bytes": 6660
+    },
+    {
+      "file": "scripts/preparar-biblia.mjs",
+      "sha256": "b247a0fbb0130956f4b55a3835ce22cd2addef47e7916a68d655110448c96e2c",
+      "bytes": 285
+    },
+    {
+      "file": "scripts/preparar-dicionario.mjs",
+      "sha256": "1f151c71ef5408f7dcde5ca1b97369ad681e46912a81fd745f2f53a4f95342d5",
+      "bytes": 275
+    },
+    {
+      "file": "scripts/preparar.mjs",
+      "sha256": "34b094536a38acaa25cc7e5800b40b7481ee1e70dcd4945ef2d2093a4c41c2b7",
+      "bytes": 778
+    },
+    {
+      "file": "scripts/schema-bible.mjs",
+      "sha256": "e1e694f0443c077361c74d673f769edcfc6013e676d49ccc34afe27ae45db9f4",
+      "bytes": 2387
+    },
+    {
+      "file": "scripts/schema-dictionary.mjs",
+      "sha256": "97e29c6e49ec980ee8b9352c3a466b00c6bcc9b3c467c5504a478313fad5b50a",
+      "bytes": 1883
+    },
+    {
+      "file": "scripts/schema-neon.mjs",
+      "sha256": "f12759445d681b694c4b2278287e3f5e5f5edfbbc6128b461b8ffd54f66929a1",
+      "bytes": 2775
+    },
+    {
+      "file": "tsconfig.json",
+      "sha256": "198e5663bf1be09c52ae795f6a3d4526b20bfd3d3eb42b3a21babb81bfd655ca",
+      "bytes": 563
+    }
+  ]
+}

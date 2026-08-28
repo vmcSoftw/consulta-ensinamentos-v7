@@ -1,0 +1,39 @@
+{
+  "name": "consulta-ensinamentos-v7-neon",
+  "version": "7.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "check": "node scripts/check-neon.mjs",
+    "schema": "node scripts/schema-neon.mjs",
+    "import": "node scripts/import-neon.mjs",
+    "preparar": "node scripts/preparar.mjs",
+    "diagnostico": "node scripts/diagnostico.mjs",
+    "schema:biblia": "node scripts/schema-bible.mjs",
+    "import:biblia": "node scripts/import-bible.mjs",
+    "preparar:biblia": "node scripts/preparar-biblia.mjs",
+    "schema:dicionario": "node scripts/schema-dictionary.mjs",
+    "import:dicionario": "node scripts/import-dictionary.mjs",
+    "preparar:dicionario": "node scripts/preparar-dicionario.mjs",
+    "preparar:seguranca": "node scripts/schema-admin-security.mjs",
+    "gerar:admin-secret": "node scripts/generate-admin-secret.mjs",
+    "preparar:auditoria": "node scripts/schema-admin-audit.mjs"
+  },
+  "dependencies": {
+    "next": "16.3.3",
+    "pg": "8.23.0",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@types/node": "26.2.0",
+    "@types/pg": "8.23.1",
+    "@types/react": "19.2.18",
+    "typescript": "7.0.2"
+  },
+  "engines": {
+    "node": ">=20.9.0"
+  }
+}

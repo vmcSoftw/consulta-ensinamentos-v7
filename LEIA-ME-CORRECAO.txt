@@ -1,0 +1,21 @@
+V7 - Correção da consulta do Dicionário Bíblico
+
+Erro corrigido:
+PostgreSQL 42P18 - could not determine data type of parameter $3
+
+A correção altera apenas:
+lib/dictionary.ts
+
+Não altera:
+- banco de dados Neon
+- 5.614 verbetes já importados
+- Bíblia
+- tópicos de ensinamentos
+- senha administrativa
+
+Procedimento:
+1. Pare o servidor com Ctrl+C.
+2. Extraia este ZIP na raiz do projeto atual.
+3. Escolha substituir o arquivo existente.
+4. Execute npm run dev.
+5. Teste Bíblia > Dicionário Bíblico > ADORAÇÃO.

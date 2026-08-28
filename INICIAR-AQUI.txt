@@ -1,0 +1,24 @@
+CONSULTA DE ENSINAMENTOS V7
+
+INSTALAÇÃO NOVA
+1) Abra esta pasta no Visual Studio Code.
+2) Crie .env.local a partir de .env.example.
+3) Preencha DATABASE_URL com a conexão pooled do Neon.
+4) Defina ADMIN_PASSWORD com uma senha forte.
+5) Execute: npm install
+6) Execute: npm run check
+7) Se o banco já contém os 3.016 tópicos, NÃO execute a importação novamente.
+8) Execute: npm run dev
+
+ATUALIZAÇÃO DE UMA V6 JÁ FUNCIONANDO
+- Use preferencialmente o ZIP "atualização V6 para V7".
+- Mantenha o seu .env.local e a pasta .vercel.
+- Acrescente ADMIN_PASSWORD ao .env.local.
+- Não é necessária nova importação do banco.
+
+TESTES IMPORTANTES
+- Pesquise: Convenção
+- Ordene: antigos -> recentes
+- Faça uma pergunta ao acervo
+- Abra Documentos e baixe Convenção em PDF
+- Abra /admin e teste o formulário (somente com sua senha administrativa)

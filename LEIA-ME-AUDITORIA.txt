@@ -1,0 +1,24 @@
+CONSULTA DE ENSINAMENTOS V7 - HISTÓRICO E AUDITORIA ADMINISTRATIVA
+
+O que esta atualização acrescenta:
+- Histórico administrativo em /admin/historico.
+- Registro de novos tópicos e novas fontes.
+- Identificação da origem do cadastro: manual ou PDF.
+- Para PDFs: nome, tamanho e impressão digital SHA-256 do arquivo utilizado.
+- Registro de gravações feitas após confirmação de possível duplicação.
+- Registro de login, tentativa inválida, saída e encerramento global de sessões.
+- Resumo dos últimos 30 dias no painel de histórico.
+
+IMPORTANTE:
+- O histórico começa a partir da ativação desta função. Dados antigos não recebem datas inventadas.
+- Nenhuma senha é gravada no histórico.
+- O arquivo PDF não é armazenado no banco; apenas metadados de rastreabilidade são registrados.
+
+PRIMEIRA EXECUÇÃO APÓS A ATUALIZAÇÃO:
+1. Pare o servidor.
+2. Substitua os arquivos da atualização.
+3. Execute: npm run preparar:auditoria
+4. Execute: npm run dev
+5. Entre em /admin e use o botão "Histórico".
+
+Não é necessário reimportar Bíblia, Dicionário ou Tópicos.

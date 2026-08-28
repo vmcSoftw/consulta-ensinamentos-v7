@@ -1,0 +1,20 @@
+CONSULTA DE ENSINAMENTOS — V7 CONSOLIDADA
+
+Este pacote reúne as correções e recursos validados até 28/08/2026.
+
+Inclui:
+- pesquisa e ranking documental;
+- perguntas ao acervo com deduplicação;
+- ordenação cronológica;
+- área administrativa autenticada;
+- importação de PDF;
+- prevenção de tópicos duplicados no cadastro;
+- impressão e PDFs por tipo/ano;
+- Bíblia ARC com 66 livros, 1.189 capítulos e 31.105 versículos;
+- Dicionário Bíblico com 5.614 verbetes pesquisáveis;
+- capítulos bíblicos em card único, com um versículo por linha.
+
+IMPORTANTE
+- Não substitua nem publique .env.local.
+- Os dados já gravados ficam no Neon e não são apagados ao atualizar os arquivos.
+- Se Bíblia e Dicionário já foram importados, não é necessário executar os comandos de importação novamente.

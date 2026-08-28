@@ -1,0 +1,22 @@
+CONSULTA DE ENSINAMENTOS V7 - AJUSTE ADMINISTRATIVO E PDF
+
+ALTERAÇÕES
+- Área de inserção protegida por login com a senha ADMIN_PASSWORD.
+- O formulário de cadastro só aparece depois da autenticação.
+- A rota que grava no Neon também exige sessão administrativa válida.
+- Sessão protegida por cookie HttpOnly com duração de 8 horas.
+- Botão Sair para encerrar a sessão administrativa.
+- Opção de selecionar um PDF e extrair seu texto para o formulário de novo tópico.
+- O conteúdo extraído deve ser revisado antes de salvar.
+- O termo "sem IA" foi retirado da interface e das respostas técnicas da API.
+
+COMO ATUALIZAR
+1. Pare o servidor com Ctrl+C.
+2. Extraia este ZIP sobre a pasta atual da V7 e substitua os arquivos.
+3. Preserve .env.local e a pasta .vercel.
+4. Execute npm run dev.
+5. Abra /admin: o sistema deve solicitar a senha antes de mostrar o cadastro.
+6. Teste a importação de um PDF com texto selecionável.
+
+OBSERVAÇÃO SOBRE PDF
+O navegador extrai o texto do arquivo para o formulário. O PDF original não é armazenado no banco. PDFs compostos somente por imagens precisam de OCR antes da importação.

@@ -1,0 +1,22 @@
+CONSULTA DE ENSINAMENTOS V7 — INTEGRAÇÃO ENSINAMENTOS ↔ BÍBLIA ↔ DICIONÁRIO
+
+O que esta atualização faz:
+1. Detecta referências bíblicas dentro do texto de cada tópico e as transforma em links clicáveis.
+2. Exibe, no final do tópico, um painel com as referências bíblicas identificadas.
+3. Ao clicar em uma referência, abre diretamente a passagem correspondente na aba Bíblia (ARC 1995).
+4. Ao consultar um versículo específico, carrega automaticamente os ensinamentos que citam aquela referência.
+5. Em buscas bíblicas por palavra, adiciona o botão "Consultar no Dicionário".
+6. Em cada verbete do Dicionário Bíblico, adiciona o botão "Pesquisar nos Ensinamentos".
+7. Amplia o reconhecimento de citações como Mt. 19.9 e Mateus cap. 19 v. 9.
+
+INSTALAÇÃO
+- Pare o servidor com Ctrl+C.
+- Extraia este ZIP na pasta atual do projeto e substitua os arquivos existentes.
+- Não altere .env.local e não reimporte Bíblia/Dicionário.
+- Execute: npm run dev
+
+TESTES SUGERIDOS
+- Abra um tópico que contenha Mateus 19:9 e clique na referência.
+- Pesquise João 3:16 e confira a área "Ensinamentos que citam".
+- Pesquise "graça" na Bíblia e use "Consultar no Dicionário".
+- Abra o verbete "GRAÇA" no Dicionário e use "Pesquisar nos Ensinamentos".

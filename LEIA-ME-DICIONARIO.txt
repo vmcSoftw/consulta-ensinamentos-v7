@@ -1,0 +1,25 @@
+CONSULTA DE ENSINAMENTOS V7 - DICIONÁRIO BÍBLICO
+
+Esta atualização acrescenta o Dicionário da Bíblia de Almeida - 2ª edição à aba Bíblia.
+
+Recursos:
+- Busca por verbete exato, prefixo e conteúdo da definição;
+- Navegação por índice alfabético;
+- Botão para pesquisar o mesmo termo na Bíblia ARC;
+- PDF completo do dicionário disponível na aba Bíblia;
+- Estrutura própria no Neon, separada dos tópicos e dos versículos.
+
+IMPORTAÇÃO NO NEON
+1. Mantenha o seu .env.local com DATABASE_URL.
+2. Execute:
+   npm run preparar:dicionario
+
+A importação é idempotente e valida 5.614 verbetes pesquisáveis extraídos do EPUB fornecido.
+
+Depois execute:
+   npm run dev
+
+Para publicar, depois dos testes locais:
+   npx vercel --prod
+
+Observação: o arquivo EPUB informa em sua descrição editorial 5.615 verbetes, porém a estrutura de verbetes pesquisáveis efetivamente presente no arquivo fornecido contém 5.614 entradas marcadas individualmente.
