@@ -6,6 +6,7 @@ const pool = new Pool({ connectionString: requireDatabaseUrl(), max: 1 });
 const client = await pool.connect();
 
 const statements = [
+  `CREATE EXTENSION IF NOT EXISTS pg_trgm`,
   `CREATE TABLE IF NOT EXISTS public.documents (
     id BIGSERIAL PRIMARY KEY,
     title TEXT NOT NULL,
@@ -51,6 +52,10 @@ const statements = [
   `CREATE INDEX IF NOT EXISTS idx_topics_search_fts ON public.topics USING GIN (
     to_tsvector('portuguese'::regconfig, coalesce(title, '') || ' ' || coalesce(content, ''))
   )`,
+  `CREATE INDEX IF NOT EXISTS idx_topics_title_norm_trgm ON public.topics USING GIN (lower(translate(title, 'ÁÀÂÃÄáàâãäÉÈÊËéèêëÍÌÎÏíìîïÓÒÔÕÖóòôõöÚÙÛÜúùûüÇçÑñ', 'AAAAAaaaaaEEEEeeeeIIIIiiiiOOOOOoooooUUUUuuuuCcNn')) gin_trgm_ops)`,
+  `CREATE INDEX IF NOT EXISTS idx_topics_content_norm_trgm ON public.topics USING GIN (lower(translate(content, 'ÁÀÂÃÄáàâãäÉÈÊËéèêëÍÌÎÏíìîïÓÒÔÕÖóòôõöÚÙÛÜúùûüÇçÑñ', 'AAAAAaaaaaEEEEeeeeIIIIiiiiOOOOOoooooUUUUuuuuCcNn')) gin_trgm_ops)`,
+  `CREATE INDEX IF NOT EXISTS idx_topics_title_trgm ON public.topics USING GIN (title gin_trgm_ops)`,
+  `CREATE INDEX IF NOT EXISTS idx_topics_content_trgm ON public.topics USING GIN (content gin_trgm_ops)`,
   `CREATE INDEX IF NOT EXISTS idx_search_synonyms_term_lower ON public.search_synonyms (lower(term))`,
   `CREATE INDEX IF NOT EXISTS idx_search_synonyms_related_lower ON public.search_synonyms (lower(related_term))`
 ];

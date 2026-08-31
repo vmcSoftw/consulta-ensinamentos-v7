@@ -4,6 +4,7 @@ const { Pool }=pg;
 const pool=new Pool({connectionString:requireDatabaseUrl(),max:1});
 const client=await pool.connect();
 const statements=[
+`CREATE EXTENSION IF NOT EXISTS pg_trgm`,
 `CREATE TABLE IF NOT EXISTS public.bible_dictionary_sources (
  id BIGSERIAL PRIMARY KEY,
  code TEXT NOT NULL UNIQUE,
@@ -29,7 +30,8 @@ const statements=[
 )`,
 `CREATE INDEX IF NOT EXISTS idx_bible_dictionary_headword ON public.bible_dictionary_entries(source_id,headword_normalized)`,
 `CREATE INDEX IF NOT EXISTS idx_bible_dictionary_letter ON public.bible_dictionary_entries(source_id,letter,headword_normalized)`,
-`CREATE INDEX IF NOT EXISTS idx_bible_dictionary_fts ON public.bible_dictionary_entries USING GIN (to_tsvector('portuguese'::regconfig,headword || ' ' || definition))`
+`CREATE INDEX IF NOT EXISTS idx_bible_dictionary_fts ON public.bible_dictionary_entries USING GIN (to_tsvector('portuguese'::regconfig,headword || ' ' || definition))`,
+`CREATE INDEX IF NOT EXISTS idx_bible_dictionary_headword_norm_trgm ON public.bible_dictionary_entries USING GIN (headword_normalized gin_trgm_ops)`
 ];
 try{
  console.log('Criando/verificando estrutura do Dicionário Bíblico...');

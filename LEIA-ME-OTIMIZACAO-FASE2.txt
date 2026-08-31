@@ -1,0 +1,31 @@
+CONSULTA DE ENSINAMENTOS V7 — OTIMIZAÇÃO NEON FASE 2
+
+Objetivo
+- Acelerar buscas parciais com e sem acento.
+- Acelerar localização de referências bíblicas dentro dos tópicos.
+- Acelerar busca textual da Bíblia e do Dicionário.
+- Preservar integralmente os dados existentes.
+
+O que muda
+1. Ativa pg_trgm no PostgreSQL.
+2. Cria índices GIN/trigram para títulos e conteúdos dos ensinamentos.
+3. Cria índice trigram para busca normalizada nos versículos.
+4. Usa o campo headword_normalized já armazenado no Dicionário, evitando normalização por linha.
+5. Cria índice trigram para os verbetes normalizados.
+6. Atualiza as estatísticas do planejador PostgreSQL.
+
+Comandos
+Antes de otimizar:
+  npm run diagnostico:fase2
+
+Aplicar otimização:
+  npm run otimizar:fase2
+
+Depois de otimizar:
+  npm run diagnostico:fase2
+
+Observações
+- O script é idempotente: pode ser executado novamente.
+- Os índices atuais são preservados.
+- A criação dos novos índices usa CONCURRENTLY para reduzir bloqueios de escrita.
+- Não reimporta tópicos, Bíblia ou Dicionário.

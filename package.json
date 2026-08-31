@@ -19,7 +19,9 @@
     "preparar:dicionario": "node scripts/preparar-dicionario.mjs",
     "preparar:seguranca": "node scripts/schema-admin-security.mjs",
     "gerar:admin-secret": "node scripts/generate-admin-secret.mjs",
-    "preparar:auditoria": "node scripts/schema-admin-audit.mjs"
+    "preparar:auditoria": "node scripts/schema-admin-audit.mjs",
+    "diagnostico:fase2": "node scripts/benchmark-neon-phase2.mjs",
+    "otimizar:fase2": "node scripts/optimize-neon-phase2.mjs"
   },
   "dependencies": {
     "next": "16.3.3",

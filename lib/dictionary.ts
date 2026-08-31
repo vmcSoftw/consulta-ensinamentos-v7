@@ -41,9 +41,9 @@ export async function searchDictionary(query:string, letter:string, limit=60){
   const maxLimit=Math.min(Math.max(Number(limit)||60,1),120);
   const letterClean=(letter||'').trim().slice(0,1).toLocaleUpperCase('pt-BR');
 
-  const normSql=`lower(translate(e.headword,
-    'ÁÀÂÃÄáàâãäÉÈÊËéèêëÍÌÎÏíìîïÓÒÔÕÖóòôõöÚÙÛÜúùûüÇçÑñ',
-    'AAAAAaaaaaEEEEeeeeIIIIiiiiOOOOOoooooUUUUuuuuCcNn'))`;
+  // O valor já é persistido normalizado na importação. Evita recalcular
+  // lower/translate para cada linha em toda pesquisa e permite uso de índice trigram.
+  const normSql=`e.headword_normalized`;
 
   if(!clean){
     const params:any[]=[DICTIONARY_META.code];
