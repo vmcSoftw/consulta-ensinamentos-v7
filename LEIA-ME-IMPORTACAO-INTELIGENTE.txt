@@ -1,0 +1,21 @@
+CONSULTA DE ENSINAMENTOS V7 — IMPORTAÇÃO INTELIGENTE DE PDF
+
+O que muda:
+- A Área Administrativa agora oferece dois modos de PDF:
+  1) Um tópico: comportamento anterior, todo o PDF vai para um único formulário.
+  2) Importação inteligente: detecta vários possíveis tópicos antes de gravar.
+- A detecção sugere número, título, páginas, categoria e palavras-chave.
+- Cada tópico pode ser revisado, editado, desmarcado ou selecionado antes da gravação.
+- A gravação em lote usa uma única fonte para todos os tópicos selecionados.
+- Possíveis duplicações já existentes são ignoradas automaticamente no lote e mostradas no resumo final.
+- A operação é registrada no Histórico Administrativo, incluindo nome, hash e tamanho do PDF.
+- O PDF original não é armazenado no Neon; somente o texto aprovado e os metadados de auditoria são enviados.
+
+Importante:
+- A detecção é heurística: o administrador deve revisar os resultados antes de gravar.
+- PDFs apenas digitalizados como imagem continuam exigindo OCR.
+- Limite: 25 MB por PDF e até 150 tópicos por importação em lote.
+- Nenhuma reimportação da Bíblia, Dicionário ou acervo existente é necessária.
+
+Fluxo sugerido:
+Área Administrativa > Importação inteligente > selecionar PDF > Analisar e detectar tópicos > revisar seleção > configurar a fonte > Importar selecionados no Neon.
