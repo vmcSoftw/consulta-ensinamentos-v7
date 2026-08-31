@@ -1,0 +1,10 @@
+V7 Consolidada - Otimização de desempenho (fase 1)
+
+Alterações:
+1. /api/filters passa a usar cache na CDN por 5 minutos com stale-while-revalidate.
+2. /api/bible/books passa a usar cache na CDN por 1 hora.
+3. A busca principal evita executar COUNT + SELECT completos em toda pesquisa: usa count(*) over() na mesma consulta e só faz COUNT separado no caso raro de página vazia com offset > 0.
+4. .env.example padronizado para sslmode=verify-full.
+
+Não altera dados do Neon e não cria/destroi tabelas ou índices.
+Após aplicar: npm run dev, testar busca/filtros/Bíblia, depois git add/commit/push.

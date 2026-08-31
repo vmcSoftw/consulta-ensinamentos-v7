@@ -11,5 +11,9 @@ export async function GET(){
     books:BIBLE_BOOKS,
     stats,
     dictionary:{...DICTIONARY_META,stats:dictionaryStats}
+  }, {
+    headers:{
+      'Cache-Control':'public, s-maxage=3600, stale-while-revalidate=86400'
+    }
   });
 }

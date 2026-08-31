@@ -113,12 +113,6 @@ export async function searchArchive(q: string, options: SearchOptions = {}) {
     where.push(`s.source_type = $${params.length}`);
   }
 
-  const total = (await pool.query(`
-    SELECT count(*)::int AS total
-    FROM topics t
-    JOIN source_sections s ON s.id = t.source_section_id
-    WHERE ${where.join(' AND ')}`, params)).rows[0].total;
-
   const orderBy = sort === 'recent'
     ? 'year DESC NULLS LAST, page_start DESC, score DESC'
     : sort === 'oldest'
@@ -175,7 +169,8 @@ export async function searchArchive(q: string, options: SearchOptions = {}) {
           WHEN ${sourceTypeNorm} = $2 OR ${sourceTypeNorm} LIKE ANY($4::text[]) OR ${sourceTitleNorm} LIKE ANY($4::text[]) THEN 'Fonte'
           WHEN ${contentNorm} LIKE ANY($4::text[]) THEN 'Conteúdo'
           ELSE 'Termo relacionado'
-        END AS match_hint
+        END AS match_hint,
+        count(*) OVER()::int AS total_count
       FROM topics t
       JOIN source_sections s ON s.id = t.source_section_id
       WHERE ${where.join(' AND ')}
@@ -183,10 +178,25 @@ export async function searchArchive(q: string, options: SearchOptions = {}) {
     ORDER BY ${orderBy}
     LIMIT $${params.length - 1} OFFSET $${params.length}`, params)).rows;
 
+  let total = items.length ? Number(items[0].total_count || 0) : 0;
+
+  // Se o usuário navegou além da última página e não vierem linhas,
+  // recupera apenas a contagem. No fluxo normal evitamos uma segunda
+  // varredura completa do acervo em toda pesquisa.
+  if (!items.length && offset > 0) {
+    total = Number((await pool.query(`
+      SELECT count(*)::int AS total
+      FROM topics t
+      JOIN source_sections s ON s.id = t.source_section_id
+      WHERE ${where.join(' AND ')}`, params.slice(0, -2))).rows[0]?.total || 0);
+  }
+
+  const cleanItems = items.map(({ total_count, ...item }: any) => item);
+
   return {
-    items,
+    items: cleanItems,
     total,
     expandedTerms,
-    hasMore: offset + items.length < total
+    hasMore: offset + cleanItems.length < total
   };
 }

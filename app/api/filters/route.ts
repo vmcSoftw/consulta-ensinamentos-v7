@@ -20,6 +20,10 @@ export async function GET() {
       yearCounts: yearCounts.rows,
       typeCounts: typeCounts.rows,
       stats: stats.rows[0]
+    }, {
+      headers: {
+        'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=900'
+      }
     });
   } catch (error) {
     console.error(error);
