@@ -1,0 +1,17 @@
+{
+  "arquivo_fonte": "Bíblia Sagrada - Almeida Revista e Corrigida (ARC) 2009.pdf",
+  "sha256": "d74571783957fbc899be97a419af989d1919354f35a9b8f6aa0086e9fb555b7b",
+  "paginas_pdf": 2044,
+  "livros": 66,
+  "capitulos": 1189,
+  "versiculos": 31105,
+  "chaves_duplicadas": 0,
+  "capitulos_com_falha_de_sequencia": 0,
+  "versiculos_vazios": 0,
+  "checagem_parser_independente": "OK",
+  "amostras_confirmadas": {
+    "João 3:21": "Mas quem pratica a verdade vem para a luz, a fim de que as suas obras sejam manifestas, porque são feitas em Deus.",
+    "João 3:36": "Aquele que crê no Filho tem a vida eterna, mas aquele que não crê no Filho não verá a vida, mas a ira de Deus sobre ele permanece."
+  },
+  "observacao": "O banco em produção deve ser comparado linha a linha com este conjunto auditado antes da atualização."
+}

@@ -1,0 +1,40 @@
+REVISÃO TEXTUAL FINAL — ARC 2009
+
+A Bíblia estruturalmente validada tem:
+- 66 livros
+- 1.189 capítulos
+- 31.105 versículos
+- 0 vazios
+- 0 falhas de sequência
+
+Foi feita uma segunda auditoria focada em erros tipográficos de junção de palavras.
+O próprio PDF-fonte apresenta algumas junções visuais, por exemplo:
+- Quemcrê -> Quem crê
+- Porquetodo -> Porque todo
+- Naverdade -> Na verdade
+- Vóssereis -> Vós sereis
+- Bem-aventuradoaquele -> Bem-aventurado aquele
+- aonselho-teque -> aconselho-te que
+- João 16:28: "Saído Pai" -> "Saí do Pai" (conferido externamente na ARC 2009)
+
+Este pacote contém 84 versículos com correções de alta confiança.
+Cada correção é aplicada por referência bíblica e só ocorre se o texto atual for
+EXATAMENTE igual ao texto auditado anterior.
+
+ORDEM:
+1) node scripts/auditar-espacamento-arc2009.mjs
+2) node scripts/corrigir-espacamento-arc2009.mjs
+3) node scripts/validar-espacamento-arc2009.mjs
+
+SEGURANÇA:
+- backup completo antes de alterar;
+- transação;
+- mantém IDs e referências;
+- altera somente o texto dos versículos listados;
+- aborta se encontrar conteúdo inesperado;
+- valida novamente todos os patches depois.
+
+CANDIDATOS-NAO-ALTERADOS.csv:
+Lista automática de palavras raras que PODEM parecer junções, mas não foram
+alteradas por segurança. Muitos itens são palavras legítimas, nomes próprios
+ou formas verbais. O arquivo serve apenas para revisão futura.

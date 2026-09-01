@@ -1,0 +1,15 @@
+{
+  "patch_verses": 84,
+  "transformations": 80,
+  "candidate_tokens_not_changed": 350,
+  "source_pdf_sha256": "d74571783957fbc899be97a419af989d1919354f35a9b8f6aa0086e9fb555b7b",
+  "checkpoints": [
+    "João 3:18 — Quem crê",
+    "João 3:20 — Porque todo",
+    "João 15:10 — Se guardardes",
+    "João 16:11 — e do juízo",
+    "João 16:28 — Saí do Pai",
+    "Salmos 65:4 — Bem-aventurado aquele",
+    "Apocalipse 3:18 — aconselho-te que"
+  ]
+}

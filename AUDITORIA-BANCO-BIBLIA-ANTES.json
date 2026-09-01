@@ -1,0 +1,117 @@
+{
+  "generated_at": "2026-09-01T22:59:38.757Z",
+  "database_structure": {
+    "verses": 31105,
+    "books": 66,
+    "chapters": 1189,
+    "empty": 0
+  },
+  "duplicate_key_groups": 0,
+  "missing_keys": 0,
+  "extra_keys": 0,
+  "differing_verses": 4752,
+  "affected_chapters": 1168,
+  "empty_verses": 0,
+  "samples": [
+    {
+      "referencia": "Gênesis 1:2",
+      "banco": "E a terra era sem forma e vazia; e havia trevas sobre a face do abismo; e o",
+      "fonte": "E a terra era sem forma e vazia; e havia trevas sobre a face do abismo; e o Espírito de Deus se movia sobre a face das águas."
+    },
+    {
+      "referencia": "Gênesis 1:5",
+      "banco": "E Deus chamou à luz Dia; e às trevas chamou Noite. E foi a tarde e a manhã: o",
+      "fonte": "E Deus chamou à luz Dia; e às trevas chamou Noite. E foi a tarde e a manhã: o dia primeiro."
+    },
+    {
+      "referencia": "Gênesis 1:25",
+      "banco": "E fez Deus as bestas-feras da terra conforme a sua espécie, e o gado conforme a sua espécie, e todo o réptil da terra conforme a sua espécie. E viu Deus que",
+      "fonte": "E fez Deus as bestas-feras da terra conforme a sua espécie, e o gado conforme a sua espécie, e todo o réptil da terra conforme a sua espécie. E viu Deus que era bom."
+    },
+    {
+      "referencia": "Gênesis 1:31",
+      "banco": "E viu Deus tudo quanto tinha feito, e eis que era muito bom; e foi a tarde e a",
+      "fonte": "E viu Deus tudo quanto tinha feito, e eis que era muito bom; e foi a tarde e a manhã: o dia sexto."
+    },
+    {
+      "referencia": "Gênesis 2:3",
+      "banco": "E abençoou Deus o dia sétimo e o santificou; porque nele descansou de toda a",
+      "fonte": "E abençoou Deus o dia sétimo e o santificou; porque nele descansou de toda a sua obra, que Deus criara e fizera."
+    },
+    {
+      "referencia": "Gênesis 2:9",
+      "banco": "E o Senhor Deus fez brotar da terra toda árvore agradável à vista e boa para comida, e a árvore da vida no meio do jardim, e a árvore da ciência do bem e do",
+      "fonte": "E o Senhor Deus fez brotar da terra toda árvore agradável à vista e boa para comida, e a árvore da vida no meio do jardim, e a árvore da ciência do bem e do mal."
+    },
+    {
+      "referencia": "Gênesis 2:14",
+      "banco": "E o nome do terceiro rio é Hidéquel; este é o que vai para a banda do oriente",
+      "fonte": "E o nome do terceiro rio é Hidéquel; este é o que vai para a banda do oriente da Assíria; e o quarto rio é o Eufrates."
+    },
+    {
+      "referencia": "Gênesis 2:17",
+      "banco": "mas da árvore da ciência do bem e do mal, dela não comerás; porque, no dia",
+      "fonte": "mas da árvore da ciência do bem e do mal, dela não comerás; porque, no dia em que dela comeres, certamente morrerás."
+    },
+    {
+      "referencia": "Gênesis 2:20",
+      "banco": "E Adão pôs os nomes a todo o gado, e às aves dos céus, e a todo animal do campo; mas para o homem não se achava adjutora que estivesse como diante",
+      "fonte": "E Adão pôs os nomes a todo o gado, e às aves dos céus, e a todo animal do campo; mas para o homem não se achava adjutora que estivesse como diante dele."
+    },
+    {
+      "referencia": "Gênesis 2:21",
+      "banco": "Então, o Senhor Deus fez cair um sono pesado sobre Adão, e este adormeceu;",
+      "fonte": "Então, o Senhor Deus fez cair um sono pesado sobre Adão, e este adormeceu; e tomou uma das suas costelas e cerrou a carne em seu lugar."
+    },
+    {
+      "referencia": "Gênesis 3:7",
+      "banco": "Então, foram abertos os olhos de ambos, e conheceram que estavam nus; e",
+      "fonte": "Então, foram abertos os olhos de ambos, e conheceram que estavam nus; e coseram folhas de figueira, e fizeram para si aventais."
+    },
+    {
+      "referencia": "Gênesis 3:19",
+      "banco": "No suor do teu rosto, comerás o teu pão, até que te tornes à terra; porque dela",
+      "fonte": "No suor do teu rosto, comerás o teu pão, até que te tornes à terra; porque dela foste tomado, porquanto és pó e em pó te tornarás."
+    },
+    {
+      "referencia": "Gênesis 3:24",
+      "banco": "E, havendo lançado fora o homem, pôs querubins ao oriente do jardim do Éden e uma espada inflamada que andava ao redor, para guardar o caminho da",
+      "fonte": "E, havendo lançado fora o homem, pôs querubins ao oriente do jardim do Éden e uma espada inflamada que andava ao redor, para guardar o caminho da árvore da vida."
+    },
+    {
+      "referencia": "Gênesis 4:7",
+      "banco": "Se bem fizeres, não haverá aceitação para ti? E, se não fizeres bem, o pecado",
+      "fonte": "Se bem fizeres, não haverá aceitação para ti? E, se não fizeres bem, o pecado jaz à porta, e para ti será o seu desejo, e sobre ele dominarás."
+    },
+    {
+      "referencia": "Gênesis 4:16",
+      "banco": "E saiu Caim de diante da face do Senhor e habitou na terra de Node, da banda",
+      "fonte": "E saiu Caim de diante da face do Senhor e habitou na terra de Node, da banda do oriente do Éden."
+    },
+    {
+      "referencia": "Gênesis 4:22",
+      "banco": "E Zilá também teve a Tubalcaim, mestre de toda obra de cobre e de ferro; e a",
+      "fonte": "E Zilá também teve a Tubalcaim, mestre de toda obra de cobre e de ferro; e a irmã de Tubalcaim foi Naamá."
+    },
+    {
+      "referencia": "Gênesis 4:26",
+      "banco": "E a Sete mesmo também nasceu um filho; e chamou o seu nome Enos; então,",
+      "fonte": "E a Sete mesmo também nasceu um filho; e chamou o seu nome Enos; então, se começou a invocar o nome do Senhor."
+    },
+    {
+      "referencia": "Gênesis 5:27",
+      "banco": "E foram todos os dias de Metusalém novecentos e sessenta e nove anos; e",
+      "fonte": "E foram todos os dias de Metusalém novecentos e sessenta e nove anos; e morreu."
+    },
+    {
+      "referencia": "Gênesis 6:4",
+      "banco": "Havia, naqueles dias, gigantes na terra; e também depois, quando os filhos de Deus entraram às filhas dos homens e delas geraram filhos; estes eram os",
+      "fonte": "Havia, naqueles dias, gigantes na terra; e também depois, quando os filhos de Deus entraram às filhas dos homens e delas geraram filhos; estes eram os valentes que houve na antiguidade, os varões de fama."
+    },
+    {
+      "referencia": "Gênesis 6:12",
+      "banco": "E viu Deus a terra, e eis que estava corrompida; porque toda carne havia",
+      "fonte": "E viu Deus a terra, e eis que estava corrompida; porque toda carne havia corrompido o seu caminho sobre a terra."
+    }
+  ]
+}

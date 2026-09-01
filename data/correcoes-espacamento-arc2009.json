@@ -1,0 +1,1013 @@
+{
+  "patch_count": 84,
+  "patches": [
+    {
+      "book_order": 1,
+      "book": "Gênesis",
+      "chapter": 8,
+      "verse": 17,
+      "before": "Todo animal que está contigo, de toda carne, de ave, e de gado, e de todo réptil que se roja sobre a terra, traze fora contigo; e povoem abundantemente a terra, e frutifiquem, e se multipliquem sobre a terra.",
+      "after": "Todo animal que está contigo, de toda carne, de ave, e de gado, e de todo réptil que se roja sobre a terra, traze fora contigo; e povo em abundantemente a terra, e frutifiquem, e se multipliquem sobre a terra.",
+      "pdf_page": 15,
+      "reasons": [
+        "povoem → povo em (1x)"
+      ]
+    },
+    {
+      "book_order": 1,
+      "book": "Gênesis",
+      "chapter": 25,
+      "verse": 16,
+      "before": "Estessão os filhos de Ismael, e estes são os seus nomes pelas suas vilas e pelos seus castelos: doze príncipes segundo as suas famílias.",
+      "after": "Estes são os filhos de Ismael, e estes são os seus nomes pelas suas vilas e pelos seus castelos: doze príncipes segundo as suas famílias.",
+      "pdf_page": 44,
+      "reasons": [
+        "estessão → estes são (1x)"
+      ]
+    },
+    {
+      "book_order": 2,
+      "book": "Êxodo",
+      "chapter": 37,
+      "verse": 21,
+      "before": "Eera uma maçã debaixo de duas canas do mesmo; e outra maçã debaixo de outras duas canas; e mais uma maçã debaixo de outras duas canas; assim se fez para as seis canas que saíam dele.",
+      "after": "E era uma maçã debaixo de duas canas do mesmo; e outra maçã debaixo de outras duas canas; e mais uma maçã debaixo de outras duas canas; assim se fez para as seis canas que saíam dele.",
+      "pdf_page": 171,
+      "reasons": [
+        "eera → e era (1x)"
+      ]
+    },
+    {
+      "book_order": 3,
+      "book": "Levítico",
+      "chapter": 14,
+      "verse": 32,
+      "before": "Estaé a lei daquele em quem estiver a praga da lepra, cuja mão não pode alcançar o preciso para a sua purificação.",
+      "after": "Esta é a lei daquele em quem estiver a praga da lepra, cuja mão não pode alcançar o preciso para a sua purificação.",
+      "pdf_page": 206,
+      "reasons": [
+        "estaé → esta é (1x)"
+      ]
+    },
+    {
+      "book_order": 3,
+      "book": "Levítico",
+      "chapter": 18,
+      "verse": 4,
+      "before": "Fareisconforme os meus juízos e os meus estatutos guardareis, para andardes neles. Eu sou o Senhor, vosso Deus.",
+      "after": "Fareis conforme os meus juízos e os meus estatutos guardareis, para andardes neles. Eu sou o Senhor, vosso Deus.",
+      "pdf_page": 213,
+      "reasons": [
+        "fareisconforme → fareis conforme (1x)"
+      ]
+    },
+    {
+      "book_order": 3,
+      "book": "Levítico",
+      "chapter": 21,
+      "verse": 7,
+      "before": "Não tomarão mulher prostituta ou infame, nem tomarão mulher repudiada de seu marido, poiso sacerdote santo é a seu Deus.",
+      "after": "Não tomarão mulher prostituta ou infame, nem tomarão mulher repudiada de seu marido, pois o sacerdote santo é a seu Deus.",
+      "pdf_page": 220,
+      "reasons": [
+        "poiso → pois o (1x)"
+      ]
+    },
+    {
+      "book_order": 4,
+      "book": "Números",
+      "chapter": 1,
+      "verse": 45,
+      "before": "Assimforam todos os contados dos filhos de Israel, segundo a casa de seus pais, de vinte anos para cima, todos os que podiam sair à guerra em Israel;",
+      "after": "Assim foram todos os contados dos filhos de Israel, segundo a casa de seus pais, de vinte anos para cima, todos os que podiam sair à guerra em Israel;",
+      "pdf_page": 239,
+      "reasons": [
+        "assimforam → assim foram (1x)"
+      ]
+    },
+    {
+      "book_order": 4,
+      "book": "Números",
+      "chapter": 4,
+      "verse": 36,
+      "before": "Osque deles foram contados, pois, segundo as suas gerações, foram dois mil e setecentos e cinquenta.",
+      "after": "Os que deles foram contados, pois, segundo as suas gerações, foram dois mil e setecentos e cinquenta.",
+      "pdf_page": 248,
+      "reasons": [
+        "osque → os que (1x)"
+      ]
+    },
+    {
+      "book_order": 4,
+      "book": "Números",
+      "chapter": 25,
+      "verse": 7,
+      "before": "Vendoisso Fineias, filho de Eleazar, filho de Arão, o sacerdote, se levantou do meio da congregação e tomou uma lança na sua mão;",
+      "after": "Vendo isso Fineias, filho de Eleazar, filho de Arão, o sacerdote, se levantou do meio da congregação e tomou uma lança na sua mão;",
+      "pdf_page": 293,
+      "reasons": [
+        "vendoisso → vendo isso (1x)"
+      ]
+    },
+    {
+      "book_order": 4,
+      "book": "Números",
+      "chapter": 29,
+      "verse": 3,
+      "before": "Epela sua oferta de manjares de flor de farinha misturada com azeite, três décimas para o bezerro, e duas décimas para o carneiro,",
+      "after": "E pela sua oferta de manjares de flor de farinha misturada com azeite, três décimas para o bezerro, e duas décimas para o carneiro,",
+      "pdf_page": 301,
+      "reasons": [
+        "epela → e pela (1x)"
+      ]
+    },
+    {
+      "book_order": 8,
+      "book": "Rute",
+      "chapter": 3,
+      "verse": 13,
+      "before": "Fica-teaqui esta noite, e será que, pela manhã, se ele te redimir, bem está, ele te redima; porém, se te não quiser redimir, vive o Senhor, que eu te redimirei; deita-te aqui até à manhã.",
+      "after": "Fica-te aqui esta noite, e será que, pela manhã, se ele te redimir, bem está, ele te redima; porém, se te não quiser redimir, vive o Senhor, que eu te redimirei; deita-te aqui até à manhã.",
+      "pdf_page": 480,
+      "reasons": [
+        "Fica-teaqui → Fica-te aqui (1x)"
+      ]
+    },
+    {
+      "book_order": 9,
+      "book": "1 Samuel",
+      "chapter": 14,
+      "verse": 35,
+      "before": "Então, edificou Saulum altar ao Senhor; este foi o primeiro altar que edificou ao Senhor.",
+      "after": "Então, edificou Saul um altar ao Senhor; este foi o primeiro altar que edificou ao Senhor.",
+      "pdf_page": 506,
+      "reasons": [
+        "saulum → saul um (1x)"
+      ]
+    },
+    {
+      "book_order": 10,
+      "book": "2 Samuel",
+      "chapter": 23,
+      "verse": 22,
+      "before": "Estascoisas fez Benaia, filho de Joiada, pelo que teve nome entre os três valentes.",
+      "after": "Estas coisas fez Benaia, filho de Joiada, pelo que teve nome entre os três valentes.",
+      "pdf_page": 588,
+      "reasons": [
+        "estascoisas → estas coisas (1x)"
+      ]
+    },
+    {
+      "book_order": 11,
+      "book": "1 Reis",
+      "chapter": 3,
+      "verse": 2,
+      "before": "Somenteque o povo sacrificava sobre os altos, porque até àqueles dias ainda se não tinha edificado casa ao nome do Senhor.",
+      "after": "Somente que o povo sacrificava sobre os altos, porque até àqueles dias ainda se não tinha edificado casa ao nome do Senhor.",
+      "pdf_page": 597,
+      "reasons": [
+        "somenteque → somente que (1x)"
+      ]
+    },
+    {
+      "book_order": 11,
+      "book": "1 Reis",
+      "chapter": 5,
+      "verse": 3,
+      "before": "Bemsabes tu que Davi, meu pai, não pôde edificar uma casa ao nome do Senhor, seu Deus, por causa da guerra com que o cercaram, até que o Senhor os pôs debaixo das plantas dos pés.",
+      "after": "Bem sabes tu que Davi, meu pai, não pôde edificar uma casa ao nome do Senhor, seu Deus, por causa da guerra com que o cercaram, até que o Senhor os pôs debaixo das plantas dos pés.",
+      "pdf_page": 601,
+      "reasons": [
+        "bemsabes → bem sabes (1x)"
+      ]
+    },
+    {
+      "book_order": 11,
+      "book": "1 Reis",
+      "chapter": 8,
+      "verse": 56,
+      "before": "Benditoseja o Senhor, que deu repouso ao seu povo de Israel, segundo tudo o que disse; nem uma só palavra caiu de todas as suas boas palavras que falou pelo ministério de Moisés, seu servo.",
+      "after": "Bendito seja o Senhor, que deu repouso ao seu povo de Israel, segundo tudo o que disse; nem uma só palavra caiu de todas as suas boas palavras que falou pelo ministério de Moisés, seu servo.",
+      "pdf_page": 613,
+      "reasons": [
+        "benditoseja → bendito seja (1x)"
+      ]
+    },
+    {
+      "book_order": 12,
+      "book": "2 Reis",
+      "chapter": 4,
+      "verse": 16,
+      "before": "Eele disse: A este tempo determinado, segundo o tempo da vida, abraçarás um filho. E disse ela: Não, meu senhor, homem de Deus, não mintas à tua serva.",
+      "after": "E ele disse: A este tempo determinado, segundo o tempo da vida, abraçarás um filho. E disse ela: Não, meu senhor, homem de Deus, não mintas à tua serva.",
+      "pdf_page": 654,
+      "reasons": [
+        "eele → e ele (1x)"
+      ]
+    },
+    {
+      "book_order": 12,
+      "book": "2 Reis",
+      "chapter": 7,
+      "verse": 18,
+      "before": "Porqueassim sucedeu como o homem de Deus falara ao rei, dizendo: Amanhã, quase a este tempo, haverá duas medidas de cevada por um siclo, e uma medida de farinha, por um siclo, à porta de Samaria.",
+      "after": "Porque assim sucedeu como o homem de Deus falara ao rei, dizendo: Amanhã, quase a este tempo, haverá duas medidas de cevada por um siclo, e uma medida de farinha, por um siclo, à porta de Samaria.",
+      "pdf_page": 662,
+      "reasons": [
+        "porqueassim → porque assim (1x)"
+      ]
+    },
+    {
+      "book_order": 13,
+      "book": "1 Crônicas",
+      "chapter": 5,
+      "verse": 14,
+      "before": "estesforam os filhos de Abiail, filho de Huri, filho de Jaroa, filho de Gileade, filho de Micael, filho de Jesisai, filho de Jado, filho de Buz.",
+      "after": "estes foram os filhos de Abiail, filho de Huri, filho de Jaroa, filho de Gileade, filho de Micael, filho de Jesisai, filho de Jado, filho de Buz.",
+      "pdf_page": 710,
+      "reasons": [
+        "estesforam → estes foram (1x)"
+      ]
+    },
+    {
+      "book_order": 13,
+      "book": "1 Crônicas",
+      "chapter": 17,
+      "verse": 17,
+      "before": "Eainda isso, ó Deus, foi pouco aos teus olhos; pelo que falaste da casa de teu servo para tempos distantes; e proveste-me, segundo o costume dos homens, com esta exaltação, ó Senhor Deus.",
+      "after": "E ainda isso, ó Deus, foi pouco aos teus olhos; pelo que falaste da casa de teu servo para tempos distantes; e proveste-me, segundo o costume dos homens, com esta exaltação, ó Senhor Deus.",
+      "pdf_page": 735,
+      "reasons": [
+        "eainda → e ainda (1x)"
+      ]
+    },
+    {
+      "book_order": 13,
+      "book": "1 Crônicas",
+      "chapter": 27,
+      "verse": 6,
+      "before": "Eraeste Benaia um varão entre os trinta, e sobre os trinta; e sobre a sua turma estava Amizabade, seu filho.",
+      "after": "Era este Benaia um varão entre os trinta, e sobre os trinta; e sobre a sua turma estava Amizabade, seu filho.",
+      "pdf_page": 749,
+      "reasons": [
+        "eraeste → era este (1x)"
+      ]
+    },
+    {
+      "book_order": 14,
+      "book": "2 Crônicas",
+      "chapter": 36,
+      "verse": 7,
+      "before": "Tambémalguns dos utensílios da Casa do Senhor levou Nabucodonosor para a Babilônia e pô-los no seu templo em Babilônia.",
+      "after": "Também alguns dos utensílios da Casa do Senhor levou Nabucodonosor para a Babilônia e pô-los no seu templo em Babilônia.",
+      "pdf_page": 817,
+      "reasons": [
+        "tambémalguns → também alguns (1x)"
+      ]
+    },
+    {
+      "book_order": 15,
+      "book": "Esdras",
+      "chapter": 4,
+      "verse": 22,
+      "before": "Eguardai-vos de cometerdes erro nisso; por que cresceria o dano para prejuízo dos reis?",
+      "after": "E guardai-vos de cometerdes erro nisso; por que cresceria o dano para prejuízo dos reis?",
+      "pdf_page": 825,
+      "reasons": [
+        "eguardai-vos → e guardai-vos (1x)"
+      ]
+    },
+    {
+      "book_order": 16,
+      "book": "Neemias",
+      "chapter": 3,
+      "verse": 6,
+      "before": "E a Porta Velha repararam-na Joiada, filho de Paseia; e Mesulão, filho de Besodias; estes a emadeiraram e levantaram as suas portas com assuas fechaduras e os seus ferrolhos.",
+      "after": "E a Porta Velha repararam-na Joiada, filho de Paseia; e Mesulão, filho de Besodias; estes a emadeiraram e levantaram as suas portas com as suas fechaduras e os seus ferrolhos.",
+      "pdf_page": 840,
+      "reasons": [
+        "assuas → as suas (1x)"
+      ]
+    },
+    {
+      "book_order": 16,
+      "book": "Neemias",
+      "chapter": 11,
+      "verse": 36,
+      "before": "Ealguns dos levitas habitaram nos repartimentos de Judá e de Benjamim.",
+      "after": "E alguns dos levitas habitaram nos repartimentos de Judá e de Benjamim.",
+      "pdf_page": 859,
+      "reasons": [
+        "ealguns → e alguns (1x)"
+      ]
+    },
+    {
+      "book_order": 18,
+      "book": "Jó",
+      "chapter": 11,
+      "verse": 14,
+      "before": "sehá iniquidade na tua mão, lança-a para longe de ti e não deixes habitar a injustiça nas tuas tendas,",
+      "after": "se há iniquidade na tua mão, lança-a para longe de ti e não deixes habitar a injustiça nas tuas tendas,",
+      "pdf_page": 892,
+      "reasons": [
+        "sehá → se há (1x)"
+      ]
+    },
+    {
+      "book_order": 19,
+      "book": "Salmos",
+      "chapter": 65,
+      "verse": 4,
+      "before": "Bem-aventuradoaquele a quem tu escolhes e fazes chegar a ti, para que habite em teus átrios; nós seremos satisfeitos da bondade da tua casa e do teu santo templo.",
+      "after": "Bem-aventurado aquele a quem tu escolhes e fazes chegar a ti, para que habite em teus átrios; nós seremos satisfeitos da bondade da tua casa e do teu santo templo.",
+      "pdf_page": 987,
+      "reasons": [
+        "Bem-aventuradoaquele → Bem-aventurado aquele (1x)"
+      ]
+    },
+    {
+      "book_order": 19,
+      "book": "Salmos",
+      "chapter": 118,
+      "verse": 24,
+      "before": "Esteé o dia que fez o Senhor; regozijemo-nos e alegremo-nos nele.",
+      "after": "Este é o dia que fez o Senhor; regozijemo-nos e alegremo-nos nele.",
+      "pdf_page": 1042,
+      "reasons": [
+        "esteé → este é (1x)"
+      ]
+    },
+    {
+      "book_order": 19,
+      "book": "Salmos",
+      "chapter": 133,
+      "verse": 2,
+      "before": "Écomo o óleo precioso sobre a cabeça, que desce sobre a barba, a barba de Arão, e que desce à orla das suas vestes.",
+      "after": "É como o óleo precioso sobre a cabeça, que desce sobre a barba, a barba de Arão, e que desce à orla das suas vestes.",
+      "pdf_page": 1056,
+      "reasons": [
+        "écomo → é como (1x)"
+      ]
+    },
+    {
+      "book_order": 20,
+      "book": "Provérbios",
+      "chapter": 30,
+      "verse": 23,
+      "before": "pelamulher aborrecida, quando se casa; e pela serva, quando fica herdeira da sua senhora.",
+      "after": "pela mulher aborrecida, quando se casa; e pela serva, quando fica herdeira da sua senhora.",
+      "pdf_page": 1115,
+      "reasons": [
+        "pelamulher → pela mulher (1x)"
+      ]
+    },
+    {
+      "book_order": 22,
+      "book": "Cantares",
+      "chapter": 4,
+      "verse": 8,
+      "before": "Vemcomigo do Líbano, minha esposa, vem comigo do Líbano; olha desde o cume de Amana, desde o cume de Senir e de Hermom, desde as moradas dos leões, desde os montes dos leopardos.",
+      "after": "Vem comigo do Líbano, minha esposa, vem comigo do Líbano; olha desde o cume de Amana, desde o cume de Senir e de Hermom, desde as moradas dos leões, desde os montes dos leopardos.",
+      "pdf_page": 1136,
+      "reasons": [
+        "vemcomigo → vem comigo (1x)"
+      ]
+    },
+    {
+      "book_order": 23,
+      "book": "Isaías",
+      "chapter": 5,
+      "verse": 27,
+      "before": "Nãohaverá entre elas cansado, nem claudicante; ninguém tosquenejará, nem dormirá; não se lhe desatará o cinto dos seus lombos, nem se lhe quebrará a correia dos seus sapatos.",
+      "after": "Não haverá entre elas cansado, nem claudicante; ninguém tosquenejará, nem dormirá; não se lhe desatará o cinto dos seus lombos, nem se lhe quebrará a correia dos seus sapatos.",
+      "pdf_page": 1148,
+      "reasons": [
+        "nãohaverá → não haverá (1x)"
+      ]
+    },
+    {
+      "book_order": 23,
+      "book": "Isaías",
+      "chapter": 14,
+      "verse": 7,
+      "before": "Jádescansa, já está sossegada toda a terra! — exclamam com júbilo.",
+      "after": "Já descansa, já está sossegada toda a terra! — exclamam com júbilo.",
+      "pdf_page": 1159,
+      "reasons": [
+        "jádescansa → já descansa (1x)"
+      ]
+    },
+    {
+      "book_order": 23,
+      "book": "Isaías",
+      "chapter": 41,
+      "verse": 23,
+      "before": "Anunciai-nosas coisas que ainda hão de vir, para que saibamos que sois deuses; fazei bem ou fazei mal, para que nos assombremos e, juntamente, o vejamos.",
+      "after": "Anunciai-nos as coisas que ainda hão de vir, para que saibamos que sois deuses; fazei bem ou fazei mal, para que nos assombremos e, juntamente, o vejamos.",
+      "pdf_page": 1196,
+      "reasons": [
+        "Anunciai-nosas → Anunciai-nos as (1x)"
+      ]
+    },
+    {
+      "book_order": 23,
+      "book": "Isaías",
+      "chapter": 57,
+      "verse": 6,
+      "before": "Naspedras lisas dos ribeiros, está a tua parte; estas, estas são a tua sorte; sobre elas também derramas a tua libação e lhes ofereces ofertas; contentar-me-ia eu com essas coisas?",
+      "after": "Nas pedras lisas dos ribeiros, está a tua parte; estas, estas são a tua sorte; sobre elas também derramas a tua libação e lhes ofereces ofertas; contentar-me-ia eu com essas coisas?",
+      "pdf_page": 1217,
+      "reasons": [
+        "naspedras → nas pedras (1x)"
+      ]
+    },
+    {
+      "book_order": 24,
+      "book": "Jeremias",
+      "chapter": 31,
+      "verse": 28,
+      "before": "Eserá que, como velei sobre eles, para arrancar, e para derribar, e para transtornar, e para destruir, e para afligir, assim velarei sobre eles, para edificar e para plantar, diz o Senhor.",
+      "after": "E será que, como velei sobre eles, para arrancar, e para derribar, e para transtornar, e para destruir, e para afligir, assim velarei sobre eles, para edificar e para plantar, diz o Senhor.",
+      "pdf_page": 1285,
+      "reasons": [
+        "eserá → e será (1x)"
+      ]
+    },
+    {
+      "book_order": 26,
+      "book": "Ezequiel",
+      "chapter": 16,
+      "verse": 13,
+      "before": "Eassim foste ornada de ouro e prata, e a tua veste foi de linho fino, e de seda, e bordadura; nutriste-te de flor de farinha, e de mel, e de óleo; e foste formosa em extremo e foste próspera, até chegares a ser rainha.",
+      "after": "E assim foste ornada de ouro e prata, e a tua veste foi de linho fino, e de seda, e bordadura; nutriste-te de flor de farinha, e de mel, e de óleo; e foste formosa em extremo e foste próspera, até chegares a ser rainha.",
+      "pdf_page": 1364,
+      "reasons": [
+        "eassim → e assim (1x)"
+      ]
+    },
+    {
+      "book_order": 40,
+      "book": "Mateus",
+      "chapter": 7,
+      "verse": 8,
+      "before": "Porqueaquele que pede recebe; e o que busca encontra; e, ao que bate, se abre.",
+      "after": "Porque aquele que pede recebe; e o que busca encontra; e, ao que bate, se abre.",
+      "pdf_page": 1551,
+      "reasons": [
+        "porqueaquele → porque aquele (1x)"
+      ]
+    },
+    {
+      "book_order": 40,
+      "book": "Mateus",
+      "chapter": 10,
+      "verse": 20,
+      "before": "Porquenão sois vós quem falará, mas o Espírito de vosso Pai é que fala em vós.",
+      "after": "Porque não sois vós quem falará, mas o Espírito de vosso Pai é que fala em vós.",
+      "pdf_page": 1558,
+      "reasons": [
+        "porquenão → porque não (1x)"
+      ]
+    },
+    {
+      "book_order": 40,
+      "book": "Mateus",
+      "chapter": 18,
+      "verse": 11,
+      "before": "Porqueo Filho do Homem veio salvar o que se tinha perdido.",
+      "after": "Porque o Filho do Homem veio salvar o que se tinha perdido.",
+      "pdf_page": 1576,
+      "reasons": [
+        "porqueo → porque o (1x)"
+      ]
+    },
+    {
+      "book_order": 40,
+      "book": "Mateus",
+      "chapter": 23,
+      "verse": 32,
+      "before": "Encheivós, pois, a medida de vossos pais.",
+      "after": "Enchei vós, pois, a medida de vossos pais.",
+      "pdf_page": 1589,
+      "reasons": [
+        "encheivós → enchei vós (1x)"
+      ]
+    },
+    {
+      "book_order": 41,
+      "book": "Marcos",
+      "chapter": 10,
+      "verse": 31,
+      "before": "Porémmuitos primeiros serão derradeiros, e muitos derradeiros serão primeiros.",
+      "after": "Porém muitos primeiros serão derradeiros, e muitos derradeiros serão primeiros.",
+      "pdf_page": 1631,
+      "reasons": [
+        "porémmuitos → porém muitos (1x)"
+      ]
+    },
+    {
+      "book_order": 42,
+      "book": "Lucas",
+      "chapter": 6,
+      "verse": 45,
+      "before": "Ohomem bom, do bom tesouro do seu coração, tira o bem, e o homem mau, do mau tesouro do seu coração, tira o mal, porque da abundância do seu coração fala a boca.",
+      "after": "O homem bom, do bom tesouro do seu coração, tira o bem, e o homem mau, do mau tesouro do seu coração, tira o mal, porque da abundância do seu coração fala a boca.",
+      "pdf_page": 1665,
+      "reasons": [
+        "ohomem → o homem (1x)"
+      ]
+    },
+    {
+      "book_order": 42,
+      "book": "Lucas",
+      "chapter": 7,
+      "verse": 33,
+      "before": "Porqueveio João Batista, que não comia pão nem bebia vinho, e dizeis: Tem demônio.",
+      "after": "Porque veio João Batista, que não comia pão nem bebia vinho, e dizeis: Tem demônio.",
+      "pdf_page": 1668,
+      "reasons": [
+        "porqueveio → porque veio (1x)"
+      ]
+    },
+    {
+      "book_order": 42,
+      "book": "Lucas",
+      "chapter": 9,
+      "verse": 12,
+      "before": "Ejá o dia começava a declinar; então, chegando-se a ele os doze, disseram-lhe: Despede a multidão, para que, indo aos campos e aldeias ao redor, se agasalhem e achem o que comer, porque aqui estamos em lugar deserto.",
+      "after": "E já o dia começava a declinar; então, chegando-se a ele os doze, disseram-lhe: Despede a multidão, para que, indo aos campos e aldeias ao redor, se agasalhem e achem o que comer, porque aqui estamos em lugar deserto.",
+      "pdf_page": 1673,
+      "reasons": [
+        "ejá → e já (1x)"
+      ]
+    },
+    {
+      "book_order": 42,
+      "book": "Lucas",
+      "chapter": 12,
+      "verse": 51,
+      "before": "Cuidaisvós que vim trazer paz à terra? Não, vos digo, mas, antes, dissensão.",
+      "after": "Cuidais vós que vim trazer paz à terra? Não, vos digo, mas, antes, dissensão.",
+      "pdf_page": 1686,
+      "reasons": [
+        "cuidaisvós → cuidais vós (1x)"
+      ]
+    },
+    {
+      "book_order": 42,
+      "book": "Lucas",
+      "chapter": 16,
+      "verse": 13,
+      "before": "Nenhumservo pode servir a dois senhores, porque ou há de aborrecer a um e amar ao outro ou se há de chegar a um e desprezar ao outro. Não podeis servir a Deus e a Mamom.",
+      "after": "Nenhum servo pode servir a dois senhores, porque ou há de aborrecer a um e amar ao outro ou se há de chegar a um e desprezar ao outro. Não podeis servir a Deus e a Mamom.",
+      "pdf_page": 1693,
+      "reasons": [
+        "nenhumservo → nenhum servo (1x)"
+      ]
+    },
+    {
+      "book_order": 42,
+      "book": "Lucas",
+      "chapter": 19,
+      "verse": 10,
+      "before": "Porqueo Filho do Homem veio buscar e salvar o que se havia perdido.",
+      "after": "Porque o Filho do Homem veio buscar e salvar o que se havia perdido.",
+      "pdf_page": 1700,
+      "reasons": [
+        "porqueo → porque o (1x)"
+      ]
+    },
+    {
+      "book_order": 42,
+      "book": "Lucas",
+      "chapter": 21,
+      "verse": 35,
+      "before": "Porquevirá como um laço sobre todos os que habitam na face de toda a terra.",
+      "after": "Porque virá como um laço sobre todos os que habitam na face de toda a terra.",
+      "pdf_page": 1707,
+      "reasons": [
+        "porquevirá → porque virá (1x)"
+      ]
+    },
+    {
+      "book_order": 43,
+      "book": "João",
+      "chapter": 3,
+      "verse": 11,
+      "before": "Naverdade, na verdade te digo que nós dizemos o que sabemos e testificamos o que vimos, e não aceitais o nosso testemunho.",
+      "after": "Na verdade, na verdade te digo que nós dizemos o que sabemos e testificamos o que vimos, e não aceitais o nosso testemunho.",
+      "pdf_page": 1722,
+      "reasons": [
+        "naverdade → na verdade (1x)"
+      ]
+    },
+    {
+      "book_order": 43,
+      "book": "João",
+      "chapter": 3,
+      "verse": 20,
+      "before": "Porquetodo aquele que faz o mal aborrece a luz e não vem para a luz para que as suas obras não sejam reprovadas.",
+      "after": "Porque todo aquele que faz o mal aborrece a luz e não vem para a luz para que as suas obras não sejam reprovadas.",
+      "pdf_page": 1723,
+      "reasons": [
+        "porquetodo → porque todo (1x)"
+      ]
+    },
+    {
+      "book_order": 43,
+      "book": "João",
+      "chapter": 5,
+      "verse": 31,
+      "before": "Seeu testifico de mim mesmo, o meu testemunho não é verdadeiro.",
+      "after": "Se eu testifico de mim mesmo, o meu testemunho não é verdadeiro.",
+      "pdf_page": 1729,
+      "reasons": [
+        "seeu → se eu (1x)"
+      ]
+    },
+    {
+      "book_order": 43,
+      "book": "João",
+      "chapter": 5,
+      "verse": 32,
+      "before": "Háoutro que testifica de mim, e sei que o testemunho que ele dá de mim é verdadeiro.",
+      "after": "Há outro que testifica de mim, e sei que o testemunho que ele dá de mim é verdadeiro.",
+      "pdf_page": 1729,
+      "reasons": [
+        "háoutro → há outro (1x)"
+      ]
+    },
+    {
+      "book_order": 43,
+      "book": "João",
+      "chapter": 5,
+      "verse": 40,
+      "before": "Enão quereis vir a mim para terdes vida.",
+      "after": "E não quereis vir a mim para terdes vida.",
+      "pdf_page": 1729,
+      "reasons": [
+        "enão → e não (1x)"
+      ]
+    },
+    {
+      "book_order": 43,
+      "book": "João",
+      "chapter": 5,
+      "verse": 44,
+      "before": "Comopodeis vós crer, recebendo honra uns dos outros e não buscando a honra que vem só de Deus?",
+      "after": "Como podeis vós crer, recebendo honra uns dos outros e não buscando a honra que vem só de Deus?",
+      "pdf_page": 1729,
+      "reasons": [
+        "comopodeis → como podeis (1x)"
+      ]
+    },
+    {
+      "book_order": 43,
+      "book": "João",
+      "chapter": 6,
+      "verse": 46,
+      "before": "Nãoque alguém visse ao Pai, a não ser aquele que é de Deus; este tem visto ao Pai.",
+      "after": "Não que alguém visse ao Pai, a não ser aquele que é de Deus; este tem visto ao Pai.",
+      "pdf_page": 1732,
+      "reasons": [
+        "nãoque → não que (1x)"
+      ]
+    },
+    {
+      "book_order": 43,
+      "book": "João",
+      "chapter": 8,
+      "verse": 15,
+      "before": "Vósjulgais segundo a carne, eu a ninguém julgo.",
+      "after": "Vós julgais segundo a carne, eu a ninguém julgo.",
+      "pdf_page": 1737,
+      "reasons": [
+        "vósjulgais → vós julgais (1x)"
+      ]
+    },
+    {
+      "book_order": 43,
+      "book": "João",
+      "chapter": 8,
+      "verse": 55,
+      "before": "Evós não o conheceis, mas eu conheço-o; e, se disser que não o conheço, serei mentiroso como vós; mas conheço-o e guardo a sua palavra.",
+      "after": "E vós não o conheceis, mas eu conheço-o; e, se disser que não o conheço, serei mentiroso como vós; mas conheço-o e guardo a sua palavra.",
+      "pdf_page": 1740,
+      "reasons": [
+        "evós → e vós (1x)"
+      ]
+    },
+    {
+      "book_order": 43,
+      "book": "João",
+      "chapter": 9,
+      "verse": 4,
+      "before": "Convémque eu faça as obras daquele que me enviou, enquanto é dia; a noite vem, quando ninguém pode trabalhar.",
+      "after": "Convém que eu faça as obras daquele que me enviou, enquanto é dia; a noite vem, quando ninguém pode trabalhar.",
+      "pdf_page": 1740,
+      "reasons": [
+        "convémque → convém que (1x)"
+      ]
+    },
+    {
+      "book_order": 43,
+      "book": "João",
+      "chapter": 14,
+      "verse": 21,
+      "before": "Aqueleque tem os meus mandamentos e os guarda, este é o que me ama; e aquele que me ama será amado de meu Pai, e eu o amarei e me manifestarei a ele.",
+      "after": "Aquele que tem os meus mandamentos e os guarda, este é o que me ama; e aquele que me ama será amado de meu Pai, e eu o amarei e me manifestarei a ele.",
+      "pdf_page": 1754,
+      "reasons": [
+        "aqueleque → aquele que (1x)"
+      ]
+    },
+    {
+      "book_order": 43,
+      "book": "João",
+      "chapter": 15,
+      "verse": 2,
+      "before": "Todavara em mim que não dá fruto, a tira; e limpa toda aquela que dá fruto, para que dê mais fruto.",
+      "after": "Toda vara em mim que não dá fruto, a tira; e limpa toda aquela que dá fruto, para que dê mais fruto.",
+      "pdf_page": 1754,
+      "reasons": [
+        "todavara → toda vara (1x)"
+      ]
+    },
+    {
+      "book_order": 43,
+      "book": "João",
+      "chapter": 15,
+      "verse": 3,
+      "before": "Vósjá estais limpos pela palavra que vos tenho falado.",
+      "after": "Vós já estais limpos pela palavra que vos tenho falado.",
+      "pdf_page": 1754,
+      "reasons": [
+        "vósjá → vós já (1x)"
+      ]
+    },
+    {
+      "book_order": 43,
+      "book": "João",
+      "chapter": 15,
+      "verse": 4,
+      "before": "Estaiem mim, e eu, em vós; como a vara de si mesma não pode dar fruto, se não estiver na videira, assim também vós, se não estiverdes em mim.",
+      "after": "Estai em mim, e eu, em vós; como a vara de si mesma não pode dar fruto, se não estiver na videira, assim também vós, se não estiverdes em mim.",
+      "pdf_page": 1755,
+      "reasons": [
+        "estaiem → estai em (1x)"
+      ]
+    },
+    {
+      "book_order": 43,
+      "book": "João",
+      "chapter": 15,
+      "verse": 10,
+      "before": "Seguardardes os meus mandamentos, permanecereis no meu amor, do mesmo modo que eu tenho guardado os mandamentos de meu Pai e permaneço no seu amor.",
+      "after": "Se guardardes os meus mandamentos, permanecereis no meu amor, do mesmo modo que eu tenho guardado os mandamentos de meu Pai e permaneço no seu amor.",
+      "pdf_page": 1755,
+      "reasons": [
+        "seguardardes → se guardardes (1x)"
+      ]
+    },
+    {
+      "book_order": 43,
+      "book": "João",
+      "chapter": 15,
+      "verse": 13,
+      "before": "Ninguémtem maior amor do que este: de dar alguém a sua vida pelos seus amigos.",
+      "after": "Ninguém tem maior amor do que este: de dar alguém a sua vida pelos seus amigos.",
+      "pdf_page": 1755,
+      "reasons": [
+        "ninguémtem → ninguém tem (1x)"
+      ]
+    },
+    {
+      "book_order": 43,
+      "book": "João",
+      "chapter": 15,
+      "verse": 14,
+      "before": "Vóssereis meus amigos, se fizerdes o que eu vos mando.",
+      "after": "Vós sereis meus amigos, se fizerdes o que eu vos mando.",
+      "pdf_page": 1755,
+      "reasons": [
+        "vóssereis → vós sereis (1x)"
+      ]
+    },
+    {
+      "book_order": 43,
+      "book": "João",
+      "chapter": 15,
+      "verse": 16,
+      "before": "Nãome escolhestes vós a mim, mas eu vos escolhi a vós, e vos nomeei, para que vades e deis fruto, e o vosso fruto permaneça, a fim de que tudo quanto em meu nome pedirdes ao Pai ele vos conceda.",
+      "after": "Não me escolhestes vós a mim, mas eu vos escolhi a vós, e vos nomeei, para que vades e deis fruto, e o vosso fruto permaneça, a fim de que tudo quanto em meu nome pedirdes ao Pai ele vos conceda.",
+      "pdf_page": 1755,
+      "reasons": [
+        "nãome → não me (1x)"
+      ]
+    },
+    {
+      "book_order": 43,
+      "book": "João",
+      "chapter": 15,
+      "verse": 17,
+      "before": "Istovos mando: que vos ameis uns aos outros.",
+      "after": "Isto vos mando: que vos ameis uns aos outros.",
+      "pdf_page": 1755,
+      "reasons": [
+        "istovos → isto vos (1x)"
+      ]
+    },
+    {
+      "book_order": 43,
+      "book": "João",
+      "chapter": 15,
+      "verse": 19,
+      "before": "Sevós fôsseis do mundo, o mundo amaria o que era seu, mas, porque não sois do mundo, antes eu vos escolhi do mundo, por isso é que o mundo vos aborrece.",
+      "after": "Se vós fôsseis do mundo, o mundo amaria o que era seu, mas, porque não sois do mundo, antes eu vos escolhi do mundo, por isso é que o mundo vos aborrece.",
+      "pdf_page": 1755,
+      "reasons": [
+        "sevós → se vós (1x)"
+      ]
+    },
+    {
+      "book_order": 43,
+      "book": "João",
+      "chapter": 15,
+      "verse": 22,
+      "before": "Seeu não viera, nem lhes houvera falado, não teriam pecado, mas, agora, não têm desculpa do seu pecado.",
+      "after": "Se eu não viera, nem lhes houvera falado, não teriam pecado, mas, agora, não têm desculpa do seu pecado.",
+      "pdf_page": 1756,
+      "reasons": [
+        "seeu → se eu (1x)"
+      ]
+    },
+    {
+      "book_order": 43,
+      "book": "João",
+      "chapter": 15,
+      "verse": 23,
+      "before": "Aqueleque me aborrece aborrece também a meu Pai.",
+      "after": "Aquele que me aborrece aborrece também a meu Pai.",
+      "pdf_page": 1756,
+      "reasons": [
+        "aqueleque → aquele que (1x)"
+      ]
+    },
+    {
+      "book_order": 43,
+      "book": "João",
+      "chapter": 16,
+      "verse": 3,
+      "before": "Eisso vos farão, porque não conheceram ao Pai nem a mim.",
+      "after": "E isso vos farão, porque não conheceram ao Pai nem a mim.",
+      "pdf_page": 1756,
+      "reasons": [
+        "eisso → e isso (1x)"
+      ]
+    },
+    {
+      "book_order": 43,
+      "book": "João",
+      "chapter": 16,
+      "verse": 9,
+      "before": "dopecado, porque não creem em mim;",
+      "after": "do pecado, porque não creem em mim;",
+      "pdf_page": 1756,
+      "reasons": [
+        "dopecado → do pecado (1x)"
+      ]
+    },
+    {
+      "book_order": 43,
+      "book": "João",
+      "chapter": 16,
+      "verse": 10,
+      "before": "dajustiça, porque vou para meu Pai, e não me vereis mais;",
+      "after": "da justiça, porque vou para meu Pai, e não me vereis mais;",
+      "pdf_page": 1756,
+      "reasons": [
+        "dajustiça → da justiça (1x)"
+      ]
+    },
+    {
+      "book_order": 43,
+      "book": "João",
+      "chapter": 16,
+      "verse": 11,
+      "before": "edo juízo, porque já o príncipe deste mundo está julgado.",
+      "after": "e do juízo, porque já o príncipe deste mundo está julgado.",
+      "pdf_page": 1756,
+      "reasons": [
+        "edo → e do (1x)"
+      ]
+    },
+    {
+      "book_order": 43,
+      "book": "João",
+      "chapter": 16,
+      "verse": 15,
+      "before": "Tudoquanto o Pai tem é meu; por isso, vos disse que há de receber do que é meu e vo-lo há de anunciar.",
+      "after": "Tudo quanto o Pai tem é meu; por isso, vos disse que há de receber do que é meu e vo-lo há de anunciar.",
+      "pdf_page": 1757,
+      "reasons": [
+        "tudoquanto → tudo quanto (1x)"
+      ]
+    },
+    {
+      "book_order": 43,
+      "book": "João",
+      "chapter": 16,
+      "verse": 26,
+      "before": "Naqueledia, pedireis em meu nome, e não vos digo que eu rogarei por vós ao Pai,",
+      "after": "Naquele dia, pedireis em meu nome, e não vos digo que eu rogarei por vós ao Pai,",
+      "pdf_page": 1757,
+      "reasons": [
+        "naqueledia → naquele dia (1x)"
+      ]
+    },
+    {
+      "book_order": 43,
+      "book": "João",
+      "chapter": 16,
+      "verse": 27,
+      "before": "poiso mesmo Pai vos ama, visto como vós me amastes e crestes que saí de Deus.",
+      "after": "pois o mesmo Pai vos ama, visto como vós me amastes e crestes que saí de Deus.",
+      "pdf_page": 1757,
+      "reasons": [
+        "poiso → pois o (1x)"
+      ]
+    },
+    {
+      "book_order": 43,
+      "book": "João",
+      "chapter": 16,
+      "verse": 28,
+      "before": "Saído Pai e vim ao mundo; outra vez, deixo o mundo e vou para o Pai.",
+      "after": "Saí do Pai e vim ao mundo; outra vez, deixo o mundo e vou para o Pai.",
+      "pdf_page": 1757,
+      "reasons": [
+        "Saído Pai → Saí do Pai (1x)"
+      ]
+    },
+    {
+      "book_order": 48,
+      "book": "Gálatas",
+      "chapter": 2,
+      "verse": 20,
+      "before": "Jáestou crucificado com Cristo; e vivo, não mais eu, mas Cristo vive em mim; e a vida que agora vivo na carne vivo-a na fé do Filho de Deus, o qual me amou e se entregou a si mesmo por mim.",
+      "after": "Já estou crucificado com Cristo; e vivo, não mais eu, mas Cristo vive em mim; e a vida que agora vivo na carne vivo-a na fé do Filho de Deus, o qual me amou e se entregou a si mesmo por mim.",
+      "pdf_page": 1906,
+      "reasons": [
+        "jáestou → já estou (1x)"
+      ]
+    },
+    {
+      "book_order": 50,
+      "book": "Filipenses",
+      "chapter": 3,
+      "verse": 11,
+      "before": "paraver se, de alguma maneira, eu possa chegar à ressurreição dos mortos.",
+      "after": "para ver se, de alguma maneira, eu possa chegar à ressurreição dos mortos.",
+      "pdf_page": 1927,
+      "reasons": [
+        "paraver → para ver (1x)"
+      ]
+    },
+    {
+      "book_order": 66,
+      "book": "Apocalipse",
+      "chapter": 2,
+      "verse": 27,
+      "before": "e com vara de ferroas regerá; e serão quebradas como vasos de oleiro; como também recebi de meu Pai,",
+      "after": "e com vara de ferro as regerá; e serão quebradas como vasos de oleiro; como também recebi de meu Pai,",
+      "pdf_page": 2018,
+      "reasons": [
+        "ferroas → ferro as (1x)"
+      ]
+    },
+    {
+      "book_order": 66,
+      "book": "Apocalipse",
+      "chapter": 3,
+      "verse": 18,
+      "before": "aconselho-teque de mim compres ouro provado no fogo, para que te enriqueças, e vestes brancas, para que te vistas, e não apareça a vergonha da tua nudez; e que unjas os olhos com colírio, para que vejas.",
+      "after": "aconselho-te que de mim compres ouro provado no fogo, para que te enriqueças, e vestes brancas, para que te vistas, e não apareça a vergonha da tua nudez; e que unjas os olhos com colírio, para que vejas.",
+      "pdf_page": 2019,
+      "reasons": [
+        "aconselho-teque → aconselho-te que (1x)"
+      ]
+    },
+    {
+      "book_order": 66,
+      "book": "Apocalipse",
+      "chapter": 4,
+      "verse": 6,
+      "before": "Ehavia diante do trono um como mar de vidro, semelhante ao cristal, e, no meio do trono e ao redor do trono, quatro animais cheios de olhos por diante e por detrás.",
+      "after": "E havia diante do trono um como mar de vidro, semelhante ao cristal, e, no meio do trono e ao redor do trono, quatro animais cheios de olhos por diante e por detrás.",
+      "pdf_page": 2020,
+      "reasons": [
+        "ehavia → e havia (1x)"
+      ]
+    }
+  ]
+}

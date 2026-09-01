@@ -1,0 +1,38 @@
+AUDITORIA GERAL E CORREÇÃO FINAL — BÍBLIA ARC 2009
+
+Esta versão não corrige apenas um capítulo. Ela compara TODOS os 31.105 versículos
+do banco com um conjunto reextraído e auditado diretamente do PDF fonte ARC 2009.
+
+AUDITORIA DA FONTE
+- 66 livros
+- 1.189 capítulos
+- 31.105 versículos
+- 31.105 chaves únicas
+- 0 capítulos com falha de sequência
+- 0 versículos vazios
+- conferência com segundo parser independente: OK
+- João 3:21 e João 3:36 conferidos integralmente
+
+ORDEM DE USO
+1. Extraia o ZIP na raiz do projeto.
+2. Pare o servidor.
+3. Rode SOMENTE a auditoria primeiro:
+   node scripts/auditar-biblia-arc2009-final.mjs
+
+O comando informa quantos versículos e capítulos do banco diferem do PDF fonte.
+Envie esse resultado antes da correção, se quiser revisar os números.
+
+4. Para corrigir tudo:
+   node scripts/corrigir-biblia-arc2009-final.mjs
+
+5. Validação final:
+   node scripts/validar-biblia-arc2009-final.mjs
+
+SEGURANÇA
+- cria backup completo antes da alteração;
+- mantém id, version_id, book_id e book_order;
+- altera somente text e pdf_page;
+- usa transação;
+- exige correspondência de todas as 31.105 chaves;
+- valida todos os 1.189 capítulos;
+- só confirma se restarem 0 divergências da fonte.

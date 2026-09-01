@@ -1,0 +1,28 @@
+{
+  "generated_at": "2026-09-01T23:01:42.342Z",
+  "corrected_verses": 4752,
+  "affected_chapters": 1168,
+  "final_structure": {
+    "verses": 31105,
+    "books": 66,
+    "chapters": 1189,
+    "empty": 0
+  },
+  "bad_chapters_after": 0,
+  "remaining_differences": 0,
+  "backup_table": "bible_verses_backup_before_final_audit_20260901230123",
+  "checkpoints": [
+    {
+      "book_order": 43,
+      "chapter": 3,
+      "verse": 21,
+      "text": "Mas quem pratica a verdade vem para a luz, a fim de que as suas obras sejam manifestas, porque são feitas em Deus."
+    },
+    {
+      "book_order": 43,
+      "chapter": 3,
+      "verse": 36,
+      "text": "Aquele que crê no Filho tem a vida eterna, mas aquele que não crê no Filho não verá a vida, mas a ira de Deus sobre ele permanece."
+    }
+  ]
+}
