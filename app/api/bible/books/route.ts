@@ -7,7 +7,7 @@ export const dynamic = 'force-dynamic';
 export async function GET(){
   const [stats,dictionaryStats]=await Promise.all([getBibleStats(),getDictionaryStats()]);
   return NextResponse.json({
-    version:{code:'ARC1995',name:'Almeida Revista e Corrigida',edition:'1995'},
+    version:{code:'ARC2009',name:'Almeida Revista e Corrigida',edition:'2009'},
     books:BIBLE_BOOKS,
     stats,
     dictionary:{...DICTIONARY_META,stats:dictionaryStats}

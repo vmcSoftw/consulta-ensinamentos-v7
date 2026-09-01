@@ -1,0 +1,20 @@
+{
+  "source_file": "Bíblia Sagrada - Almeida Revista e Corrigida (ARC) 2009.pdf",
+  "sha256": "d74571783957fbc899be97a419af989d1919354f35a9b8f6aa0086e9fb555b7b",
+  "pdf_pages": 2044,
+  "books": 66,
+  "chapters": 1189,
+  "verses": 31105,
+  "first": {
+    "book": "Gênesis",
+    "chapter": 1,
+    "verse": 1,
+    "pdf_page": 3
+  },
+  "last": {
+    "book": "Apocalipse",
+    "chapter": 22,
+    "verse": 21,
+    "pdf_page": 2043
+  }
+}

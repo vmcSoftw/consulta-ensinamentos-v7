@@ -115,9 +115,9 @@ export async function getBibleStats() {
   try {
     const row = (await pool.query(`
       SELECT
-        (SELECT count(*)::int FROM bible_books b JOIN bible_versions v ON v.id=b.version_id WHERE v.code='ARC1995') AS books,
-        (SELECT count(DISTINCT (bv.book_order,bv.chapter))::int FROM bible_verses bv JOIN bible_versions v ON v.id=bv.version_id WHERE v.code='ARC1995') AS chapters,
-        (SELECT count(*)::int FROM bible_verses bv JOIN bible_versions v ON v.id=bv.version_id WHERE v.code='ARC1995') AS verses
+        (SELECT count(*)::int FROM bible_books b JOIN bible_versions v ON v.id=b.version_id WHERE v.code='ARC2009') AS books,
+        (SELECT count(DISTINCT (bv.book_order,bv.chapter))::int FROM bible_verses bv JOIN bible_versions v ON v.id=bv.version_id WHERE v.code='ARC2009') AS chapters,
+        (SELECT count(*)::int FROM bible_verses bv JOIN bible_versions v ON v.id=bv.version_id WHERE v.code='ARC2009') AS verses
     `)).rows[0];
     return row;
   } catch {
@@ -143,7 +143,7 @@ export async function searchBible(query: string, limit=80) {
       FROM bible_verses bv
       JOIN bible_books b ON b.id=bv.book_id
       JOIN bible_versions v ON v.id=bv.version_id
-      WHERE v.code='ARC1995' AND ${where.join(' AND ')}
+      WHERE v.code='ARC2009' AND ${where.join(' AND ')}
       ORDER BY bv.chapter,bv.verse
       LIMIT 200
     `,params)).rows;
@@ -162,7 +162,7 @@ export async function searchBible(query: string, limit=80) {
       FROM bible_verses bv
       JOIN bible_books b ON b.id=bv.book_id
       JOIN bible_versions v ON v.id=bv.version_id
-      WHERE v.code='ARC1995' AND (
+      WHERE v.code='ARC2009' AND (
         to_tsvector('portuguese'::regconfig,bv.text) @@ websearch_to_tsquery('portuguese'::regconfig,$1)
         OR ${textNorm} LIKE $2
       )

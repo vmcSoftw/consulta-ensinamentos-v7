@@ -1,0 +1,30 @@
+CORREÇÃO V2 — SUBSTITUIÇÃO DA BÍBLIA POR ARC 2009
+
+Esta versão foi ajustada à estrutura REAL da tabela bible_verses informada:
+- id
+- version_id
+- book_id
+- book_order
+- chapter
+- verse
+- text
+- pdf_page
+- created_at
+
+O script:
+1. reaproveita o version_id atual;
+2. reaproveita o book_id de cada book_order;
+3. cria backup completo da Bíblia atual;
+4. substitui os versículos dentro de uma transação;
+5. valida 66 livros, 1.189 capítulos e 31.105 versículos;
+6. tenta atualizar os metadados da tabela de versões automaticamente via chave estrangeira;
+7. atualiza ocorrências locais de ARC1995 para ARC2009 quando encontra correspondências seguras;
+8. em caso de erro antes do COMMIT, executa ROLLBACK.
+
+USO
+1. Extraia o ZIP na raiz do projeto.
+2. Pare o servidor.
+3. Execute:
+   node scripts/substituir-biblia-arc2009-v2.mjs
+4. Depois valide:
+   node scripts/validar-biblia-arc2009-v2.mjs

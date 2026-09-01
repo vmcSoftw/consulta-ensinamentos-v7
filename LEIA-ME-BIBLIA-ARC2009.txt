@@ -1,0 +1,32 @@
+BÍBLIA ARC 2009 - SUBSTITUIÇÃO SEGURA
+
+Conteúdo do pacote:
+- data/biblia-arc2009.json
+- scripts/substituir-biblia-arc2009.mjs
+- scripts/validar-biblia-arc2009.mjs
+
+O JSON foi extraído do PDF enviado nesta conversa e validado:
+- 66 livros
+- 1.189 capítulos
+- 31.105 versículos
+- 2.044 páginas no PDF
+- versão: Almeida Revista e Corrigida (ARC), edição 2009
+
+COMO USAR
+1. Extraia este ZIP na raiz do projeto V7.
+2. Garanta que .env.local possui DATABASE_URL.
+3. Pare o servidor local.
+4. Execute:
+   node scripts/substituir-biblia-arc2009.mjs
+5. Depois valide:
+   node scripts/validar-biblia-arc2009.mjs
+
+SEGURANÇA
+- O script cria uma tabela de backup da Bíblia atual antes da substituição.
+- A troca ocorre dentro de transação.
+- Se a validação não resultar em 66 livros, 1.189 capítulos e 31.105 versículos, a transação é revertida.
+- Os índices existentes da tabela bible_verses são preservados e atualizados automaticamente.
+- O script também procura no código local por ARC1995 e atualiza o rótulo para ARC2009 quando encontra correspondências seguras.
+
+IMPORTANTE
+Este pacote não publica automaticamente na Vercel. Depois de testar localmente, faça git add/commit/push.

@@ -435,7 +435,7 @@ export default function Home() {
   async function copyBibleChapter(items: BibleVerse[]) {
     if (!items.length) return;
     const first = items[0];
-    const value = `${first.book} ${first.chapter} — ARC 1995\n\n${items.map(v => `${v.verse} ${v.text}`).join(' ')}`;
+    const value = `${first.book} ${first.chapter} — ARC 2009\n\n${items.map(v => `${v.verse} ${v.text}`).join(' ')}`;
     try { await navigator.clipboard.writeText(value); } catch {}
   }
 
@@ -873,7 +873,7 @@ export default function Home() {
             <div>
               <div className="sectionEyebrow">Biblioteca Bíblica</div>
               <h2>Bíblia Sagrada e Dicionário Bíblico em uma única área</h2>
-              <p>Consulte referências e palavras na ARC 1995 ou pesquise verbetes do Dicionário da Bíblia de Almeida.</p>
+              <p>Consulte referências e palavras na ARC 2009 ou pesquise verbetes do Dicionário da Bíblia de Almeida.</p>
             </div>
             <div className="bibleStats">
               <div><strong>{bibleMeta?.stats?.verses?.toLocaleString('pt-BR') || '31.105'}</strong><span>versículos</span></div>
@@ -924,7 +924,7 @@ export default function Home() {
                   <div>
                     <span className="sectionEyebrow">Resultado bíblico</span>
                     <h2>{bibleResult.mode === 'reference' ? bibleResult.query : `${bibleResult.total} versículo(s) localizado(s)`}</h2>
-                    <p>Almeida Revista e Corrigida · ARC 1995</p>
+                    <p>Almeida Revista e Corrigida · ARC 2009</p>
                   </div>
                   <div className={integrationStyles.toolbarActions}>
                     {bibleResult.mode === 'text' && bibleResult.query.trim() && (
@@ -939,7 +939,7 @@ export default function Home() {
                       <div>
                         <span className="sectionEyebrow">Capítulo completo</span>
                         <h3>{bibleResult.items[0].book} {bibleResult.items[0].chapter}</h3>
-                        <p>{bibleResult.items.length} versículos · Almeida Revista e Corrigida · ARC 1995</p>
+                        <p>{bibleResult.items.length} versículos · Almeida Revista e Corrigida · ARC 2009</p>
                       </div>
                       <span className="chapterBadge">📖 ARC</span>
                     </div>
