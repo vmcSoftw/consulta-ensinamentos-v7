@@ -730,6 +730,7 @@ export default function AdminPage() {
         </div>
         <div className="adminTopActions">
           <span className="adminSessionBadge">✓ {sessionExpiryLabel()}</span>
+          <Link className="adminLink duplicateAdminLink" href="/admin/duplicados">🧹 Duplicados</Link>
           <Link className="adminLink auditAdminLink" href="/admin/historico">◷ Histórico</Link>
           <button className="logoutButton" type="button" onClick={logout}>Sair</button>
           <button className="logoutAllButton" type="button" onClick={logoutAll}>Encerrar todas</button>

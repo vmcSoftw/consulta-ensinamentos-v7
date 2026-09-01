@@ -1,0 +1,23 @@
+CONSULTA DE ENSINAMENTOS V7 — DUPLICADOS SEGUROS
+
+Esta revisão divide a análise administrativa em duas categorias:
+
+1) DUPLICADOS EXATOS
+Podem ser selecionados para exclusão somente quando coincidem:
+- vínculo da fonte;
+- ano;
+- tipo e título da fonte;
+- número do tópico;
+- título do tópico;
+- página inicial e final;
+- categoria;
+- conteúdo textual normalizado.
+
+O registro de menor ID é protegido e preservado automaticamente.
+
+2) POSSÍVEIS DUPLICADOS PARA REVISÃO
+Quando o texto/título/página/fonte parecem equivalentes, mas existe divergência de metadados (por exemplo, Tópico 10 x Tópico 2), o grupo aparece separado e NÃO recebe caixa de seleção nem exclusão automática.
+
+A API também repete a validação estrita no momento do DELETE, portanto um registro que deixou de ser duplicado exato não será apagado.
+
+Nenhuma alteração de estrutura do Neon é necessária.

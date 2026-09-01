@@ -31,6 +31,7 @@ const ACTION_LABELS: Record<string, string> = {
   'topic.created': 'Tópico cadastrado',
   'topic.created_duplicate_override': 'Duplicação confirmada',
   'source.created': 'Fonte cadastrada',
+  'topic.duplicates_deleted': 'Duplicados excluídos',
   'system.audit.enabled': 'Auditoria ativada'
 };
 
