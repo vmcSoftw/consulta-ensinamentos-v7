@@ -3,8 +3,8 @@ import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 
 export const metadata: Metadata = {
-  title: 'Consulta de Ensinamentos V7',
-  description: 'Pesquisa histórica, perguntas documentais, impressão e compilações do acervo de ensinamentos'
+  title: 'Consulta de Ensinamentos',
+  description: 'Pesquisa bíblica, histórica e documental de ensinamentos, Bíblia, dicionário e documentos.'
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

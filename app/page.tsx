@@ -682,17 +682,17 @@ export default function Home() {
           <div className="brandBlock">
             <div className="brandMark">CE</div>
             <div>
-              <div className="brandKicker">Biblioteca digital documental</div>
+              <div className="brandKicker">Pesquisa bíblica, histórica e documental</div>
               <h1>Consulta de Ensinamentos</h1>
             </div>
           </div>
-          <Link className="adminButton" href="/admin">🔐 Área administrativa</Link>
+          <Link className="adminButton" href="/admin"><span aria-hidden="true">◆</span> Administração</Link>
         </div>
         <div className="headerContent">
           <div>
-            <span className="techBadge"><i /> Neon PostgreSQL</span>
-            <h2>Encontre ensinamentos com contexto, fonte e ordem histórica.</h2>
-            <p>Pesquise assuntos, faça perguntas ao acervo, imprima resultados e gere compilações por tipo de documento ou ano.</p>
+            <span className="techBadge"><i /> Acervo documental</span>
+            <h2>Pesquise ensinamentos, referências bíblicas e documentos em um só lugar.</h2>
+            <p>Uma consulta organizada para localizar assuntos, comparar registros históricos, estudar a Bíblia e acessar documentos com suas referências.</p>
           </div>
           <div className="statsGrid">
             <div><strong>{filters.stats?.topics?.toLocaleString('pt-BR') || '3.016'}</strong><span>tópicos</span></div>
@@ -710,24 +710,24 @@ export default function Home() {
           <span className="tabIcon">?</span><span><b>Perguntar</b><small>Resposta documental</small></span>
         </button>
         <button className={mode === 'bible' ? 'active' : ''} onClick={() => setMode('bible')}>
-          <span className="tabIcon">📖</span><span><b>Bíblia</b><small>Referências e dicionário</small></span>
+          <span className="tabIcon">B</span><span><b>Bíblia</b><small>Referências e dicionário</small></span>
         </button>
         <button className={mode === 'documents' ? 'active' : ''} onClick={() => setMode('documents')}>
-          <span className="tabIcon">↓</span><span><b>Documentos</b><small>Baixar compilações</small></span>
+          <span className="tabIcon">D</span><span><b>Documentos</b><small>Compilações e PDF</small></span>
         </button>
       </nav>
 
       {mode === 'search' && (
         <section className="workspace">
           <div className="searchHero">
-            <div className="sectionEyebrow">Pesquisa no acervo</div>
-            <h2>O que você deseja localizar?</h2>
+            <div className="sectionEyebrow">Consulta rápida</div>
+            <h2>O que você deseja consultar?</h2>
             <form className="modernSearch" onSubmit={submit}>
               <span className="searchGlyph">⌕</span>
-              <input value={q} onChange={e => setQ(e.target.value)} placeholder="Ex.: casamento, Convenção, batismo de enfermos, oração..." />
+              <input value={q} onChange={e => setQ(e.target.value)} placeholder="Digite um assunto, ensinamento ou referência..." />
               <button disabled={loading}>{loading ? 'Pesquisando…' : 'Pesquisar'}</button>
             </form>
-            <div className="quickRow"><span>Atalhos:</span>{QUICK.map(x => <button key={x} onClick={() => quickSearch(x)}>{x}</button>)}</div>
+            <div className="quickRow"><span>Mais pesquisados:</span>{QUICK.map(x => <button key={x} onClick={() => quickSearch(x)}>{x}</button>)}</div>
           </div>
 
           <section className="filterCard">
@@ -1129,10 +1129,10 @@ export default function Home() {
 
       <section className="trustBar">
         <div className="trustIcon">✓</div>
-        <div><b>Consulta documental rastreável</b><span>A pesquisa documental e a pesquisa bíblica utilizam registros catalogados no PostgreSQL/Neon, com indicação de fonte, página e referência.</span></div>
+        <div><b>Consulta documental rastreável</b><span>Os resultados preservam a indicação de fonte, página, ano e referência para facilitar a conferência no documento original.</span></div>
       </section>
 
-      <footer className="appFooter"><span>Consulta de Ensinamentos V7</span><span>Neon PostgreSQL · pesquisa histórica · Bíblia ARC · Dicionário Bíblico · documentos rastreáveis</span></footer>
+      <footer className="appFooter"><div><strong>Consulta de Ensinamentos</strong><span>Pesquisa bíblica, histórica e documental</span></div><div className="footerRight"><span>Bíblia ARC 2009 · Dicionário Bíblico · Documentos</span><small>Ferramenta independente de consulta documental. Não representa canal oficial da Congregação Cristã no Brasil.</small></div></footer>
     </main>
   );
 }

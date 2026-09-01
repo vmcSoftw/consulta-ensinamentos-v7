@@ -1,0 +1,55 @@
+CONSULTA DE ENSINAMENTOS — V8 VISUAL
+
+OBJETIVO
+Modernizar a aparência pública do sistema sem alterar a lógica de pesquisa,
+Bíblia, dicionário, documentos, banco Neon ou área administrativa.
+
+O QUE ESTA ATUALIZAÇÃO FAZ
+- mantém o nome "Consulta de Ensinamentos";
+- retira o destaque técnico "Neon PostgreSQL" da interface pública;
+- deixa o cabeçalho mais limpo e institucional;
+- transforma a pesquisa na principal ação da página inicial;
+- aplica uma identidade visual de biblioteca digital;
+- melhora cartões de resultados;
+- melhora a legibilidade da Bíblia e dos tópicos;
+- mantém as quatro áreas: Pesquisar, Perguntar, Bíblia e Documentos;
+- cria navegação inferior no celular;
+- atualiza título e descrição do navegador;
+- adiciona favicon/ícone CE sem cruz ou outro símbolo religioso;
+- acrescenta aviso de que a ferramenta é independente e não é canal oficial.
+
+SEGURANÇA
+O script faz backup automático de:
+- app/page.tsx
+- app/layout.tsx
+- app/globals.css
+
+O backup fica em uma pasta .v8-visual-backup-<data> na raiz do projeto.
+
+INSTALAÇÃO
+1. Extraia este ZIP na raiz do projeto atual.
+2. Pare o servidor com Ctrl+C.
+3. Execute:
+   node scripts/aplicar-visual-v8.mjs
+4. Depois execute:
+   npm run dev
+5. Abra:
+   http://localhost:3000
+
+TESTE ANTES DE PUBLICAR
+- Pesquisar
+- Perguntar
+- Bíblia
+- Dicionário
+- Documentos
+- abrir um tópico
+- celular / modo responsivo
+- Administração
+
+PUBLICAÇÃO (somente depois de aprovar o visual)
+git add .
+git commit -m "Atualiza identidade visual para V8"
+git push
+
+IMPORTANTE
+O script não altera dados no Neon e não remove recursos da V7.
