@@ -1334,3 +1334,16 @@ body{
   .quickRow button{padding:6px 9px}
 }
 /* ===== V8 VISUAL — FIM ===== */
+
+/* ===== ÍCONE OFICIAL — CONSULTA DE ENSINAMENTOS ===== */
+.brandMark{
+  overflow:hidden;
+  padding:0 !important;
+}
+.brandMark img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:inherit;
+}

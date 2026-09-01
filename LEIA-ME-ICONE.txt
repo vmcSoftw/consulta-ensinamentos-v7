@@ -1,0 +1,24 @@
+ÍCONE OFICIAL — CONSULTA DE ENSINAMENTOS
+
+Este pacote usa o ícone aprovado (monograma CE + livro + lupa).
+
+O pacote:
+- coloca o ícone como favicon/app icon do Next.js;
+- usa o ícone no cabeçalho no lugar do bloco "CE";
+- adiciona tamanhos 32, 64, 192 e 512 px;
+- adiciona ícones ao manifest;
+- preserva o antigo app/icon.svg como backup.
+
+INSTALAÇÃO
+1. Extraia este ZIP na raiz do projeto, substituindo arquivos quando solicitado.
+2. Execute:
+   node scripts/aplicar-icone-oficial.mjs
+3. Depois:
+   npm run dev
+4. Confira a aba do navegador, cabeçalho e celular.
+
+PUBLICAÇÃO
+Depois de aprovar:
+git add .
+git commit -m "Aplica icone oficial do Consulta de Ensinamentos"
+git push

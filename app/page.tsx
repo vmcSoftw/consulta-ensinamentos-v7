@@ -680,7 +680,7 @@ export default function Home() {
         <div className="headerGlow headerGlowTwo" />
         <div className="headerTop">
           <div className="brandBlock">
-            <div className="brandMark">CE</div>
+            <div className="brandMark"><img src="/consulta-ensinamentos-icon-192.png" alt="" aria-hidden="true" /></div>
             <div>
               <div className="brandKicker">Pesquisa bíblica, histórica e documental</div>
               <h1>Consulta de Ensinamentos</h1>
