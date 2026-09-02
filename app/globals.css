@@ -1366,3 +1366,148 @@ body{
 .evidenceCard:focus-visible .evidenceOpenTopic {
   transform: translateX(3px);
 }
+
+
+/* Perguntar V2 Plus */
+.coverageBadge.medium {
+  background: rgba(154, 116, 39, 0.11);
+  border-color: rgba(154, 116, 39, 0.26);
+}
+
+.coverageBadge.low {
+  opacity: 0.78;
+}
+
+.evidenceOpenTopic {
+  display: inline-flex;
+  margin-top: 0.85rem;
+  font-weight: 750;
+  font-size: 0.9rem;
+  color: #9a7427;
+  transition: transform 160ms ease;
+}
+
+.evidenceCard:hover .evidenceOpenTopic,
+.evidenceCard:focus-visible .evidenceOpenTopic {
+  transform: translateX(3px);
+}
+
+.askSuggestionsPanel,
+.askSourcesPanel {
+  margin-top: 1rem;
+  border: 1px solid rgba(21, 35, 53, 0.11);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.72);
+  padding: 1rem;
+}
+
+.askSuggestionsHead,
+.askSourcesHead {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+  margin-bottom: 0.8rem;
+}
+
+.askSuggestionsHead {
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.askSuggestionsHead span,
+.askSourcesHead > span {
+  font-size: 0.82rem;
+  opacity: 0.68;
+}
+
+.askSuggestionChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.askSuggestionChips button {
+  border: 1px solid rgba(154, 116, 39, 0.24);
+  background: rgba(154, 116, 39, 0.07);
+  border-radius: 999px;
+  padding: 0.55rem 0.8rem;
+  cursor: pointer;
+  font: inherit;
+}
+
+.askSourcesHead h4 {
+  margin: 0.15rem 0 0;
+}
+
+.askSourcesList {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.askSourceItem {
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 0.8rem;
+  align-items: center;
+  text-align: left;
+  border: 1px solid rgba(21, 35, 53, 0.09);
+  background: rgba(250, 248, 243, 0.8);
+  border-radius: 14px;
+  padding: 0.75rem;
+  cursor: pointer;
+}
+
+.askSourceYear {
+  min-width: 3.4rem;
+  font-weight: 800;
+}
+
+.askSourceText {
+  display: grid;
+  gap: 0.18rem;
+}
+
+.askSourceText small {
+  opacity: 0.66;
+}
+
+.askSourceArrow {
+  font-size: 1.05rem;
+}
+
+@media (max-width: 680px) {
+  .askSourcesHead {
+    flex-direction: column;
+  }
+
+  .askSourceItem {
+    grid-template-columns: auto 1fr;
+  }
+
+  .askSourceArrow {
+    display: none;
+  }
+}
+
+
+/* Atalho para a Linha do Tempo */
+.timelineHeaderButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border: 1px solid rgba(174, 138, 67, 0.28);
+  color: inherit;
+  border-radius: 999px;
+  padding: 0.62rem 0.9rem;
+  font-size: 0.86rem;
+  font-weight: 750;
+  background: rgba(174, 138, 67, 0.07);
+}
+
+.timelineHeaderButton:hover {
+  border-color: rgba(174, 138, 67, 0.48);
+  background: rgba(174, 138, 67, 0.12);
+}

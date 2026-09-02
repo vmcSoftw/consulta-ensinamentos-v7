@@ -686,6 +686,9 @@ export default function Home() {
               <h1>Consulta de Ensinamentos</h1>
             </div>
           </div>
+          <a className="timelineHeaderButton" href="/linha-do-tempo">
+            Linha do tempo
+          </a>
           <Link className="adminButton" href="/admin"><span aria-hidden="true">◆</span> Administração</Link>
         </div>
         <div className="headerContent">
