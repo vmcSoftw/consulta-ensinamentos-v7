@@ -1,0 +1,51 @@
+PERGUNTAR V2 — BUSCA DOCUMENTAL INTELIGENTE
+
+O que muda:
+- mantém a interface atual da aba Perguntar;
+- não usa IA externa;
+- reaproveita a API /api/search já existente;
+- identifica conceitos principais da pergunta;
+- usa dicionário controlado de relações e variações;
+- faz várias estratégias de busca em paralelo;
+- combina e remove duplicados;
+- mede cobertura da pergunta;
+- prioriza título > categoria > conteúdo > fonte;
+- dá grande bônus a documentos que reúnem todos os conceitos;
+- evita que uma fonte única domine toda a resposta;
+- preserva ordenação por relevância, cronológica e recente;
+- não inventa conclusão quando não há evidência suficiente;
+- mantém o mesmo formato que a interface atual espera:
+  question, answer, strictTotal, total, coreTerms, expandedTerms e evidence.
+
+Exemplos para testar:
+1. Qual ensinamento sobre batismo?
+2. Irmão divorciado pode exercer ministério?
+3. Qual o ensinamento sobre namoro antes do casamento?
+4. Pode usar barba?
+5. Qual ensinamento sobre falar em novas línguas?
+6. Podemos visitar outras igrejas?
+7. Qual orientação sobre política e candidatos?
+
+INSTALAÇÃO
+Extraia este ZIP na raiz do projeto.
+Ele criará a pasta perguntar-v2 e os scripts de aplicação.
+
+Execute:
+  node scripts/aplicar-perguntar-v2.mjs
+
+Depois:
+  npm run dev
+
+Acesse a aba Perguntar e faça os testes acima.
+
+Se aprovado:
+  git add .
+  git commit -m "Melhora busca documental da aba Perguntar"
+  git push origin main
+
+ROLLBACK
+Se não gostar do resultado:
+  node scripts/restaurar-perguntar-anterior.mjs
+
+OBSERVAÇÃO
+O script faz backup automático da rota anterior antes de substituir.
