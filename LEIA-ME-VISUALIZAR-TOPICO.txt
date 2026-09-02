@@ -1,0 +1,26 @@
+VISUALIZAR TÓPICO COMPLETO — ABA PERGUNTAR
+
+Objetivo
+Adicionar uma opção visual clara em cada resultado apresentado na resposta documental:
+
+    Visualizar tópico completo →
+
+O card já abre o tópico completo quando clicado. Esta melhoria apenas deixa essa ação
+explícita para o usuário, sem mudar a lógica da busca Perguntar V2.
+
+COMO APLICAR
+
+1. Extraia este ZIP na raiz do projeto.
+2. Execute:
+
+   node scripts/aplicar-visualizar-topico-perguntar.mjs
+
+3. Depois:
+
+   npm run dev
+
+4. Abra a aba Perguntar e faça uma pesquisa.
+   Em cada evidência deverá aparecer:
+   "Visualizar tópico completo →"
+
+O script cria um backup automático de app/page.tsx antes de alterar.

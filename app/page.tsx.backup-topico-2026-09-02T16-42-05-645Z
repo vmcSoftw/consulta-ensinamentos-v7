@@ -859,11 +859,7 @@ export default function Home() {
                       <h4>{ev.title}</h4><p>{ev.text}</p><small>{ev.sourceTitle}</small>
                       {!!ev.matchedTerms?.length && <div className="matchedTerms"><b>Conceitos encontrados:</b> {ev.matchedTerms.join(' · ')}</div>}
                     </div>
-                  
-                <span className="evidenceOpenTopic" aria-hidden="true">
-                  Visualizar tópico completo →
-                </span>
-</button>
+                  </button>
                 ))}
               </div>
             </div>
