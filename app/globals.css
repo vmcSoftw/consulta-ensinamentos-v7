@@ -1511,3 +1511,24 @@ body{
   border-color: rgba(174, 138, 67, 0.48);
   background: rgba(174, 138, 67, 0.12);
 }
+
+
+/* Atalho para Comparar Ensinamentos */
+.compareHeaderButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border: 1px solid rgba(174, 138, 67, 0.28);
+  color: inherit;
+  border-radius: 999px;
+  padding: 0.62rem 0.9rem;
+  font-size: 0.86rem;
+  font-weight: 750;
+  background: rgba(174, 138, 67, 0.07);
+}
+
+.compareHeaderButton:hover {
+  border-color: rgba(174, 138, 67, 0.48);
+  background: rgba(174, 138, 67, 0.12);
+}

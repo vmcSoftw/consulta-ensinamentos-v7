@@ -686,6 +686,9 @@ export default function Home() {
               <h1>Consulta de Ensinamentos</h1>
             </div>
           </div>
+          <a className="compareHeaderButton" href="/comparar">
+            Comparar
+          </a>
           <a className="timelineHeaderButton" href="/linha-do-tempo">
             Linha do tempo
           </a>
