@@ -57,6 +57,20 @@ type AskResult = {
   expandedTerms: string[];
   evidence: Evidence[];
   strategy?: 'todos-os-termos' | 'maior-cobertura';
+
+  // Banco de Perguntas V1
+  fromQuestionBank?: boolean;
+  bankMatchScore?: number;
+  shortAnswer?: string;
+  fullAnswer?: string;
+
+  bankSources?: Array<{
+    id?: string | number;
+    sourceYear?: string | number | null;
+    sourceType?: string | null;
+    sourceTitle?: string | null;
+    pageStart?: string | number | null;
+  }>;
 };
 
 type BibleBook = { order:number; name:string; abbreviation:string; testament:'AT'|'NT'; chapters:number };
