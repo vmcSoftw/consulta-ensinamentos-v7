@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { findApprovedQuestion } from "../../../lib/question-bank";
 
 export const dynamic = "force-dynamic";
 
@@ -326,6 +327,42 @@ export async function POST(request: NextRequest) {
         { error: "A pergunta está muito longa. Resuma-a em até 500 caracteres." },
         { status: 400 }
       );
+    }
+
+    const bankMatch = await findApprovedQuestion(question, 0.80);
+
+    if (bankMatch) {
+      const bankEvidence = bankMatch.sources.filter((source) => source.topicId).map((source) => ({
+        topicId: String(source.topicId),
+        year: source.sourceYear,
+        sourceType: source.sourceType || "Banco de Perguntas",
+        page: source.pageStart,
+        title: bankMatch.question,
+        text: source.citationText || "",
+        sourceTitle: source.sourceTitle || "Fonte cadastrada",
+        strictMatch: true,
+        coverage: 1,
+        matchedTerms: [],
+        rankScore: 1000
+      }));
+
+      return NextResponse.json({
+        version: "Banco de Perguntas V1",
+        question,
+        answer: bankMatch.shortAnswer || bankMatch.fullAnswer,
+        fromQuestionBank: true,
+        bankQuestionId: bankMatch.id,
+        bankMatchScore: bankMatch.score,
+        shortAnswer: bankMatch.shortAnswer,
+        fullAnswer: bankMatch.fullAnswer,
+        bankSources: bankMatch.sources,
+        strictTotal: 1,
+        total: 1,
+        coreTerms: [],
+        expandedTerms: [],
+        evidence: bankEvidence,
+        suggestions: bankMatch.aliases.slice(0, 6)
+      });
     }
 
     const concepts = detectIntent(question);

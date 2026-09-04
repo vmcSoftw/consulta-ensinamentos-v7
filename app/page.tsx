@@ -692,6 +692,7 @@ export default function Home() {
           <a className="timelineHeaderButton" href="/linha-do-tempo">
             Linha do tempo
           </a>
+          <a className="bankHeaderButton" href="/banco-perguntas">Banco de Perguntas</a>
           <Link className="adminButton" href="/admin"><span aria-hidden="true">◆</span> Administração</Link>
         </div>
         <div className="headerContent">
@@ -841,7 +842,25 @@ export default function Home() {
                 <div><span className="techBadge light"><i /> Resposta documental</span><h3>{askResult.question}</h3></div>
                 <button className="outlineButton answerPrint" onClick={() => window.print()}>Imprimir resposta</button>
               </div>
-              <p className="answerLead">{askResult.answer}</p>
+              {askResult.fromQuestionBank ? (
+              <div className="bankAnswerBox">
+                <div className="bankAnswerOrigin">
+                  <b>Resposta encontrada no Banco de Perguntas</b>
+                  <span>Correspondência {Math.round((askResult.bankMatchScore || 0) * 100)}%</span>
+                </div>
+                <div className="bankAnswerModes">
+                  <details open><summary>Resposta simplificada</summary><p>{askResult.shortAnswer || askResult.answer}</p></details>
+                  <details><summary>Resposta ampla</summary><p>{askResult.fullAnswer || askResult.answer}</p></details>
+                </div>
+                {!!askResult.bankSources?.length && <div className="bankSourcesMini"><b>Fontes cadastradas</b>{askResult.bankSources.slice(0,8).map((source,index)=><span key={source.id || index}>{source.sourceYear || "s/ano"}{source.sourceType ? ` · ${source.sourceType}` : ""}{source.sourceTitle ? ` · ${source.sourceTitle}` : ""}{source.pageStart ? ` · pág. ${source.pageStart}` : ""}</span>)}</div>}
+                <a className="bankOpenButton" href={`/banco-perguntas?q=${encodeURIComponent(askResult.question)}`}>Abrir no Banco de Perguntas →</a>
+              </div>
+            ) : (
+              <>
+                <p className="answerLead">{askResult.answer}</p>
+                <button type="button" className="bankSuggestButton" onClick={async()=>{try{const response=await fetch("/api/question-bank",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({action:"submit",question:askResult.question,answer:askResult.answer,shortAnswer:askResult.answer,fullAnswer:askResult.answer,evidence:askResult.evidence || []})});const data=await response.json();if(!response.ok)throw Error(data.error||"Falha ao enviar.");window.alert(data.message||"Pergunta enviada para revisão.")}catch(error){window.alert(error instanceof Error?error.message:"Não foi possível enviar para revisão.")}}}>Sugerir inclusão no Banco de Perguntas</button>
+              </>
+            )}
               <div className="answerStatsGrid">
                 <div className="answerStats"><b>{askResult.strictTotal ?? 0}</b><span>com todos os conceitos principais</span></div>
                 <div className="answerStats"><b>{askResult.total}</b><span>relacionados no acervo ampliado</span></div>

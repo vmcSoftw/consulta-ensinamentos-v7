@@ -1,0 +1,27 @@
+PERGUNTAR V2 PLUS — FASE DE CONFIANÇA E NAVEGAÇÃO
+
+Esta atualização mantém a busca Perguntar V2 e melhora a apresentação da resposta.
+
+Inclui:
+- classificação de aderência: Alta / Média / Baixa;
+- opção explícita "Visualizar tópico completo →";
+- seção "Fontes consultadas";
+- ano, tipo de documento e página da fonte;
+- perguntas relacionadas, usando as sugestões já produzidas pela API;
+- nenhum uso de IA externa;
+- nenhum conteúdo doutrinário novo é inventado.
+
+COMO APLICAR
+
+1. Extraia o ZIP na raiz do projeto.
+2. Execute:
+
+   node scripts/aplicar-perguntar-v2-plus.mjs
+
+3. Depois:
+
+   npm run dev
+
+4. Teste a aba Perguntar.
+
+O script cria backup automático de app/page.tsx e app/globals.css antes de alterar.

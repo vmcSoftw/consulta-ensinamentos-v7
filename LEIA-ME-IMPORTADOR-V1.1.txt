@@ -1,0 +1,23 @@
+CONSULTA DE ENSINAMENTOS — BANCO DE PERGUNTAS
+Correção do importador V1.1
+
+O que foi corrigido:
+- DOCX: usa a estrutura de listas numeradas do Word para identificar perguntas, mesmo quando a pergunta não termina com ?.
+- PDF: preserva melhor as linhas antes de analisar perguntas numeradas.
+- PERGUNTA:/QUESTÃO:/RESPOSTA: continuam suportados.
+- Blocos identificados apenas por heurística são enviados para revisão.
+- Respostas não devem mais incorporar a próxima pergunta quando a numeração do Word estiver presente.
+- Itens ambíguos exibem aviso "Revisar" na prévia.
+- Itens classificados para revisão não são publicados automaticamente, a menos que o administrador force após revisar.
+- Parser registrado como qb-v1.1.
+
+COMO APLICAR
+1) Pare o servidor local (Ctrl+C).
+2) Extraia este ZIP na raiz do projeto.
+3) Execute:
+   node scripts/aplicar-importador-banco-perguntas-v1.1.mjs
+4) Inicie novamente:
+   npm run dev
+5) Abra /admin/banco-perguntas e teste novamente o mesmo DOCX.
+
+O instalador cria backup dos dois arquivos substituídos antes de atualizar.

@@ -1,0 +1,32 @@
+COMPARAR ENSINAMENTOS — V1
+
+Nova área para comparar registros documentais lado a lado.
+
+Recursos:
+- pesquisa pelo acervo existente;
+- seleção de até 3 tópicos;
+- comparação de ano, tipo, página, categoria e fonte;
+- conteúdo integral lado a lado;
+- acesso ao PDF original;
+- sem interpretação automática da doutrina;
+- layout responsivo para celular.
+
+COMO APLICAR
+
+1. Extraia este ZIP na raiz do projeto.
+2. Execute:
+
+   node scripts/aplicar-comparar-ensinamentos.mjs
+
+3. Depois:
+
+   npm run dev
+
+4. Acesse:
+
+   http://localhost:3000/comparar
+
+Sugestão de teste:
+- pesquise "batismo";
+- selecione dois ou três tópicos de anos diferentes;
+- compare os textos lado a lado.

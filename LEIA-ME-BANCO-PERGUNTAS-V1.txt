@@ -1,0 +1,48 @@
+BANCO DE PERGUNTAS V1 — CONSULTA DE ENSINAMENTOS
+
+A estrutura do banco já foi aplicada no Neon principal.
+
+RECURSOS
+- nova área pública /banco-perguntas;
+- respostas simplificada e ampla;
+- variações de uma mesma pergunta;
+- fontes documentais;
+- /api/ask consulta primeiro o Banco de Perguntas;
+- somente respostas APROVADAS são reutilizadas automaticamente;
+- se não houver correspondência forte, o Perguntar V2 continua pesquisando o acervo documental;
+- o usuário escolhe se deseja sugerir inclusão no Banco;
+- sugestões ficam EM REVISÃO até decisão do administrador;
+- nova área /admin/banco-perguntas;
+- cadastro manual;
+- status aprovado / revisão / rascunho / arquivado;
+- importação de PDF, DOCX e TXT;
+- prévia antes de gravar;
+- detecção de possíveis duplicidades;
+- aprovação/rejeição de sugestões.
+
+COMO APLICAR
+1. Extraia este ZIP na raiz do projeto.
+2. Execute:
+   node scripts/aplicar-banco-perguntas-v1.mjs
+3. Execute:
+   npm run dev
+
+TESTE RECOMENDADO
+1. Entre em /admin e depois /admin/banco-perguntas.
+2. Cadastre uma pergunta como APROVADA, com resposta curta e ampla.
+3. Vá à área Perguntar e faça a mesma pergunta com redação semelhante.
+4. O sistema deve responder pelo Banco de Perguntas.
+5. Faça uma pergunta não cadastrada: o Perguntar V2 deve continuar funcionando.
+6. Clique em “Sugerir inclusão no Banco de Perguntas”.
+7. Revise em /admin/banco-perguntas → Em revisão.
+
+FORMATO IDEAL PARA IMPORTAÇÃO
+PERGUNTA: Pode usar barba?
+RESPOSTA SIMPLIFICADA: ...
+RESPOSTA AMPLA: ...
+
+Também funciona com:
+PERGUNTA: ...
+RESPOSTA: ...
+
+Ou perguntas numeradas terminadas em ?.

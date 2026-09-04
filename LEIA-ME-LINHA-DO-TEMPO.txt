@@ -1,0 +1,38 @@
+LINHA DO TEMPO DOS ENSINAMENTOS
+
+Nova área histórica para o Consulta de Ensinamentos.
+
+O que faz:
+- pesquisa um assunto no acervo;
+- organiza os registros por ano;
+- mostra quantidade por período;
+- preserva fonte, documento e página;
+- permite abrir o tópico completo sem sair da linha do tempo;
+- mantém acesso ao PDF original;
+- usa a API de pesquisa já existente;
+- não altera a doutrina nem cria interpretações automáticas.
+
+COMO APLICAR
+
+1. Extraia este ZIP na raiz do projeto.
+2. Execute:
+
+   node scripts/aplicar-linha-do-tempo.mjs
+
+3. Depois:
+
+   npm run dev
+
+4. Acesse:
+
+   http://localhost:3000/linha-do-tempo
+
+Sugestões de teste:
+- batismo
+- casamento
+- ministério
+- oração
+- mocidade
+- Santa Ceia
+
+O instalador cria backups caso já existam arquivos com os mesmos nomes.

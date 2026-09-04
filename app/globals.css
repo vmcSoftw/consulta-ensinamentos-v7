@@ -1532,3 +1532,8 @@ body{
   border-color: rgba(174, 138, 67, 0.48);
   background: rgba(174, 138, 67, 0.12);
 }
+
+
+/* Banco de Perguntas V1 */
+.bankHeaderButton{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;border:1px solid rgba(174,138,67,.28);color:inherit;border-radius:999px;padding:.62rem .9rem;font-size:.86rem;font-weight:750;background:rgba(174,138,67,.07)}
+.bankAnswerBox{margin-top:1rem;border:1px solid rgba(154,116,39,.18);border-radius:18px;background:rgba(154,116,39,.055);padding:1rem}.bankAnswerOrigin{display:flex;justify-content:space-between;gap:.8rem;align-items:center;margin-bottom:.8rem}.bankAnswerOrigin span{font-size:.78rem;opacity:.62}.bankAnswerModes{display:grid;gap:.6rem}.bankAnswerModes details{border:1px solid rgba(21,35,53,.09);border-radius:13px;background:rgba(255,255,255,.78);padding:.75rem .85rem}.bankAnswerModes summary{cursor:pointer;font-weight:800}.bankAnswerModes p{line-height:1.65;white-space:pre-wrap}.bankSourcesMini{display:grid;gap:.25rem;margin-top:.8rem;font-size:.8rem}.bankSourcesMini span{opacity:.72}.bankOpenButton,.bankSuggestButton{display:inline-flex;margin-top:.9rem;border:1px solid rgba(154,116,39,.26);border-radius:999px;background:rgba(154,116,39,.08);color:#80601e;padding:.58rem .82rem;text-decoration:none;font:inherit;font-size:.82rem;font-weight:800;cursor:pointer}
