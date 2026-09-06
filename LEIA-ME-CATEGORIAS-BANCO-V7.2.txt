@@ -1,0 +1,43 @@
+CONSULTA DE ENSINAMENTOS — V7.2
+BANCO DE PERGUNTAS POR CATEGORIAS
+
+Este instalador cria a parte visual e funcional das categorias já aplicadas no Neon.
+
+ALTERAÇÕES:
+- Banco público com categorias e subcategorias;
+- Contadores por assunto;
+- Filtro por categoria e subcategoria;
+- Categoria exibida nos cards;
+- Administração com visão por categorias;
+- Edição da categoria/subcategoria de cada pergunta;
+- Nova pergunta exige categoria e subcategoria;
+- Mantém importação PDF/DOCX e demais funções atuais;
+- Não altera as respostas já cadastradas.
+
+ARQUIVOS ALTERADOS:
+- app/banco-perguntas/page.tsx
+- app/banco-perguntas/banco-perguntas.module.css
+- app/admin/banco-perguntas/page.tsx
+- app/admin/banco-perguntas/banco-perguntas-admin.module.css
+
+ARQUIVO NOVO:
+- app/api/question-bank/categories/route.ts
+
+O instalador cria cópia de segurança em _backups-v7.2 antes de modificar os arquivos.
+
+DEPOIS DE EXECUTAR:
+1. npm run build
+2. git status
+3. git add app/banco-perguntas/page.tsx
+4. git add app/banco-perguntas/banco-perguntas.module.css
+5. git add app/admin/banco-perguntas/page.tsx
+6. git add app/admin/banco-perguntas/banco-perguntas-admin.module.css
+7. git add app/api/question-bank/categories/route.ts
+8. git add LEIA-ME-CATEGORIAS-BANCO-V7.2.txt
+9. git commit -m "V7.2 - categorias e subcategorias no Banco de Perguntas"
+10. git push origin main
+
+IMPORTANTE:
+Se o build disser que não encontra @neondatabase/serverless, execute:
+npm install @neondatabase/serverless
+e rode npm run build novamente.
