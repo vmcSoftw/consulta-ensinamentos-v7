@@ -1,0 +1,43 @@
+CONSULTA DE ENSINAMENTOS — V8.1
+PERGUNTAR NATURAL + REFERÊNCIAS BÍBLICAS + TÓPICOS
+
+O que muda:
+- nova página /perguntar;
+- nova API /api/ask/natural;
+- preserva o motor documental atual de /api/ask;
+- respostas apresentadas de forma mais natural, sem gerar doutrina nova;
+- mostra referências bíblicas EXPLICITAMENTE citadas nos registros usados;
+- abre os versículos na Bíblia ARC 2009;
+- mostra os tópicos que fundamentam a resposta com ano, tipo e página;
+- mostra fontes documentais;
+- calcula força documental conforme quantidade de fontes;
+- registra a pergunta nos analytics V8 quando /api/usage estiver disponível;
+- a aba Perguntar da página inicial passa a abrir /perguntar.
+
+REGRA DE SEGURANÇA DOCUMENTAL
+A V8.1 não escolhe versículos por conta própria para sustentar uma doutrina.
+Se nenhuma referência bíblica estiver explicitamente citada nos registros usados,
+o sistema informa isso claramente.
+
+ARQUIVOS NOVOS
+- app/api/ask/natural/route.ts
+- app/perguntar/page.tsx
+- app/perguntar/perguntar.module.css
+- LEIA-ME-V8.1-PERGUNTAR-NATURAL.txt
+
+ARQUIVO ALTERADO
+- app/page.tsx
+
+PASSOS
+1. Coloque o instalador na raiz do projeto.
+2. Execute:
+   node .\Consulta_Ensinamentos_V8_1_Perguntar_Natural.mjs
+3. Execute:
+   npm run build
+4. Se passar:
+   npm run dev
+5. Teste:
+   http://localhost:3000/perguntar
+
+Depois faça git status.
+Não use git add -A.

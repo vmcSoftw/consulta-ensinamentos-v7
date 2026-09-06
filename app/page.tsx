@@ -728,7 +728,7 @@ export default function Home() {
         <button className={mode === 'search' ? 'active' : ''} onClick={() => setMode('search')}>
           <span className="tabIcon">⌕</span><span><b>Pesquisar</b><small>Assuntos e tópicos</small></span>
         </button>
-        <button className={mode === 'ask' ? 'active' : ''} onClick={() => setMode('ask')}>
+        <button className={mode === 'ask' ? 'active' : ''} onClick={() => { window.location.href = "/perguntar"; }}>
           <span className="tabIcon">?</span><span><b>Perguntar</b><small>Resposta documental</small></span>
         </button>
         <button className={mode === 'bible' ? 'active' : ''} onClick={() => setMode('bible')}>
