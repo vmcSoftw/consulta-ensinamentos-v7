@@ -408,6 +408,49 @@ function bankLead(match: BankMatch, focusTerms: string[]) {
     .trim();
 }
 
+
+function paragraphList(value: string) {
+  return clean(value)
+    .split(/\n{2,}/)
+    .map((paragraph) => paragraph.trim())
+    .filter((paragraph) =>
+      paragraph.length >= 35 &&
+      !/^(tema|categoria|subcategoria|doutrinas?\b|refer[eê]ncias?\b)/i.test(paragraph)
+    );
+}
+
+function practicalFromText(value: string, answerSections: Array<{ text?: string }> = []) {
+  const candidates = [
+    ...paragraphList(value),
+    ...answerSections.map((item) => clean(item?.text || "")).filter(Boolean),
+  ];
+
+  const actionPattern =
+    /\b(devemos|deve|não devemos|nao devemos|não deve|nao deve|podemos|pode-se|pode se|podem|conv[eé]m|aconselhamos|recomendamos|orienta|orientamos|é importante|e importante|precisamos|procure|procurar|evitar|abster|respeitar)\b/i;
+
+  return uniq(
+    candidates
+      .filter((paragraph) => actionPattern.test(paragraph))
+      .map((paragraph) => paragraph.length > 700 ? `${paragraph.slice(0, 697).trim()}…` : paragraph),
+    (paragraph) => norm(paragraph),
+  ).slice(0, 4);
+}
+
+function conclusionFromText(value: string, fallback: string) {
+  const paragraphs = paragraphList(value);
+  const explicit = [...paragraphs]
+    .reverse()
+    .find((paragraph) => /^(portanto|assim|dessa forma|em resumo|conclu)/i.test(norm(paragraph)));
+
+  if (explicit) return explicit;
+
+  const last = [...paragraphs]
+    .reverse()
+    .find((paragraph) => paragraph.length >= 70 && paragraph.length <= 1200);
+
+  return last || clean(fallback);
+}
+
 function subjectSignalMatch(topic: Topic, primaryTerms: string[], expandedTerms: string[]) {
   if (!primaryTerms.length) return true;
 
@@ -1177,6 +1220,51 @@ export async function POST(request: NextRequest) {
 
     const bibleSummary = biblicalReferences.slice(0, 8).map((ref) => ref.reference);
 
+    const practicalGuidance = practicalFromText(
+      approvedFull || direct,
+      answerSections,
+    );
+
+    const conclusion = conclusionFromText(
+      approvedFull || direct,
+      direct,
+    );
+
+    const structuredResponse = {
+      version: "v8.5",
+      response: direct,
+      bible: biblicalReferences.map((reference) => ({
+        reference: reference.reference,
+        verses: reference.verses,
+        mentions: reference.mentions,
+      })),
+      ccb: topicReferences.slice(0, 6).map((topic) => ({
+        topicId: topic.topicId,
+        topicNumber: topic.topicNumber,
+        title: topic.title,
+        year: topic.year,
+        sourceType: topic.sourceType,
+        sourceTitle: topic.sourceTitle,
+        page: topic.page,
+        pageEnd: topic.pageEnd,
+        preview: topic.preview,
+      })),
+      practicalGuidance,
+      conclusion,
+      referencesBible: biblicalReferences.map((reference) => reference.reference),
+      referencesCcb: topicReferences.slice(0, 10).map((topic) => ({
+        topicId: topic.topicId,
+        topicNumber: topic.topicNumber,
+        title: topic.title,
+        year: topic.year,
+        sourceType: topic.sourceType,
+        sourceTitle: topic.sourceTitle,
+        page: topic.page,
+        pageEnd: topic.pageEnd,
+      })),
+      origin: approvedBankMatch ? "question-bank-approved" : "documentary",
+    };
+
     const bankMatchPayload = bankFirst.match
       ? {
           id: bankFirst.match.id,
@@ -1205,7 +1293,7 @@ export async function POST(request: NextRequest) {
           resultCount: Number(smart?.total || base?.total || grouped.length || 0),
           sourcePage: "/perguntar",
           metadata: {
-            answerEngine: "v8.4-bank-first-subject-filter",
+            answerEngine: "v8.5-structured-bank-first",
             focusQuery: effectiveQuery,
             focusTerms: focus.focusTerms,
             bankChecked: true,
@@ -1229,6 +1317,7 @@ export async function POST(request: NextRequest) {
       naturalAnswer: direct,
       detailedAnswer: approvedFull,
       answerSections,
+      structuredResponse,
       biblicalReferences,
       bibleSummary,
       topicReferences,
@@ -1248,7 +1337,7 @@ export async function POST(request: NextRequest) {
       bankApprovedMatch: Boolean(approvedBankMatch),
       subjectFilterApplied,
       subjectMatchedTopicCount: subjectMatched.length,
-      answerEngine: "v8.4-bank-first-subject-filter",
+      answerEngine: "v8.5-structured-bank-first",
       answerOrigin: approvedBankMatch
         ? "question-bank-approved"
         : base?.fromQuestionBank
@@ -1259,9 +1348,9 @@ export async function POST(request: NextRequest) {
       documentaryNote,
     });
   } catch (error) {
-    console.error("Erro em /api/ask/natural V8.4:", error);
+    console.error("Erro em /api/ask/natural V8.5:", error);
     return NextResponse.json(
-      { error: "Não foi possível preparar a resposta documental com verificação do Banco de Perguntas." },
+      { error: "Não foi possível preparar a resposta estruturada com verificação do Banco de Perguntas." },
       { status: 500 },
     );
   }

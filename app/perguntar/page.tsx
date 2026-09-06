@@ -88,11 +88,48 @@ type BankStatus = {
   approved: boolean;
 };
 
+
+type StructuredResponse = {
+  version: string;
+  response: string;
+  bible?: Array<{
+    reference: string;
+    mentions?: number;
+    verses?: Verse[];
+  }>;
+  ccb?: Array<{
+    topicId: number;
+    topicNumber?: string | null;
+    title: string;
+    year?: number | null;
+    sourceType?: string | null;
+    sourceTitle?: string | null;
+    page?: number | null;
+    pageEnd?: number | null;
+    preview?: string;
+  }>;
+  practicalGuidance?: string[];
+  conclusion?: string;
+  referencesBible?: string[];
+  referencesCcb?: Array<{
+    topicId: number;
+    topicNumber?: string | null;
+    title: string;
+    year?: number | null;
+    sourceType?: string | null;
+    sourceTitle?: string | null;
+    page?: number | null;
+    pageEnd?: number | null;
+  }>;
+  origin?: string;
+};
+
 type Result = {
   question: string;
   naturalAnswer?: string;
   answer: string;
   detailedAnswer?: string;
+  structuredResponse?: StructuredResponse;
   documentaryStrength?: string;
   documentaryNote?: string;
   sourceCount?: number;
@@ -205,6 +242,191 @@ function FullTopicButton({ topic }: { topic: TopicRef | SpecificRef }) {
   );
 }
 
+
+function StructuredOverview({
+  result,
+  copied,
+  onCopy,
+}: {
+  result: Result;
+  copied: boolean;
+  onCopy: () => void;
+}) {
+  const structured = result.structuredResponse;
+  const mainAnswer = structured?.response || result.naturalAnswer || result.answer;
+  const bible = structured?.bible?.length ? structured.bible : (result.biblicalReferences || []);
+  const ccb = structured?.ccb?.length ? structured.ccb : (result.topicReferences || []).slice(0, 6);
+  const practical = structured?.practicalGuidance || [];
+  const conclusion = structured?.conclusion || "";
+  const bibleRefs = structured?.referencesBible?.length
+    ? structured.referencesBible
+    : (result.bibleSummary || []);
+  const ccbRefs = structured?.referencesCcb?.length
+    ? structured.referencesCcb
+    : (result.topicReferences || []);
+
+  return (
+    <section className={styles.readerPanel}>
+      <div className={styles.readerHead}>
+        <span className={styles.eyebrow}>Resposta estruturada</span>
+        <h2>{result.question}</h2>
+        <p>
+          Banco de Perguntas primeiro, documentos conferidos e referências bíblicas somente
+          quando efetivamente citadas na resposta aprovada ou nas fontes selecionadas.
+        </p>
+      </div>
+
+      <section className={styles.readerSection}>
+        <h3>Resposta</h3>
+        <div className={styles.readerText}>
+          {mainAnswer
+            .split(/\n{2,}/)
+            .map((paragraph, index) => <p key={index}>{paragraph}</p>)}
+        </div>
+      </section>
+
+      <section className={styles.readerSection}>
+        <h3>O que a Bíblia nos ensina</h3>
+        {bible.length ? (
+          <>
+            <p className={styles.sectionIntro}>
+              Abaixo estão as referências bíblicas efetivamente localizadas na resposta aprovada
+              e/ou nos documentos que passaram pelo filtro do assunto.
+            </p>
+            <div className={styles.scriptureList}>
+              {bible.map((reference) => (
+                <article key={reference.reference}>
+                  <div className={styles.scriptureTitle}>
+                    <strong>{reference.reference}</strong>
+                    <a href={`/biblia/referencias?ref=${encodeURIComponent(reference.reference)}`}>
+                      Abrir na Bíblia →
+                    </a>
+                  </div>
+                  {!!reference.verses?.length ? (
+                    reference.verses.map((verse) => (
+                      <p key={verse.id}>
+                        <sup>{verse.verse}</sup> {verse.text}
+                      </p>
+                    ))
+                  ) : (
+                    <p className={styles.mutedText}>Referência citada; texto não carregado nesta consulta.</p>
+                  )}
+                </article>
+              ))}
+            </div>
+          </>
+        ) : (
+          <div className={styles.empty}>
+            Nenhuma referência bíblica explícita foi localizada nas fontes usadas para esta resposta.
+          </div>
+        )}
+      </section>
+
+      <section className={styles.readerSection}>
+        <h3>O que os ensinamentos da CCB orientam</h3>
+        {ccb.length ? (
+          <div className={styles.ccbList}>
+            {ccb.map((topic) => (
+              <article key={topic.topicId}>
+                <div className={styles.ccbMeta}>
+                  {topic.topicNumber && <span>Tópico {topic.topicNumber}</span>}
+                  {topic.year && <span>{topic.year}</span>}
+                  {topic.sourceType && <span>{topic.sourceType}</span>}
+                  {topic.page && (
+                    <span>
+                      pág. {topic.page}
+                      {topic.pageEnd && topic.pageEnd !== topic.page ? `–${topic.pageEnd}` : ""}
+                    </span>
+                  )}
+                </div>
+                <h4>{topic.title}</h4>
+                {topic.sourceTitle && <small>{topic.sourceTitle}</small>}
+                {topic.preview && <p>{topic.preview}</p>}
+                <a href={`#topic-${topic.topicId}`}>Conferir tópico completo ↓</a>
+              </article>
+            ))}
+          </div>
+        ) : (
+          <div className={styles.empty}>
+            Não foram localizados tópicos suficientemente relacionados ao assunto para fundamentação principal.
+          </div>
+        )}
+      </section>
+
+      {!!practical.length && (
+        <section className={styles.readerSection}>
+          <h3>Como aplicar na prática</h3>
+          <p className={styles.sectionIntro}>
+            Orientações abaixo foram extraídas da resposta aprovada e/ou de trechos documentais
+            com linguagem de orientação. O sistema não acrescenta novas regras.
+          </p>
+          <div className={styles.practicalList}>
+            {practical.map((item, index) => (
+              <article key={`${index}-${item.slice(0, 40)}`}>{item}</article>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {!!conclusion && (
+        <section className={`${styles.readerSection} ${styles.conclusionBox}`}>
+          <h3>Conclusão</h3>
+          <div className={styles.readerText}>
+            {conclusion
+              .split(/\n{2,}/)
+              .map((paragraph, index) => <p key={index}>{paragraph}</p>)}
+          </div>
+        </section>
+      )}
+
+      <section className={styles.readerSection}>
+        <h3>Referências bíblicas</h3>
+        {bibleRefs.length ? (
+          <div className={styles.referenceChips}>
+            {bibleRefs.map((reference) => (
+              <a
+                key={reference}
+                href={`/biblia/referencias?ref=${encodeURIComponent(reference)}`}
+              >
+                {reference}
+              </a>
+            ))}
+          </div>
+        ) : (
+          <p className={styles.mutedText}>Nenhuma referência bíblica explícita localizada.</p>
+        )}
+      </section>
+
+      <section className={styles.readerSection}>
+        <h3>Referências CCB</h3>
+        {ccbRefs.length ? (
+          <div className={styles.ccbReferenceList}>
+            {ccbRefs.map((topic) => (
+              <article key={`ref-${topic.topicId}`}>
+                <strong>
+                  {topic.topicNumber ? `Tópico ${topic.topicNumber} — ` : ""}
+                  {topic.title}
+                </strong>
+                <span>{cite(topic as TopicRef)}</span>
+                <a href={`#topic-${topic.topicId}`}>Ler tópico completo ↓</a>
+              </article>
+            ))}
+          </div>
+        ) : (
+          <p className={styles.mutedText}>Nenhuma referência CCB principal localizada.</p>
+        )}
+      </section>
+
+      <div className={styles.readerUtility}>
+        <button type="button" onClick={onCopy}>
+          {copied ? "Resposta copiada" : "Copiar resposta organizada"}
+        </button>
+        <button type="button" onClick={() => window.print()}>Imprimir / Salvar PDF</button>
+      </div>
+    </section>
+  );
+}
+
 export default function PerguntarPage() {
   const [question, setQuestion] = useState("");
   const [sort, setSort] = useState("relevance");
@@ -239,20 +461,55 @@ export default function PerguntarPage() {
 
   const copyValue = useMemo(() => {
     if (!result) return "";
+    const structured = result.structuredResponse;
     const parts = [
       `PERGUNTA\n${result.question}`,
-      `RESPOSTA DOCUMENTAL\n${result.naturalAnswer || result.answer}`,
+      `RESPOSTA\n${structured?.response || result.naturalAnswer || result.answer}`,
     ];
 
-    if (result.bibleSummary?.length) {
-      parts.push(`REFERÊNCIAS BÍBLICAS CITADAS\n${result.bibleSummary.join("\n")}`);
+    const bible = structured?.bible?.length ? structured.bible : (result.biblicalReferences || []);
+    if (bible.length) {
+      parts.push(
+        "O QUE A BÍBLIA NOS ENSINA\n" +
+        bible.map((reference) => {
+          const verses = reference.verses?.map((verse) => `${verse.verse} ${verse.text}`).join("\n") || "";
+          return `${reference.reference}${verses ? `\n${verses}` : ""}`;
+        }).join("\n\n"),
+      );
     }
 
-    if (result.topicReferences?.length) {
+    const ccb = structured?.ccb?.length ? structured.ccb : (result.topicReferences || []);
+    if (ccb.length) {
       parts.push(
-        "FONTES PRINCIPAIS\n" +
-        result.topicReferences
-          .map((topic) => `${topic.title}\n${cite(topic)}`)
+        "O QUE OS ENSINAMENTOS DA CCB ORIENTAM\n" +
+        ccb.map((topic) => {
+          const meta = [
+            topic.topicNumber ? `Tópico ${topic.topicNumber}` : null,
+            topic.title,
+            cite(topic as TopicRef),
+          ].filter(Boolean).join(" — ");
+          return `${meta}${topic.preview ? `\n${topic.preview}` : ""}`;
+        }).join("\n\n"),
+      );
+    }
+
+    if (structured?.practicalGuidance?.length) {
+      parts.push(`COMO APLICAR NA PRÁTICA\n${structured.practicalGuidance.join("\n\n")}`);
+    }
+
+    if (structured?.conclusion) {
+      parts.push(`CONCLUSÃO\n${structured.conclusion}`);
+    }
+
+    if (structured?.referencesBible?.length) {
+      parts.push(`REFERÊNCIAS BÍBLICAS\n${structured.referencesBible.join("\n")}`);
+    }
+
+    if (structured?.referencesCcb?.length) {
+      parts.push(
+        "REFERÊNCIAS CCB\n" +
+        structured.referencesCcb
+          .map((topic) => `${topic.topicNumber ? `Tópico ${topic.topicNumber} — ` : ""}${topic.title}\n${cite(topic as TopicRef)}`)
           .join("\n\n"),
       );
     }
@@ -271,12 +528,12 @@ export default function PerguntarPage() {
     <main className={styles.shell}>
       <header className={styles.hero}>
         <a className={styles.back} href="/">← Voltar à Consulta de Ensinamentos</a>
-        <div className={styles.kicker}>V8.4 · Banco de Perguntas primeiro</div>
+        <div className={styles.kicker}>V8.5 · Resposta estruturada</div>
         <h1>Pergunte ao acervo</h1>
         <p>
-          Antes de responder, o sistema identifica o assunto principal e consulta o Banco de
-          Perguntas. Se já existir uma resposta aprovada equivalente, ela tem prioridade e depois
-          é conferida com os tópicos completos do acervo.
+          As respostas seguem um padrão claro: resposta, Bíblia, ensinamentos da CCB, aplicação
+          prática quando houver fundamento, conclusão e referências. O Banco de Perguntas continua
+          sendo consultado primeiro e nenhuma doutrina é criada pelo sistema.
         </p>
 
         <form className={styles.questionForm} onSubmit={submit}>
@@ -296,7 +553,7 @@ export default function PerguntarPage() {
               </select>
             </label>
             <button disabled={loading || !question.trim()}>
-              {loading ? "Consultando Banco de Perguntas e acervo…" : "Responder com verificação prévia"}
+              {loading ? "Consultando Banco de Perguntas, Bíblia e acervo…" : "Responder de forma estruturada"}
             </button>
           </div>
         </form>
@@ -306,6 +563,11 @@ export default function PerguntarPage() {
 
       {result && (
         <>
+          <StructuredOverview result={result} copied={copied} onCopy={() => void copyAnswer()} />
+
+          <details className={styles.analysisDetails}>
+            <summary>Ver análise documental completa</summary>
+            <div className={styles.analysisBody}>
           <section className={styles.answerPanel}>
             <div className={styles.answerHead}>
               <div>
@@ -612,10 +874,10 @@ export default function PerguntarPage() {
           <section className={styles.method}>
             <b>Critério da resposta</b>
             <p>
-              A V8.4 consulta primeiro o Banco de Perguntas, remove saudações e palavras genéricas
-              da pesquisa, identifica o assunto central e somente depois busca os documentos.
-              Tópicos sem correspondência direta com o assunto são impedidos de entrar na
-              fundamentação principal.
+              A V8.5 mantém a consulta ao Banco de Perguntas como primeira etapa, identifica o
+              assunto central, filtra os documentos por relevância real e apresenta o resultado em
+              uma estrutura de leitura. A organização visual não cria doutrina: ela apenas ordena
+              respostas aprovadas, textos bíblicos e documentos já existentes.
             </p>
             {result.focusQuery && (
               <p><strong>Assunto efetivamente pesquisado:</strong> {result.focusQuery}</p>
@@ -628,6 +890,8 @@ export default function PerguntarPage() {
               completo e nas respectivas fontes.
             </small>
           </section>
+            </div>
+          </details>
         </>
       )}
     </main>

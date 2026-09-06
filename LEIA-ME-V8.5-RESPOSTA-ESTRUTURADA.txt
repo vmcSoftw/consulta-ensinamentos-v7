@@ -1,0 +1,87 @@
+CONSULTA DE ENSINAMENTOS — V8.5
+RESPOSTA ESTRUTURADA
+
+OBJETIVO
+A V8.5 adota como padrão visual e estrutural das respostas:
+
+1. Pergunta
+2. Resposta
+3. O que a Bíblia nos ensina
+4. O que os ensinamentos da CCB orientam
+5. Como aplicar na prática — somente quando houver conteúdo documental/aprovado com linguagem de orientação
+6. Conclusão
+7. Referências bíblicas
+8. Referências CCB
+9. Análise documental completa — recolhida, disponível para conferência
+
+PRINCÍPIOS MANTIDOS
+- Banco de Perguntas é consultado primeiro.
+- Se houver resposta aprovada equivalente, ela tem prioridade.
+- A busca documental continua sendo feita depois, para conferência e rastreabilidade.
+- O filtro obrigatório do assunto da V8.4 permanece.
+- Referências bíblicas só são exibidas quando realmente encontradas na resposta aprovada ou nos documentos selecionados.
+- O sistema não cria doutrina e não usa IA generativa para formular entendimento religioso.
+- A organização das seções é determinística e baseada no material já existente.
+
+COMO A V8.5 ORGANIZA
+A API passa a devolver structuredResponse com:
+- response
+- bible
+- ccb
+- practicalGuidance
+- conclusion
+- referencesBible
+- referencesCcb
+- origin
+
+A seção "Como aplicar na prática" não inventa regras. Ela seleciona somente parágrafos já existentes que contenham linguagem de orientação, como "devemos", "não devemos", "podemos", "convém", "aconselhamos", "recomendamos" etc.
+
+A "Conclusão" também não é gerada livremente. Ela reaproveita, quando possível, um parágrafo conclusivo já existente na resposta aprovada/documental.
+
+INTERFACE
+A leitura principal ficou mais simples e semelhante ao modelo utilizado nas respostas do DERES.
+Os detalhes técnicos continuam disponíveis em:
+"Ver análise documental completa"
+
+Nessa área permanecem:
+- Banco de Perguntas encontrado ou não
+- força documental
+- trechos rastreáveis
+- métricas
+- fontes documentais
+- tópicos completos
+- repetições históricas
+- situações específicas
+- metodologia
+
+BANCO DE DADOS
+Nenhuma migração é necessária.
+
+ARQUIVOS ALTERADOS
+- app/api/ask/natural/route.ts
+- app/perguntar/page.tsx
+- app/perguntar/perguntar.module.css
+
+ARQUIVOS NOVOS
+- LEIA-ME-V8.5-RESPOSTA-ESTRUTURADA.txt
+- scripts/verificar-perguntar-v8.5.mjs
+
+INSTALAÇÃO
+Na raiz do projeto:
+
+  node .\Consulta_Ensinamentos_V8_5_Resposta_Estruturada.mjs
+  npm run build
+  npm run dev
+
+Em outro PowerShell:
+
+  node .\scripts\verificar-perguntar-v8.5.mjs
+
+Se o Next estiver em outra porta:
+
+  $env:BASE_URL="http://localhost:3001"
+  node .\scripts\verificar-perguntar-v8.5.mjs
+
+IMPORTANTE
+Não use git add -A.
+O instalador cria backup dos três arquivos alterados em _backups-v8.5.
