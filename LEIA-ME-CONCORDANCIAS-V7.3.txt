@@ -1,0 +1,33 @@
+CONSULTA DE ENSINAMENTOS — V7.3
+CONCORDÂNCIAS E REFERÊNCIAS BÍBLICAS
+
+O instalador:
+- acrescenta uma terceira opção dentro da área Bíblia;
+- cria a página /biblia/concordancias;
+- cria a API /api/bible/concordance;
+- pesquisa diretamente os versículos ARC 2009 já cadastrados no Neon;
+- mostra quantidade de ocorrências e distribuição por livro;
+- permite filtrar Antigo/Novo Testamento e um livro específico;
+- permite copiar referências e abrir a página correspondente no PDF da Bíblia;
+- não usa IA para inventar relações ou referências;
+- não altera a tabela da Bíblia e não exige migração do banco.
+
+ARQUIVOS:
+- app/page.tsx (alterado)
+- app/biblia/concordancias/page.tsx (novo)
+- app/biblia/concordancias/concordancias.module.css (novo)
+- app/api/bible/concordance/route.ts (novo)
+
+IMPORTANTE:
+Finalize e envie a V7.2 antes de aplicar a V7.3, para manter os commits separados.
+
+DEPOIS DE EXECUTAR O INSTALADOR:
+1. npm run build
+2. git status
+3. git add app/page.tsx
+4. git add app/biblia/concordancias/page.tsx
+5. git add app/biblia/concordancias/concordancias.module.css
+6. git add app/api/bible/concordance/route.ts
+7. git add LEIA-ME-CONCORDANCIAS-V7.3.txt
+8. git commit -m "V7.3 - concordancias e referencias biblicas"
+9. git push origin main

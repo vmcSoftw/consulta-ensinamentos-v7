@@ -731,7 +731,7 @@ export default function Home() {
           <span className="tabIcon">?</span><span><b>Perguntar</b><small>Resposta documental</small></span>
         </button>
         <button className={mode === 'bible' ? 'active' : ''} onClick={() => setMode('bible')}>
-          <span className="tabIcon">B</span><span><b>Bíblia</b><small>Referências e dicionário</small></span>
+          <span className="tabIcon">B</span><span><b>Bíblia</b><small>Bíblia, dicionário e concordâncias</small></span>
         </button>
         <button className={mode === 'documents' ? 'active' : ''} onClick={() => setMode('documents')}>
           <span className="tabIcon">D</span><span><b>Documentos</b><small>Compilações e PDF</small></span>
@@ -915,8 +915,8 @@ export default function Home() {
           <div className="bibleHero">
             <div>
               <div className="sectionEyebrow">Biblioteca Bíblica</div>
-              <h2>Bíblia Sagrada e Dicionário Bíblico em uma única área</h2>
-              <p>Consulte referências e palavras na ARC 2009 ou pesquise verbetes do Dicionário da Bíblia de Almeida.</p>
+              <h2>Bíblia Sagrada, Dicionário e Concordâncias em uma única área</h2>
+              <p>Consulte referências e palavras na ARC 2009, pesquise verbetes do Dicionário da Bíblia de Almeida e localize concordâncias por palavra ou expressão.</p>
             </div>
             <div className="bibleStats">
               <div><strong>{bibleMeta?.stats?.verses?.toLocaleString('pt-BR') || '31.105'}</strong><span>versículos</span></div>
@@ -931,6 +931,18 @@ export default function Home() {
             </button>
             <button className={biblePane === 'dictionary' ? 'active' : ''} onClick={() => {setBiblePane('dictionary');setError('')}}>
               <span>ABC</span><div><b>Dicionário Bíblico</b><small>Termos, nomes e conceitos bíblicos</small></div>
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                window.location.href = "/biblia/concordancias";
+              }}
+            >
+              <span>⇄</span>
+              <div>
+                <b>Concordâncias e Referências</b>
+                <small>Palavras, ocorrências e referências bíblicas</small>
+              </div>
             </button>
           </div>
 
