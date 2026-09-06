@@ -141,6 +141,7 @@ export default function ConcordanciasPage() {
     <main className={styles.shell}>
       <header className={styles.header}>
         <a href="/" className={styles.back}>← Voltar ao Consulta de Ensinamentos</a>
+        <a href="/biblia/referencias" className={styles.back}>Central de Referências Bíblicas →</a>
         <div className={styles.kicker}>Biblioteca Bíblica · ARC 2009</div>
         <h1>Concordâncias e Referências Bíblicas</h1>
         <p>

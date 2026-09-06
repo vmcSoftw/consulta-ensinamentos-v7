@@ -347,7 +347,7 @@ export default function Home() {
     sp.set('offset', String(offset));
 
     try {
-      const r = await fetch(`/api/search?${sp.toString()}`);
+      const r = await fetch(`/api/search/smart?${sp.toString()}`);
       if (!r.ok) throw new Error('Falha na pesquisa');
       const d = await r.json();
       setItems(prev => append ? [...prev, ...d.items] : d.items);
@@ -707,6 +707,7 @@ export default function Home() {
             Linha do tempo
           </a>
           <a className="bankHeaderButton" href="/banco-perguntas">Banco de Perguntas</a>
+<a className="bankHeaderButton" href="/pesquisa-total">Pesquisa Total</a>
           <Link className="adminButton" href="/admin"><span aria-hidden="true">◆</span> Administração</Link>
         </div>
         <div className="headerContent">

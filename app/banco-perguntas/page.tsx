@@ -125,6 +125,7 @@ export default function BancoPerguntasPage() {
       setSelectedItem(item);
       setDetail(data);
       setAnswerMode(data.defaultAnswerMode === "full" ? "full" : "short");
+      void fetch("/api/usage", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ eventType: "question_open", entityType: "question", entityId: item.id, query: item.question, sourcePage: "/banco-perguntas" }) }).catch(() => {});
       window.scrollTo({ top: 0, behavior: "smooth" });
     } catch (cause) {
       setError(cause instanceof Error ? cause.message : "Falha ao abrir.");
@@ -381,7 +382,7 @@ export default function BancoPerguntasPage() {
               >
                 <div>
                   <span>Resposta aprovada</span>
-                  <span>{item.sourceCount} fonte(s)</span>
+                  <span>{item.sourceCount} fonte(s)</span><span>Força documental: {item.sourceCount >= 3 ? "forte" : item.sourceCount === 2 ? "moderada" : item.sourceCount === 1 ? "limitada" : "sem fonte cadastrada"}</span>
                 </div>
 
                 <div className={styles.cardBadges}>

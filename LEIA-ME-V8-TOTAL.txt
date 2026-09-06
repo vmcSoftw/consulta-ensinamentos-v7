@@ -1,0 +1,45 @@
+CONSULTA DE ENSINAMENTOS — V8 TOTAL
+
+A V8 reúne em uma versão integrada:
+- Pesquisa documental inteligente com sinônimos e pesos;
+- Pesquisa Total em Ensinamentos + Banco de Perguntas + Bíblia + Dicionário;
+- Evolução histórica por assunto;
+- Central de Referências Bíblicas ligada aos ensinamentos;
+- Dossiê documental com impressão/salvamento em PDF;
+- Painel administrativo de qualidade do acervo;
+- Indicador quantitativo de força documental no Banco de Perguntas;
+- Analytics de pesquisas, buscas sem resultado e perguntas mais abertas;
+- Auditoria administrativa e visão das versões de respostas;
+- Teste automático básico das páginas e APIs.
+
+PRINCÍPIO CENTRAL
+A V8 não cria doutrina e não inventa respostas. O sistema continua documental:
+localiza, relaciona, organiza, compara e mede os dados que já existem no acervo.
+
+ANTES DE INSTALAR
+Faça commit e push da V7.3 para manter um ponto seguro de retorno.
+
+INSTALAÇÃO
+1. Extraia TODO o ZIP na raiz do projeto.
+2. Confirme que existem:
+   instalar-v8-total.mjs
+   V8_PAYLOAD
+3. Execute:
+   node .\instalar-v8-total.mjs
+4. Execute:
+   npm run build
+5. Se o build concluir:
+   npm run dev
+6. Em outro PowerShell:
+   node .\scripts\verificar-v8.mjs
+
+BANCO DE DADOS
+A migração V8 é aditiva. Ela foi preparada e testada em uma branch temporária do Neon.
+Não aplique o arquivo MIGRACAO_V8_ANALYTICS.sql manualmente enquanto a migração preparada
+estiver aguardando confirmação.
+
+O sistema público continua funcionando antes da migração; analytics e pesos de sinônimos
+ficam limitados até a aplicação no Neon.
+
+NÃO use git add -A.
+O instalador cria _backups-v8 e o ZIP/payload não devem ser enviados ao Git.

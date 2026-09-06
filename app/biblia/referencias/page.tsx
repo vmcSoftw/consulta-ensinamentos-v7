@@ -1,0 +1,18 @@
+"use client";
+import { FormEvent, useEffect, useState } from "react";
+import styles from "./referencias.module.css";
+type Verse={id:number;book_order:number;book:string;chapter:number;verse:number;text:string;pdf_page?:number};
+type Related={id:number;year?:number;source_type?:string;page_start?:number;title:string;source_title?:string};
+export default function ReferenciasPage(){
+ const [q,setQ]=useState("");const [verses,setVerses]=useState<Verse[]>([]);const [selected,setSelected]=useState<Verse|null>(null);const [related,setRelated]=useState<Related[]>([]);const [loading,setLoading]=useState(false);const [error,setError]=useState("");
+ async function openVerse(v:Verse){setSelected(v);setRelated([]);try{const r=await fetch(`/api/bible/related?book=${v.book_order}&chapter=${v.chapter}&verse=${v.verse}`,{cache:"no-store"});const d=await r.json();if(r.ok)setRelated(d.items||[])}catch{}}
+ async function search(term=q){const x=term.trim();if(!x)return;setLoading(true);setError("");try{const r=await fetch(`/api/bible/search?q=${encodeURIComponent(x)}&limit=80`,{cache:"no-store"});const d=await r.json();if(!r.ok)throw new Error(d.error||"Falha.");setVerses(d.items||[]);const first=(d.items||[])[0];if(first)void openVerse(first);void fetch("/api/usage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({eventType:"bible_search",query:x,resultCount:d.total??d.items?.length??0,sourcePage:"/biblia/referencias"})}).catch(()=>{});}catch(e){setError(e instanceof Error?e.message:"Falha.");}finally{setLoading(false)}}
+ function submit(e:FormEvent){e.preventDefault();void search()}
+ useEffect(()=>{const x=new URLSearchParams(window.location.search).get("ref")||"";if(x){setQ(x);void search(x)}},[]);
+ return <main className={styles.shell}>
+  <header className={styles.hero}><a className={styles.back} href="/">← Voltar à Bíblia</a><div className={styles.kicker}>V8 · Central bíblica</div><h1>Referências Bíblicas e Ensinamentos</h1><p>Abra uma referência da ARC 2009 e veja os ensinamentos do acervo que citam explicitamente o versículo.</p><form className={styles.search} onSubmit={submit}><input value={q} onChange={e=>setQ(e.target.value)} placeholder="Ex.: 1 Coríntios 11:5, João 3:16..."/><button disabled={loading||!q.trim()}>{loading?"Consultando…":"Consultar referência"}</button></form><div className={styles.actions}><a href="/biblia/concordancias">Abrir Concordâncias</a></div></header>
+  {error&&<div className={styles.error}>{error}</div>}
+  {!!verses.length&&<section className={styles.panel}><div className={styles.panelHead}><div><span className={styles.eyebrow}>Bíblia ARC 2009</span><h2>Referências localizadas</h2></div><small>{verses.length} exibida(s)</small></div><div className={styles.grid}>{verses.slice(0,30).map(v=><button style={{textAlign:"left",cursor:"pointer"}} className={styles.card} onClick={()=>void openVerse(v)} key={v.id}><h3>{v.book} {v.chapter}:{v.verse}</h3><p>{v.text}</p></button>)}</div></section>}
+  {selected&&<section className={styles.panel}><div className={styles.panelHead}><div><span className={styles.eyebrow}>Relação documental</span><h2>Ensinamentos que citam {selected.book} {selected.chapter}:{selected.verse}</h2></div></div>{related.length?<div className={styles.list}>{related.map(x=><a className={styles.card} href={`/topico/${x.id}`} key={x.id}><div className={styles.badges}><span className={styles.badge}>{x.year||"s/ano"}</span><span className={styles.badge}>{x.source_type||"Documento"}</span></div><h3>{x.title}</h3><small>{x.source_title}{x.page_start?` · pág. ${x.page_start}`:""}</small></a>)}</div>:<div className={styles.empty}>Nenhum tópico com esta referência explícita foi localizado no acervo.</div>}</section>}
+ </main>
+}
