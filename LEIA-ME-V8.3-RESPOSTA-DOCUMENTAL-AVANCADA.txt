@@ -1,0 +1,48 @@
+CONSULTA DE ENSINAMENTOS — V8.3
+RESPOSTA DOCUMENTAL AVANÇADA
+
+MOTIVO DA ATUALIZAÇÃO
+Na V8.2 os tópicos já eram lidos integralmente, porém uma pergunta geral podia receber como
+primeiros resultados documentos de situações específicas. Além disso, a resposta direta ainda
+podia herdar do motor antigo frases como "foram encontrados 19 registros...", o que é informativo,
+mas não responde naturalmente à pergunta.
+
+A V8.3 corrige esses dois pontos.
+
+PRINCIPAIS MELHORIAS
+- resposta objetiva formada por trechos documentais centrais, sem o meta-resumo inicial;
+- priorização de documentos que tratam diretamente do assunto perguntado;
+- documentos de funeral, enfermidade, cura, disciplina e outras situações particulares ficam
+  em uma seção separada quando a pergunta é geral;
+- leitura integral dos tópicos antes do ranqueamento;
+- detecção e agrupamento de ensinamentos praticamente repetidos em anos diferentes;
+- resposta principal evita repetir o mesmo ensinamento em versões quase idênticas;
+- trechos de sustentação mostram a fonte de cada frase;
+- referências bíblicas continuam sendo somente as explicitamente citadas nos documentos;
+- botão "Ler tópico completo" continua trazendo o conteúdo integral sem corte;
+- resposta aprovada do Banco de Perguntas continua tendo prioridade quando há correspondência forte;
+- nenhum uso de IA generativa para criar doutrina.
+
+ARQUIVOS ALTERADOS
+- app/api/ask/natural/route.ts
+- app/perguntar/page.tsx
+- app/perguntar/perguntar.module.css
+
+ARQUIVOS NOVOS
+- LEIA-ME-V8.3-RESPOSTA-DOCUMENTAL-AVANCADA.txt
+- scripts/verificar-perguntar-v8.3.mjs
+
+NÃO HÁ MIGRAÇÃO DE BANCO DE DADOS.
+
+INSTALAÇÃO
+1. Copie o instalador para a raiz do projeto.
+2. Execute:
+   node .\Consulta_Ensinamentos_V8_3_Resposta_Documental_Avancada.mjs
+3. Execute:
+   npm run build
+4. Execute:
+   npm run dev
+5. Em outro terminal:
+   node .\scripts\verificar-perguntar-v8.3.mjs
+
+Não use git add -A.
