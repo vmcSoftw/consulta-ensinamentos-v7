@@ -75,6 +75,19 @@ type SourceRef = {
   citationText?: string;
 };
 
+
+type BankStatus = {
+  id: number;
+  question: string;
+  confidence: "strong" | "possible";
+  matchedQuery: string;
+  matchedTerms: string[];
+  coverage: number;
+  localScore: number;
+  sourceCount: number;
+  approved: boolean;
+};
+
 type Result = {
   question: string;
   naturalAnswer?: string;
@@ -87,6 +100,15 @@ type Result = {
   searchedTotal?: number;
   fromQuestionBank?: boolean;
   bankMatchScore?: number;
+  bankChecked?: boolean;
+  bankSearchQueries?: string[];
+  bankCandidatesChecked?: number;
+  bankMatch?: BankStatus | null;
+  bankApprovedMatch?: boolean;
+  focusQuery?: string;
+  focusTerms?: string[];
+  subjectFilterApplied?: boolean;
+  subjectMatchedTopicCount?: number;
   answerEngine?: string;
   interpretedTerms?: string[];
   bibleSummary?: string[];
@@ -249,11 +271,12 @@ export default function PerguntarPage() {
     <main className={styles.shell}>
       <header className={styles.hero}>
         <a className={styles.back} href="/">← Voltar à Consulta de Ensinamentos</a>
-        <div className={styles.kicker}>V8.3 · Resposta documental avançada</div>
+        <div className={styles.kicker}>V8.4 · Banco de Perguntas primeiro</div>
         <h1>Pergunte ao acervo</h1>
         <p>
-          O sistema lê os tópicos completos, separa o ensinamento principal de situações
-          específicas e apresenta as referências bíblicas realmente citadas nos documentos.
+          Antes de responder, o sistema identifica o assunto principal e consulta o Banco de
+          Perguntas. Se já existir uma resposta aprovada equivalente, ela tem prioridade e depois
+          é conferida com os tópicos completos do acervo.
         </p>
 
         <form className={styles.questionForm} onSubmit={submit}>
@@ -273,7 +296,7 @@ export default function PerguntarPage() {
               </select>
             </label>
             <button disabled={loading || !question.trim()}>
-              {loading ? "Lendo o acervo completo…" : "Responder com base no acervo"}
+              {loading ? "Consultando Banco de Perguntas e acervo…" : "Responder com verificação prévia"}
             </button>
           </div>
         </form>
@@ -295,6 +318,51 @@ export default function PerguntarPage() {
               </div>
             </div>
 
+
+            {result.bankChecked && (
+              <section
+                className={`${styles.bankCheck} ${
+                  result.bankApprovedMatch ? styles.bankCheckOk : styles.bankCheckEmpty
+                }`}
+              >
+                <div className={styles.bankCheckHead}>
+                  <div>
+                    <span className={styles.eyebrow}>1ª etapa · Banco de Perguntas</span>
+                    <strong>
+                      {result.bankApprovedMatch
+                        ? "Resposta aprovada equivalente encontrada"
+                        : "Nenhuma resposta aprovada equivalente foi encontrada"}
+                    </strong>
+                  </div>
+                  <span className={styles.bankBadge}>
+                    {result.bankApprovedMatch ? "prioridade do Banco" : "seguir pelo acervo"}
+                  </span>
+                </div>
+
+                {result.bankMatch && (
+                  <>
+                    <p>
+                      <b>Pergunta correspondente:</b> {result.bankMatch.question}
+                    </p>
+                    <div className={styles.bankMeta}>
+                      <span>assunto pesquisado: {result.focusQuery || result.bankMatch.matchedQuery}</span>
+                      <span>
+                        correspondência: {result.bankMatch.confidence === "strong" ? "forte" : "possível"}
+                      </span>
+                      <span>{result.bankMatch.sourceCount} fonte(s) vinculada(s) no Banco</span>
+                    </div>
+                  </>
+                )}
+
+                {!result.bankApprovedMatch && (
+                  <p>
+                    A resposta abaixo foi construída somente depois dessa verificação, usando os
+                    documentos que passaram pelo filtro obrigatório do assunto.
+                  </p>
+                )}
+              </section>
+            )}
+
             <article className={styles.directAnswer}>
               <span className={styles.answerLabel}>Resposta objetiva</span>
               {(result.naturalAnswer || result.answer)
@@ -304,7 +372,7 @@ export default function PerguntarPage() {
 
             {!!result.bibleSummary?.length && (
               <div className={styles.bibleStrip}>
-                <b>Base bíblica citada nos documentos</b>
+                <b>Referências bíblicas citadas na resposta aprovada e/ou nos documentos filtrados</b>
                 <div>
                   {result.bibleSummary.map((reference) => (
                     <a
@@ -359,6 +427,7 @@ export default function PerguntarPage() {
 
             <div className={styles.metrics}>
               <span>{result.fullTopicCount || 0} tópicos lidos integralmente</span>
+              <span>{result.subjectMatchedTopicCount || 0} tópico(s) passaram pelo filtro do assunto</span>
               <span>{result.sourceCount || 0} fontes exibidas</span>
               <span>{result.searchedTotal || 0} registros localizados</span>
               {!!result.groupedRepeatCount && (
@@ -379,7 +448,7 @@ export default function PerguntarPage() {
               <div className={styles.panelHead}>
                 <div>
                   <span className={styles.eyebrow}>Bíblia Sagrada</span>
-                  <h2>Referências citadas nas fontes</h2>
+                  <h2>Referências citadas na resposta e nas fontes filtradas</h2>
                 </div>
                 <small>ARC 2009</small>
               </div>
@@ -414,7 +483,7 @@ export default function PerguntarPage() {
                 </div>
               ) : (
                 <div className={styles.empty}>
-                  Nenhuma referência bíblica explícita foi encontrada nas fontes utilizadas.
+                  Nenhuma referência bíblica explícita foi encontrada na resposta aprovada nem nas fontes filtradas.
                 </div>
               )}
             </section>
@@ -543,12 +612,16 @@ export default function PerguntarPage() {
           <section className={styles.method}>
             <b>Critério da resposta</b>
             <p>
-              A V8.3 prioriza documentos que tratam diretamente do assunto perguntado, agrupa
-              repetições históricas e separa orientações de casos específicos para não confundir
-              uma exceção ou situação particular com o ensinamento geral.
+              A V8.4 consulta primeiro o Banco de Perguntas, remove saudações e palavras genéricas
+              da pesquisa, identifica o assunto central e somente depois busca os documentos.
+              Tópicos sem correspondência direta com o assunto são impedidos de entrar na
+              fundamentação principal.
             </p>
+            {result.focusQuery && (
+              <p><strong>Assunto efetivamente pesquisado:</strong> {result.focusQuery}</p>
+            )}
             {!!result.interpretedTerms?.length && (
-              <p><strong>Conceitos considerados:</strong> {result.interpretedTerms.join(" · ")}</p>
+              <p><strong>Conceitos documentais considerados:</strong> {result.interpretedTerms.join(" · ")}</p>
             )}
             <small>
               A resposta não substitui os documentos. Todo trecho pode ser conferido no tópico

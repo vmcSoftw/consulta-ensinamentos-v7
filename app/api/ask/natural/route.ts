@@ -6,6 +6,29 @@ export const runtime = "nodejs";
 
 type AnyRow = Record<string, any>;
 
+type FocusInfo = {
+  normalizedQuestion: string;
+  cleanedQuestion: string;
+  focusQuery: string;
+  focusTerms: string[];
+};
+
+type BankMatch = {
+  id: number;
+  question: string;
+  shortAnswer: string;
+  fullAnswer: string;
+  endpointScore: number;
+  sourceCount: number;
+  localScore: number;
+  coverage: number;
+  matchedTerms: string[];
+  matchedQuery: string;
+  confidence: "strong" | "possible";
+  uniqueHit: boolean;
+};
+
+
 type Seed = {
   id: number;
   priority: number;
@@ -101,6 +124,314 @@ async function jsonFetch(url: string, init?: RequestInit) {
   return { response, data };
 }
 
+
+const FOCUS_NOISE = new Set([
+  "paz","deus","abencoe","abencoa","abencoado","tenho","temos","duvida","duvidas","pergunta","perguntas",
+  "qual","quais","porque","motivo","razao","irmao","irmaos","irma","irmas","irmandade","congregacao","crista",
+  "brasil","igreja","nao","sim","tem","ter","tendo","uso","usar","usa","usam","usamos","utilizar","utiliza",
+  "utilizam","pode","podem","podemos","permitido","permitida","permitidos","permitidas","gostaria","queria",
+  "quero","saber","entender","explicar","forma","modo","questao","assunto","hoje","sempre","normalmente",
+  "mesmo","mesma","dentro","fora","la","lo","lhe","eles","elas","nos","nossa","nosso","nossos","nossas",
+  "costume","costumes","pratica","praticas","praticar","motivos","favor","obrigado","obrigada"
+]);
+
+function hasExactPhrase(text: string, phrase: string) {
+  const hay = ` ${norm(text)} `;
+  const needle = ` ${norm(phrase)} `;
+  return needle.trim().length > 0 && hay.includes(needle);
+}
+
+function focusFromQuestion(question: string): FocusInfo {
+  const normalizedQuestion = norm(question);
+  let cleaned = ` ${normalizedQuestion} `;
+
+  const scaffolds = [
+    /\b(?:a\s+)?paz\s+de\s+deus\b/g,
+    /\bdeus\s+(?:te\s+|vos\s+)?abencoe\b/g,
+    /\btenho\s+(?:uma\s+)?duvida\b/g,
+    /\bestou\s+com\s+(?:uma\s+)?duvida\b/g,
+    /\bgostaria\s+de\s+saber\b/g,
+    /\bqueria\s+saber\b/g,
+    /\bquero\s+saber\b/g,
+    /\bpoderia\s+(?:me\s+)?explicar\b/g,
+    /\bme\s+explique\b/g,
+    /\bqual\s+(?:e\s+)?(?:o|a)\s+(?:ensinamento|entendimento|orientacao|posicao)\s+(?:sobre|quanto\s+a|quanto\s+ao|de|da|do)?\b/g,
+    /\bo\s+que\s+(?:os\s+)?(?:ensinamentos|ensino|entendimento)\s+(?:dizem|diz)\s+(?:sobre|a\s+respeito\s+de)?\b/g,
+    /\bpor\s+qual\s+motivo\b/g,
+    /\bpor\s+que\b/g,
+  ];
+
+  for (const pattern of scaffolds) cleaned = cleaned.replace(pattern, " ");
+  cleaned = cleaned.replace(/\s+/g, " ").trim();
+
+  const rawTerms = cleaned
+    .split(" ")
+    .map((token) => token.trim())
+    .filter((token) =>
+      token.length >= 3 &&
+      !/^\d+$/.test(token) &&
+      !STOPWORDS.has(token) &&
+      !FOCUS_NOISE.has(token)
+    );
+
+  let focusTerms = [...new Set(rawTerms)].slice(0, 6);
+
+  if (!focusTerms.length) {
+    focusTerms = [...new Set(
+      normalizedQuestion
+        .split(" ")
+        .filter((token) =>
+          token.length >= 3 &&
+          !/^\d+$/.test(token) &&
+          !STOPWORDS.has(token) &&
+          !["paz","deus","tenho","duvida","pergunta","qual","porque","motivo","irmao","irmaos","irma","irmas"].includes(token)
+        )
+    )].slice(0, 6);
+  }
+
+  const focusQuery = focusTerms.join(" ").trim() || cleaned || normalizedQuestion;
+
+  return {
+    normalizedQuestion,
+    cleanedQuestion: cleaned || normalizedQuestion,
+    focusQuery,
+    focusTerms,
+  };
+}
+
+function bankQueries(focus: FocusInfo) {
+  const queries: string[] = [];
+  const terms = focus.focusTerms.slice(0, 5);
+
+  if (terms.length >= 2) queries.push(terms.join(" "));
+
+  for (let i = 0; i < terms.length - 1; i++) {
+    queries.push(`${terms[i]} ${terms[i + 1]}`);
+  }
+
+  for (const term of [...terms].sort((a, b) => b.length - a.length)) {
+    queries.push(term);
+  }
+
+  if (focus.cleanedQuestion.split(" ").length <= 10) {
+    queries.push(focus.cleanedQuestion);
+  }
+
+  return [...new Set(queries.map((q) => norm(q)).filter(Boolean))].slice(0, 8);
+}
+
+async function searchQuestionBankFirst(origin: string, focus: FocusInfo) {
+  const queries = bankQueries(focus);
+
+  if (!queries.length) {
+    return {
+      checked: true,
+      queries,
+      candidatesChecked: 0,
+      match: null as BankMatch | null,
+    };
+  }
+
+  const responses = await Promise.all(
+    queries.map(async (query) => {
+      try {
+        const { response, data } = await jsonFetch(
+          `${origin}/api/question-bank?q=${encodeURIComponent(query)}`
+        );
+        return {
+          query,
+          ok: response.ok,
+          total: Number(data?.total || 0),
+          items: Array.isArray(data?.items) ? data.items : [],
+        };
+      } catch {
+        return { query, ok: false, total: 0, items: [] as AnyRow[] };
+      }
+    }),
+  );
+
+  const candidates = new Map<number, {
+    item: AnyRow;
+    queries: Set<string>;
+    uniqueQueries: Set<string>;
+  }>();
+
+  for (const result of responses) {
+    for (const item of result.items) {
+      const id = Number(item?.id);
+      if (!id) continue;
+
+      const current = candidates.get(id) || {
+        item,
+        queries: new Set<string>(),
+        uniqueQueries: new Set<string>(),
+      };
+
+      current.queries.add(result.query);
+      if (result.total > 0 && result.total <= 3) current.uniqueQueries.add(result.query);
+      candidates.set(id, current);
+    }
+  }
+
+  const ranked: BankMatch[] = [...candidates.values()].map((entry) => {
+    const item = entry.item;
+    const candidateQuestion = clean(item?.question);
+    const candidateAnswer = `${clean(item?.shortAnswer)} ${clean(item?.fullAnswer)}`;
+
+    const matchedTerms = focus.focusTerms.filter((term) => hasExactPhrase(candidateQuestion, term));
+    const coverage = focus.focusTerms.length
+      ? matchedTerms.length / focus.focusTerms.length
+      : 0;
+
+    const exactFocus = focus.focusQuery && hasExactPhrase(candidateQuestion, focus.focusQuery);
+    const uniqueHit = [...entry.uniqueQueries].some((query) =>
+      hasExactPhrase(candidateQuestion, query) &&
+      (focus.focusTerms.includes(query) || query === focus.focusQuery)
+    );
+
+    const answerHits = focus.focusTerms.filter((term) => hasExactPhrase(candidateAnswer, term)).length;
+
+    let localScore =
+      matchedTerms.length * 110 +
+      coverage * 120 +
+      answerHits * 14 +
+      Number(item?.sourceCount || 0) * 4 +
+      Math.min(20, Number(item?.score || 0) * 20);
+
+    if (exactFocus) localScore += 180;
+    if (uniqueHit) localScore += 100;
+
+    let confidence: "strong" | "possible" = "possible";
+
+    if (
+      (
+        exactFocus &&
+        focus.focusTerms.length >= 2
+      ) ||
+      (
+        focus.focusTerms.length === 1 &&
+        matchedTerms.length === 1 &&
+        uniqueHit
+      ) ||
+      (
+        focus.focusTerms.length >= 2 &&
+        matchedTerms.length >= 2 &&
+        coverage >= 0.66
+      )
+    ) {
+      confidence = "strong";
+    }
+
+    return {
+      id: Number(item.id),
+      question: candidateQuestion,
+      shortAnswer: clean(item?.shortAnswer),
+      fullAnswer: clean(item?.fullAnswer),
+      endpointScore: Number(item?.score || 0),
+      sourceCount: Number(item?.sourceCount || 0),
+      localScore,
+      coverage,
+      matchedTerms,
+      matchedQuery:
+        [...entry.uniqueQueries][0] ||
+        [...entry.queries][0] ||
+        focus.focusQuery,
+      confidence,
+      uniqueHit,
+    };
+  }).sort((a, b) =>
+    (b.confidence === "strong" ? 1 : 0) - (a.confidence === "strong" ? 1 : 0) ||
+    b.localScore - a.localScore ||
+    b.coverage - a.coverage
+  );
+
+  return {
+    checked: true,
+    queries,
+    candidatesChecked: candidates.size,
+    match: ranked[0] || null,
+  };
+}
+
+function termsFromFocus(focusTerms: string[], smart: AnyRow) {
+  const all = [
+    ...focusTerms,
+    ...(Array.isArray(smart?.expandedTerms) ? smart.expandedTerms : []),
+  ]
+    .map((item) => norm(String(item)))
+    .filter((item) =>
+      item.length >= 3 &&
+      !STOPWORDS.has(item) &&
+      !["paz","deus","tenho","duvida","motivo","irmaos","irmas","congregacao"].includes(item)
+    );
+
+  return [...new Set(all)].slice(0, 24);
+}
+
+function bankLead(match: BankMatch, focusTerms: string[]) {
+  const shortAnswer = clean(match.shortAnswer);
+  const fullAnswer = clean(match.fullAnswer);
+
+  if (shortAnswer && !shortAnswer.includes("?") && shortAnswer.length <= 900) {
+    return shortAnswer;
+  }
+
+  const sentences = sentenceList(fullAnswer);
+  const ranked = sentences
+    .map((sentence, index) => {
+      const ns = norm(sentence);
+      let score = 0;
+
+      for (const term of focusTerms) {
+        if (hasExactPhrase(sentence, term)) score += 24;
+      }
+
+      if (/\?/.test(sentence)) score -= 35;
+      if (/\b(de fato|dessa forma|portanto|assim|orientacao|costume|doutrina|biblia|ministerio|disciplina|nao condena|nao decorre)\b/i.test(ns)) {
+        score += 8;
+      }
+
+      return { sentence, index, score };
+    })
+    .filter((row) => row.score > 0)
+    .sort((a, b) => b.score - a.score || a.index - b.index)
+    .slice(0, 4);
+
+  if (!ranked.length) {
+    return fullAnswer.slice(0, 1200) || shortAnswer;
+  }
+
+  return ranked
+    .sort((a, b) => a.index - b.index)
+    .map((row) => row.sentence)
+    .join(" ")
+    .trim();
+}
+
+function subjectSignalMatch(topic: Topic, primaryTerms: string[], expandedTerms: string[]) {
+  if (!primaryTerms.length) return true;
+
+  const title = topic.title;
+  const text = `${topic.title} ${topic.content}`;
+
+  const primaryHits = primaryTerms.filter((term) => hasExactPhrase(text, term));
+  const expandedUnique = expandedTerms
+    .map((term) => norm(String(term)))
+    .filter((term) => term.length >= 3 && !primaryTerms.includes(term));
+
+  const expandedTitleHits = expandedUnique.filter((term) => hasExactPhrase(title, term));
+
+  if (primaryTerms.length === 1) {
+    return primaryHits.length === 1;
+  }
+
+  if (primaryHits.length >= 2) return true;
+  if (primaryHits.length >= 1 && expandedTitleHits.length >= 1) return true;
+
+  return false;
+}
+
+
 function isGeneralQuestion(question: string) {
   const q = norm(question);
   return [
@@ -112,19 +443,16 @@ function isGeneralQuestion(question: string) {
     "o que diz o ensinamento sobre",
     "o que diz sobre",
     "como a congregacao entende",
+    "por qual motivo",
+    "por que",
   ].some((pattern) => q.includes(pattern));
 }
 
 function terms(question: string, base: AnyRow) {
-  const all = [
-    ...norm(question).split(" "),
-    ...(Array.isArray(base?.coreTerms) ? base.coreTerms : []),
-    ...(Array.isArray(base?.expandedTerms) ? base.expandedTerms : []),
-  ]
-    .map((item) => norm(String(item)))
-    .filter((item) => item.length >= 3 && !STOPWORDS.has(item));
-
-  return [...new Set(all)].slice(0, 32);
+  const focus = focusFromQuestion(question);
+  return termsFromFocus(focus.focusTerms, {
+    expandedTerms: Array.isArray(base?.expandedTerms) ? base.expandedTerms : [],
+  });
 }
 
 function coverage(text: string, coreTerms: string[]) {
@@ -588,6 +916,7 @@ function findBibleRefs(texts: Array<{ text: string; topicId?: number }>, books: 
       const chapter = Number(match[3]);
       const verseStart = Number(match[4]);
       const verseEnd = match[5] ? Number(match[5]) : verseStart;
+      if (verseEnd < verseStart || verseEnd - verseStart > 80) continue;
       const reference = `${book} ${chapter}:${verseStart}${verseEnd !== verseStart ? `-${verseEnd}` : ""}`;
       const current = found.get(reference);
 
@@ -681,8 +1010,24 @@ export async function POST(request: NextRequest) {
 
     const origin = request.nextUrl.origin;
 
+    // ETAPA 1 — antes de qualquer resposta, limpar a pergunta e consultar o Banco de Perguntas.
+    const focus = focusFromQuestion(question);
+    const bankFirst = await searchQuestionBankFirst(origin, focus);
+    const approvedBankMatch =
+      bankFirst.match?.confidence === "strong"
+        ? bankFirst.match
+        : null;
+
+    // Quando existe resposta aprovada equivalente, a busca documental usa o assunto que encontrou
+    // essa resposta; isso evita que saudações e palavras genéricas contaminem o ranqueamento.
+    const effectiveQuery = clean(
+      approvedBankMatch?.matchedQuery ||
+      focus.focusQuery ||
+      question
+    );
+
     const [
-      { response: baseResponse, data: base },
+      { response: baseResponse, data: rawBase },
       { data: smart },
       bibleBooks,
     ] = await Promise.all([
@@ -692,21 +1037,44 @@ export async function POST(request: NextRequest) {
           "Content-Type": "application/json",
           cookie: request.headers.get("cookie") || "",
         },
-        body: JSON.stringify({ question, sort }),
+        body: JSON.stringify({ question: effectiveQuery, sort }),
       }),
-      jsonFetch(`${origin}/api/search/smart?q=${encodeURIComponent(question)}&sort=${encodeURIComponent(sort)}&limit=18`),
+      jsonFetch(
+        `${origin}/api/search/smart?q=${encodeURIComponent(effectiveQuery)}&sort=${encodeURIComponent(sort)}&limit=18`
+      ),
       books(origin),
     ]);
 
-    if (!baseResponse.ok) {
+    if (!baseResponse.ok && !approvedBankMatch) {
       return NextResponse.json(
-        { error: base?.error || "Não foi possível consultar o acervo." },
+        { error: rawBase?.error || "Não foi possível consultar o acervo." },
         { status: baseResponse.status },
       );
     }
 
-    const coreTerms = terms(question, base);
-    const hydrated = await hydrate(origin, collectSeeds(base, smart), question, coreTerms);
+    const base = baseResponse.ok ? rawBase : {};
+    const coreTerms = termsFromFocus(focus.focusTerms, smart);
+
+    const hydratedAll = await hydrate(
+      origin,
+      collectSeeds(base, smart),
+      question,
+      coreTerms,
+    );
+
+    // ETAPA 2 — filtro obrigatório do assunto.
+    // Ex.: "barba" não aceita "barbearia"; "véu" não aceita um documento apenas porque contém "Deus".
+    const expandedTerms = Array.isArray(smart?.expandedTerms)
+      ? smart.expandedTerms.map((term: unknown) => norm(String(term)))
+      : [];
+
+    const subjectMatched = hydratedAll.filter((topic) =>
+      subjectSignalMatch(topic, focus.focusTerms, expandedTerms)
+    );
+
+    const subjectFilterApplied = subjectMatched.length > 0;
+    const hydrated = subjectFilterApplied ? subjectMatched : hydratedAll;
+
     const grouped = groupRepeats(hydrated);
     const { central, specific } = centralAndSpecific(grouped, question);
 
@@ -718,8 +1086,18 @@ export async function POST(request: NextRequest) {
           : central;
 
     const selected = chosenSentences(ordered, coreTerms, question);
-    const direct = composeDirect(base, selected);
-    const approvedFull = base?.fromQuestionBank ? clean(base?.fullAnswer || "") : "";
+
+    // ETAPA 3 — se o Banco de Perguntas já possui resposta aprovada equivalente,
+    // ela tem prioridade. A parte documental abaixo serve para conferência e rastreabilidade.
+    const direct = approvedBankMatch
+      ? bankLead(approvedBankMatch, focus.focusTerms)
+      : composeDirect(base, selected);
+
+    const approvedFull = approvedBankMatch
+      ? clean(approvedBankMatch.fullAnswer || approvedBankMatch.shortAnswer)
+      : base?.fromQuestionBank
+        ? clean(base?.fullAnswer || "")
+        : "";
 
     const answerSections = selected.map((item, index) => ({
       order: index + 1,
@@ -776,9 +1154,18 @@ export async function POST(request: NextRequest) {
       (row) => `${row.topicId}|${row.title}|${row.year || ""}|${row.page || ""}`,
     );
 
+    const bankBibleText = approvedBankMatch
+      ? clean(approvedBankMatch.fullAnswer || approvedBankMatch.shortAnswer)
+      : "";
+
     const bibleBlocks = [
-      { text: clean(base?.shortAnswer || "") },
-      { text: clean(base?.fullAnswer || "") },
+      ...(bankBibleText ? [{ text: bankBibleText }] : []),
+      ...(!approvedBankMatch
+        ? [
+            { text: clean(base?.shortAnswer || "") },
+            { text: clean(base?.fullAnswer || "") },
+          ]
+        : []),
       ...ordered.slice(0, 9).map((topic) => ({ text: topic.content, topicId: topic.id })),
       ...specific.slice(0, 3).map((topic) => ({ text: topic.content, topicId: topic.id })),
     ];
@@ -790,6 +1177,24 @@ export async function POST(request: NextRequest) {
 
     const bibleSummary = biblicalReferences.slice(0, 8).map((ref) => ref.reference);
 
+    const bankMatchPayload = bankFirst.match
+      ? {
+          id: bankFirst.match.id,
+          question: bankFirst.match.question,
+          confidence: bankFirst.match.confidence,
+          matchedQuery: bankFirst.match.matchedQuery,
+          matchedTerms: bankFirst.match.matchedTerms,
+          coverage: bankFirst.match.coverage,
+          localScore: bankFirst.match.localScore,
+          sourceCount: bankFirst.match.sourceCount,
+          approved: bankFirst.match.confidence === "strong",
+        }
+      : null;
+
+    const documentaryNote = approvedBankMatch
+      ? `O Banco de Perguntas foi consultado antes da busca documental e foi localizada uma resposta aprovada equivalente. Em seguida, ${hydrated.filter((topic) => topic.content.length > 0).length} tópico(s) diretamente relacionados ao assunto foram lidos integralmente para conferência e rastreabilidade.`
+      : `O Banco de Perguntas foi consultado antes da resposta, mas não houve correspondência aprovada suficientemente forte. A resposta foi construída a partir de ${hydrated.filter((topic) => topic.content.length > 0).length} tópico(s) do acervo.`;
+
     try {
       await fetch(`${origin}/api/usage`, {
         method: "POST",
@@ -800,7 +1205,14 @@ export async function POST(request: NextRequest) {
           resultCount: Number(smart?.total || base?.total || grouped.length || 0),
           sourcePage: "/perguntar",
           metadata: {
-            answerEngine: "v8.3-documental-advanced",
+            answerEngine: "v8.4-bank-first-subject-filter",
+            focusQuery: effectiveQuery,
+            focusTerms: focus.focusTerms,
+            bankChecked: true,
+            bankMatchId: approvedBankMatch?.id || null,
+            bankMatchConfidence: bankFirst.match?.confidence || null,
+            subjectFilterApplied,
+            subjectMatchedTopics: subjectMatched.length,
             centralTopics: ordered.length,
             specificTopics: specific.length,
             bibleReferences: biblicalReferences.length,
@@ -827,18 +1239,30 @@ export async function POST(request: NextRequest) {
       fullTopicCount: hydrated.filter((topic) => topic.content.length > 0).length,
       searchedTotal: Number(smart?.total || base?.total || 0),
       interpretedTerms: coreTerms,
-      answerEngine: "v8.3-documental-advanced",
-      answerOrigin: base?.fromQuestionBank ? "question-bank" : "documentary-synthesis",
+      focusQuery: effectiveQuery,
+      focusTerms: focus.focusTerms,
+      bankChecked: true,
+      bankSearchQueries: bankFirst.queries,
+      bankCandidatesChecked: bankFirst.candidatesChecked,
+      bankMatch: bankMatchPayload,
+      bankApprovedMatch: Boolean(approvedBankMatch),
+      subjectFilterApplied,
+      subjectMatchedTopicCount: subjectMatched.length,
+      answerEngine: "v8.4-bank-first-subject-filter",
+      answerOrigin: approvedBankMatch
+        ? "question-bank-approved"
+        : base?.fromQuestionBank
+          ? "question-bank"
+          : "documentary-synthesis",
       explicitBibleReferencesOnly: true,
       groupedRepeatCount: hydrated.length - grouped.length,
-      documentaryNote: `${hydrated.filter((topic) => topic.content.length > 0).length} tópico(s) foram lidos integralmente. Os registros gerais foram priorizados e orientações de situações específicas foram separadas da resposta principal.`,
+      documentaryNote,
     });
   } catch (error) {
-    console.error("Erro em /api/ask/natural V8.3:", error);
+    console.error("Erro em /api/ask/natural V8.4:", error);
     return NextResponse.json(
-      { error: "Não foi possível preparar a resposta documental avançada." },
+      { error: "Não foi possível preparar a resposta documental com verificação do Banco de Perguntas." },
       { status: 500 },
     );
   }
 }
-

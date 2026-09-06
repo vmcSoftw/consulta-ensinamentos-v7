@@ -23,3 +23,13 @@
 .contextIntro{margin:-4px 0 15px;color:#617087;line-height:1.6}.specificPreview{color:#4a5d74;line-height:1.62}.method{color:#53637a}.method p{line-height:1.62}.method small{display:block;margin-top:10px;line-height:1.55}
 @media(max-width:860px){.referenceGrid{grid-template-columns:1fr}.questionFooter,.answerHead,.panelHead,.sectionTitle,.refHead,.fullTopicHead{flex-direction:column;align-items:stretch}.strength{min-width:0}}
 @media print{.hero form,.utility,.topicActions,.back{display:none!important}.shell{max-width:none;padding:0}.hero,.answerPanel,.panel,.method{box-shadow:none;border-color:#bbb}.topicCard,.refCard,.sources article{break-inside:avoid}}
+
+.bankCheck{margin-bottom:14px;padding:16px;border:1px solid #d6e1ed;border-radius:15px;background:#f8fafc}
+.bankCheckOk{border-color:#bdd8c8;background:#f3faf6}
+.bankCheckEmpty{border-color:#d9e1ea;background:#f8fafc}
+.bankCheckHead{display:flex;justify-content:space-between;align-items:flex-start;gap:14px}
+.bankCheckHead>div{display:grid;gap:4px}.bankCheckHead strong{font-size:1rem;color:#29405a}
+.bankBadge{border-radius:999px;background:#fff;padding:6px 9px;border:1px solid #d6e1eb;color:#45617e;font-size:.72rem;font-weight:900;white-space:nowrap}
+.bankCheck p{margin:11px 0 0;line-height:1.58;color:#445970}
+.bankMeta{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.bankMeta span{border-radius:999px;background:#fff;padding:6px 8px;border:1px solid #dbe4ed;color:#52677f;font-size:.72rem;font-weight:800}
+@media(max-width:860px){.bankCheckHead{flex-direction:column}.bankBadge{white-space:normal}}

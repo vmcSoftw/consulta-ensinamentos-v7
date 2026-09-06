@@ -1,0 +1,73 @@
+CONSULTA DE ENSINAMENTOS — V8.4
+BANCO DE PERGUNTAS PRIMEIRO + FILTRO OBRIGATÓRIO DO ASSUNTO
+
+POR QUE ESTA VERSÃO FOI CRIADA
+A V8.3 melhorou a leitura integral dos tópicos, mas ainda podia deixar palavras genéricas
+da pergunta (paz, Deus, irmãos, costume, uso, motivo etc.) contaminarem o ranqueamento.
+Isso fez uma pergunta sobre BARBA receber tópicos sobre VÉU, ÉFESO, DIANA e outros assuntos.
+
+A V8.4 muda a ordem da decisão.
+
+NOVA ORDEM
+1. Limpa saudação, cortesia e estrutura genérica da pergunta.
+2. Identifica o assunto efetivamente pesquisado.
+3. CONSULTA O BANCO DE PERGUNTAS ANTES DE FORMAR QUALQUER RESPOSTA.
+4. Se encontrar resposta aprovada equivalente, ela recebe prioridade.
+5. Depois faz a busca documental usando o assunto limpo, não a pergunta inteira contaminada.
+6. Exige correspondência real com o assunto antes de um tópico entrar na fundamentação.
+7. Só então monta a resposta, fontes e referências bíblicas.
+
+EXEMPLO REAL
+Pergunta:
+"A paz de Deus, tenho uma dúvida sobre a barba, por qual motivo os irmãos não tem costume de usa-la?"
+
+Assunto efetivo:
+barba
+
+O Banco de Perguntas existente já possui uma pergunta aprovada sobre esse assunto (ID 66).
+Na V8.4 essa resposta deve ser localizada primeiro e a busca documental passa a usar "barba".
+
+MELHORIAS
+- Banco de Perguntas consultado primeiro.
+- Resposta aprovada equivalente tem prioridade.
+- Mostra ao usuário qual pergunta aprovada foi encontrada.
+- Mostra qual assunto foi realmente pesquisado.
+- Remove palavras de saudação/cortesia da relevância.
+- Filtro de assunto com correspondência por palavra/frase inteira:
+  "barba" não casa mais com "barbearia".
+- Documentos sem o assunto deixam de entrar como "tópicos centrais".
+- Referências bíblicas são extraídas somente da resposta aprovada e dos documentos filtrados.
+- Intervalos bíblicos inválidos/decrescentes deixam de ser aceitos.
+- Mantém leitura integral do tópico, rastreabilidade e agrupamento de repetições.
+
+IMPORTANTE SOBRE O BANCO DE PERGUNTAS
+A resposta aprovada sobre barba já existe, porém atualmente não há fontes vinculadas a ela
+na tabela question_bank_sources. Por isso a V8.4 mantém uma segunda etapa de conferência
+documental e deve localizar os tópicos RGE sobre BARBAS E CAVANHAQUES / BARBA CRESCIDA.
+
+BANCO DE DADOS
+Nenhuma migração é necessária.
+
+ARQUIVOS ALTERADOS
+- app/api/ask/natural/route.ts
+- app/perguntar/page.tsx
+- app/perguntar/perguntar.module.css
+
+ARQUIVOS NOVOS
+- LEIA-ME-V8.4-BANCO-PRIMEIRO.txt
+- scripts/verificar-perguntar-v8.4.mjs
+
+INSTALAÇÃO
+Na raiz do projeto:
+  node .\Consulta_Ensinamentos_V8_4_Banco_Primeiro.mjs
+  npm run build
+  npm run dev
+
+Em outro PowerShell:
+  node .\scripts\verificar-perguntar-v8.4.mjs
+
+Se o Next estiver em outra porta:
+  $env:BASE_URL="http://localhost:3001"
+  node .\scripts\verificar-perguntar-v8.4.mjs
+
+Não use git add -A.
