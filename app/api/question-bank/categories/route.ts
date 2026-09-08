@@ -144,8 +144,8 @@ export async function GET(request: NextRequest) {
     const subcategory = request.nextUrl.searchParams.get("subcategory")?.trim() || "all";
     const adminMode = request.nextUrl.searchParams.get("admin") === "1";
 
-    if (adminMode && !(await hasAdminSession(request))) {
-      return NextResponse.json({ error: "Acesso administrativo necessário." }, { status: 401 });
+    if (!(await hasAdminSession(request))) {
+      return NextResponse.json({ error: "Acesso restrito ao Banco de Perguntas." }, { status: 401 });
     }
 
     const [categories, questionRows] = await Promise.all([

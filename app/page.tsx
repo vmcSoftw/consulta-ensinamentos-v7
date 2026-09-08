@@ -706,8 +706,9 @@ export default function Home() {
           <a className="timelineHeaderButton" href="/linha-do-tempo">
             Linha do tempo
           </a>
-          <a className="bankHeaderButton" href="/banco-perguntas">Banco de Perguntas</a>
+          <a className="bankHeaderButton" href="/banco-perguntas" title="Acesso restrito">Banco de Perguntas 🔒</a>
 <a className="bankHeaderButton" href="/pesquisa-total">Pesquisa Total</a>
+          <a className="bankHeaderButton" href="/relatorio">Relatório</a>
           <Link className="adminButton" href="/admin"><span aria-hidden="true">◆</span> Administração</Link>
         </div>
         <div className="headerContent">

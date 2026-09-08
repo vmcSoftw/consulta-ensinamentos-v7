@@ -69,6 +69,10 @@ function sim(a:string,b:string) {
 }
 
 export async function GET(request: NextRequest) {
+  if (!(await requireAdmin(request))) {
+    return NextResponse.json({ error: "Acesso restrito ao Banco de Perguntas." }, { status: 401 });
+  }
+
   try {
     const sql = questionBankDb();
     const id = Number(request.nextUrl.searchParams.get("id") || 0);

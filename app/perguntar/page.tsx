@@ -271,7 +271,7 @@ function StructuredOverview({
         <span className={styles.eyebrow}>Resposta estruturada</span>
         <h2>{result.question}</h2>
         <p>
-          Banco de Perguntas primeiro, documentos conferidos e referências bíblicas somente
+          Banco de Perguntas somente quando houver fonte verificável, documentos conferidos e referências bíblicas somente
           quando efetivamente citadas na resposta aprovada ou nas fontes selecionadas.
         </p>
       </div>
@@ -444,7 +444,7 @@ export default function PerguntarPage() {
     setError("");
     setResult(null);
     try {
-      const response = await fetch("/api/ask/natural", {
+      const response = await fetch("/api/ask/v9", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ question: q, sort }),
@@ -528,7 +528,7 @@ export default function PerguntarPage() {
     <main className={styles.shell}>
       <header className={styles.hero}>
         <a className={styles.back} href="/">← Voltar à Consulta de Ensinamentos</a>
-        <div className={styles.kicker}>V8.5 · Resposta estruturada</div>
+        <div className={styles.kicker}>V9.0 Beta · Pesquisa documental rastreável</div>
         <h1>Pergunte ao acervo</h1>
         <p>
           As respostas seguem um padrão claro: resposta, Bíblia, ensinamentos da CCB, aplicação

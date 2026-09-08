@@ -1,0 +1,29 @@
+CONSULTA DE ENSINAMENTOS V9.0 BETA
+
+NOVO NESTA ETAPA
+
+1. BANCO DE PERGUNTAS COM ACESSO RESTRITO
+- /banco-perguntas exige sessão administrativa válida.
+- GET /api/question-bank exige sessão administrativa.
+- GET /api/question-bank/categories exige sessão administrativa.
+- O motor V9 continua podendo consultar o Banco internamente no servidor.
+- A ação pública "Sugerir inclusão no Banco de Perguntas" continua permitida; ela envia somente uma sugestão para revisão e não expõe o conteúdo do Banco.
+
+2. MENU RELATÓRIO
+- novo item "Relatório" no cabeçalho.
+- nova página /relatorio.
+- botão "Anciães mais antigos do Brasil".
+- PDF instalado em /public/relatorios/anciaes-mais-antigos-do-brasil.pdf.
+
+3. BASE V9
+- se a V9 Alpha ainda não estiver instalada, este instalador a executa automaticamente.
+- a V8.5 continua preservada nos endpoints antigos para rollback.
+
+INSTALAÇÃO
+node .\Consulta_Ensinamentos_V9_0_Beta.mjs
+npm run build
+
+COMMIT
+git add lib/v9-engine.ts app/api/ask/v9/route.ts app/api/topics/batch/route.ts app/perguntar/page.tsx app/page.tsx app/banco-perguntas app/api/question-bank app/relatorio public/relatorios LEIA-ME-V9.0-BETA.txt
+git commit -m "feat: V9 beta com banco restrito e menu relatorio"
+git push origin main
