@@ -299,7 +299,7 @@ export default function Home() {
   const [documentPreviewKey, setDocumentPreviewKey] = useState('');
 
   useEffect(() => {
-    fetch('/api/filters')
+    fetch("/api/filters", { cache: "no-store" })
       .then(r => r.json())
       .then((data: Filters) => {
         setFilters(data);
@@ -717,8 +717,8 @@ export default function Home() {
             <p>Uma consulta organizada para localizar assuntos, comparar registros históricos, estudar a Bíblia e acessar documentos com suas referências.</p>
           </div>
           <div className="statsGrid">
-            <div><strong>{filters.stats?.topics?.toLocaleString('pt-BR') || '3.016'}</strong><span>tópicos</span></div>
-            <div><strong>{filters.stats?.sources?.toLocaleString('pt-BR') || '142'}</strong><span>fontes</span></div>
+            <div><strong>{filters.stats?.topics?.toLocaleString('pt-BR') || "—"}</strong><span>tópicos</span></div>
+            <div><strong>{filters.stats?.sources?.toLocaleString('pt-BR') || "—"}</strong><span>fontes</span></div>
             <div><strong>{filters.years.length || '—'}</strong><span>anos catalogados</span></div>
           </div>
         </div>
